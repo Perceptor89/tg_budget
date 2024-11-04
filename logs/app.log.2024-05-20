@@ -1,0 +1,488 @@
+I 20.05 00:28:58 app - Start app - engine.py - start_app - 18
+D 20.05 00:28:58 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:29:16 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093218, 'message': {'message_id': 10, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716175756, 'text': 'привет'}}]} - tg_service.py - _listen - 38
+I 20.05 00:29:16 tg_client - {'update_id': 162093218, 'message': {'message_id': 10, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'first_name': None, 'username': None, 'type': 'group', 'title': 'Budget', 'all_members_are_administrators': True}, 'date': 1716175756, 'reply_to_message': None, 'entities': None, 'text': 'привет'}} - tg_service.py - _listen - 45
+D 20.05 00:29:16 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:30:07 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:30:07 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:30:58 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:30:58 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:31:49 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:31:49 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:32:40 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:32:40 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:33:31 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:33:31 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:34:22 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:34:22 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:35:12 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:35:12 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:36:03 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:36:03 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:36:54 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:36:54 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:37:45 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:37:45 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:38:36 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:38:36 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:39:26 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:39:26 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:40:17 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:40:17 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:41:08 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:41:08 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:41:59 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:41:59 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:42:50 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:42:50 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:43:40 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:43:40 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:44:31 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:44:31 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:45:22 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:45:22 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:46:13 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:46:13 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:47:04 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:47:04 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:47:55 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:47:55 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:48:45 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:48:45 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:49:36 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:49:36 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:50:27 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:50:27 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:51:18 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:51:18 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:52:09 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:52:09 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:52:59 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:52:59 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:53:50 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:53:50 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:54:41 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:54:41 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093219, 'timeout': 60} form: None - tg_service.py - _request - 76
+I 20.05 00:55:31 app - Start app - engine.py - start_app - 18
+D 20.05 00:55:31 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:56:21 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+D 20.05 00:56:21 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - tg_service.py - _request - 76
+D 20.05 00:56:22 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093219, 'message': {'message_id': 11, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716177382, 'text': 'привет'}}]} - tg_service.py - _listen - 38
+I 20.05 00:56:22 tg_client - {'update_id': 162093219, 'message': {'message_id': 11, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'first_name': None, 'username': None, 'type': 'group', 'title': 'Budget', 'all_members_are_administrators': True}, 'date': 1716177382, 'reply_to_message': None, 'entities': None, 'text': 'привет'}} - tg_service.py - _listen - 45
+D 20.05 00:56:22 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093220, 'timeout': 60} form: None - tg_service.py - _request - 76
+I 20.05 00:57:08 app - Start app - engine.py - start_app - 18
+D 20.05 00:57:08 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - tg_service.py - _request - 76
+I 20.05 00:57:11 app - Stop app - engine.py - stop_app - 22
+D 20.05 00:57:59 tg_client - response_dict {'ok': True, 'result': []} - tg_service.py - _listen - 38
+I 20.05 00:59:23 app - Start app - engine.py - start_app - 18
+D 20.05 00:59:23 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 77
+D 20.05 00:59:36 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093220, 'message': {'message_id': 12, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716177575, 'text': 'привет'}}]} - tg_service.py - _listen - 39
+D 20.05 00:59:36 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093221, 'timeout': 20} form: None - tg_service.py - _request - 77
+I 20.05 00:59:48 tg_client - update_id=162093220 message=TGMessageSchema(message_id=12, msg_from=TGFromSchema(id=900025436, is_bot=False, first_name='Andrey', username='Perceptor89', language_code='en'), chat=TGChatSchema(id=-4257520710, first_name=None, username=None, type='group', title='Budget', all_members_are_administrators=True), date=1716177575, reply_to_message=None, entities=None, text='привет') - tg_service.py - _manage_updates - 57
+I 20.05 01:15:15 app - Start app - engine.py - start_app - 23
+D 20.05 01:15:15 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 82
+D 20.05 01:15:22 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093220, 'message': {'message_id': 12, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716177575, 'text': 'привет'}}]} - tg_service.py - _listen - 44
+D 20.05 01:15:22 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093221, 'timeout': 20} form: None - tg_service.py - _request - 82
+I 20.05 01:18:20 app - Start app - engine.py - start_app - 23
+D 20.05 01:18:20 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 82
+D 20.05 01:18:21 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093220, 'message': {'message_id': 12, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716177575, 'text': 'привет'}}]} - tg_service.py - _listen - 44
+D 20.05 01:18:21 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093221, 'timeout': 20} form: None - tg_service.py - _request - 82
+E 20.05 01:18:29 tg_client - 'TGUpdateSchema' object has no attribute 'text' - tg_service.py - _manage_updates - 65
+Traceback (most recent call last):
+  File "/home/andrei/python_projects/registrator/app/tg_service.py", line 62, in _manage_updates
+    await self.accountant.process_message(update)
+  File "/home/andrei/python_projects/registrator/app/budget.py", line 11, in process_message
+    if '#бюджет' in message.text:
+                    ^^^^^^^^^^^^
+  File "/home/andrei/python_projects/registrator/.venv/lib/python3.11/site-packages/pydantic/main.py", line 811, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'TGUpdateSchema' object has no attribute 'text'
+I 20.05 01:18:51 app - Stop app - engine.py - stop_app - 27
+E 20.05 01:18:52 tg_client - request <class 'httpx.ReadTimeout'>  - tg_service.py - _request - 94
+D 20.05 01:18:52 tg_client - response_dict None - tg_service.py - _listen - 44
+E 20.05 01:18:52 tg_client - response is not ok - tg_service.py - _listen - 56
+I 20.05 01:20:23 app - Start app - engine.py - start_app - 23
+D 20.05 01:20:23 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 82
+E 20.05 01:20:49 tg_client - request <class 'httpx.ReadTimeout'>  - tg_service.py - _request - 94
+D 20.05 01:20:49 tg_client - response_dict None - tg_service.py - _listen - 44
+E 20.05 01:20:49 tg_client - response is not ok - tg_service.py - _listen - 56
+D 20.05 01:20:49 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 82
+E 20.05 01:21:09 tg_client - request <class 'httpx.ReadTimeout'>  - tg_service.py - _request - 94
+D 20.05 01:21:09 tg_client - response_dict None - tg_service.py - _listen - 44
+E 20.05 01:21:09 tg_client - response is not ok - tg_service.py - _listen - 56
+D 20.05 01:21:09 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 82
+E 20.05 01:21:30 tg_client - request <class 'httpx.ReadTimeout'>  - tg_service.py - _request - 94
+D 20.05 01:21:30 tg_client - response_dict None - tg_service.py - _listen - 44
+E 20.05 01:21:30 tg_client - response is not ok - tg_service.py - _listen - 56
+D 20.05 01:21:30 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 82
+E 20.05 01:21:51 tg_client - request <class 'httpx.ReadTimeout'>  - tg_service.py - _request - 94
+D 20.05 01:21:51 tg_client - response_dict None - tg_service.py - _listen - 44
+E 20.05 01:21:51 tg_client - response is not ok - tg_service.py - _listen - 56
+D 20.05 01:21:51 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 82
+E 20.05 01:22:11 tg_client - request <class 'httpx.ReadTimeout'>  - tg_service.py - _request - 94
+D 20.05 01:22:11 tg_client - response_dict None - tg_service.py - _listen - 44
+E 20.05 01:22:11 tg_client - response is not ok - tg_service.py - _listen - 56
+D 20.05 01:22:11 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 82
+I 20.05 01:22:18 app - Start app - engine.py - start_app - 23
+D 20.05 01:22:18 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 81
+E 20.05 01:22:39 tg_client - request <class 'httpx.ReadTimeout'>  - tg_service.py - _request - 93
+E 20.05 01:22:39 tg_client - response_dict None - tg_service.py - _listen - 55
+D 20.05 01:22:39 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 81
+I 20.05 01:24:11 app - Start app - engine.py - start_app - 23
+D 20.05 01:24:11 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 81
+D 20.05 01:24:32 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 81
+I 20.05 01:24:50 app - Start app - engine.py - start_app - 23
+D 20.05 01:24:50 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 81
+D 20.05 01:25:10 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 81
+D 20.05 01:25:22 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093222, 'timeout': 20} form: None - tg_service.py - _request - 81
+E 20.05 01:25:31 tg_client - 'TGUpdateSchema' object has no attribute 'text' - tg_service.py - _manage_updates - 64
+Traceback (most recent call last):
+  File "/home/andrei/python_projects/registrator/app/tg_service.py", line 61, in _manage_updates
+    await self.accountant.process_message(update)
+  File "/home/andrei/python_projects/registrator/app/budget.py", line 11, in process_message
+    if '#бюджет' in message.text:
+                    ^^^^^^^^^^^^
+  File "/home/andrei/python_projects/registrator/.venv/lib/python3.11/site-packages/pydantic/main.py", line 811, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'TGUpdateSchema' object has no attribute 'text'
+I 20.05 01:26:16 app - Start app - engine.py - start_app - 23
+D 20.05 01:26:16 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 82
+D 20.05 01:26:16 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093222, 'timeout': 20} form: None - tg_service.py - _request - 82
+E 20.05 01:26:38 tg_client - 'TGUpdateSchema' object has no attribute 'text' - tg_service.py - _manage_updates - 63
+Traceback (most recent call last):
+  File "/home/andrei/python_projects/registrator/app/tg_service.py", line 61, in _manage_updates
+    await self.accountant.process_message(update)
+  File "/home/andrei/python_projects/registrator/app/budget.py", line 11, in process_message
+    if '#бюджет' in message.text:
+                    ^^^^^^^^^^^^
+  File "/home/andrei/python_projects/registrator/.venv/lib/python3.11/site-packages/pydantic/main.py", line 811, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'TGUpdateSchema' object has no attribute 'text'
+I 20.05 01:26:49 app - Start app - engine.py - start_app - 23
+D 20.05 01:26:49 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 82
+D 20.05 01:26:54 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093223, 'timeout': 20} form: None - tg_service.py - _request - 82
+I 20.05 01:27:26 app - Start app - engine.py - start_app - 23
+D 20.05 01:27:26 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 82
+D 20.05 01:27:27 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093223, 'timeout': 20} form: None - tg_service.py - _request - 82
+D 20.05 01:27:59 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093223, 'timeout': 20} form: None - tg_service.py - _request - 82
+D 20.05 01:28:20 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093223, 'timeout': 20} form: None - tg_service.py - _request - 82
+D 20.05 01:28:41 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093223, 'timeout': 20} form: None - tg_service.py - _request - 82
+D 20.05 01:28:54 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093224, 'timeout': 20} form: None - tg_service.py - _request - 82
+E 20.05 01:29:02 tg_client - Accountant._save_message() takes 1 positional argument but 2 were given - tg_service.py - _manage_updates - 63
+Traceback (most recent call last):
+  File "/home/andrei/python_projects/registrator/app/tg_service.py", line 61, in _manage_updates
+    await self.accountant.process_message(update.message)
+  File "/home/andrei/python_projects/registrator/app/budget.py", line 12, in process_message
+    await self._save_message(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Accountant._save_message() takes 1 positional argument but 2 were given
+I 20.05 01:29:29 app - Start app - engine.py - start_app - 23
+D 20.05 01:29:29 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 82
+D 20.05 01:29:30 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093224, 'timeout': 20} form: None - tg_service.py - _request - 82
+I 20.05 01:29:35 app - Stop app - engine.py - stop_app - 27
+I 20.05 01:33:21 app - Start app - engine.py - start_app - 23
+D 20.05 01:33:21 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 78
+I 20.05 01:33:22 app - Stop app - engine.py - stop_app - 27
+I 20.05 01:34:30 app - Start app - engine.py - start_app - 23
+D 20.05 01:34:30 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 78
+I 20.05 01:34:31 app - Stop app - engine.py - stop_app - 27
+I 20.05 01:34:46 app - Start app - engine.py - start_app - 23
+D 20.05 01:34:46 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 78
+I 20.05 01:34:47 app - Stop app - engine.py - stop_app - 27
+I 20.05 01:39:20 app - Start app - engine.py - start_app - 23
+D 20.05 01:39:20 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 01:39:20 app - Stop app - engine.py - stop_app - 27
+I 20.05 01:40:20 app - Start app - engine.py - start_app - 23
+D 20.05 01:40:20 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 01:40:41 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 01:41:01 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093225, 'timeout': 20} form: None - tg_service.py - _request - 79
+E 20.05 01:41:06 tg_client - 'TGUpdateSchema' object has no attribute 'text' - tg_service.py - _manage_updates - 63
+Traceback (most recent call last):
+  File "/home/andrei/python_projects/registrator/app/tg_service.py", line 61, in _manage_updates
+    await self.accountant.process_message(message)
+  File "/home/andrei/python_projects/registrator/app/budget.py", line 11, in process_message
+    if '#бюджет' in message.text:
+                    ^^^^^^^^^^^^
+  File "/home/andrei/python_projects/registrator/.venv/lib/python3.11/site-packages/pydantic/main.py", line 811, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'TGUpdateSchema' object has no attribute 'text'
+D 20.05 01:41:31 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093225, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 01:41:37 app - Start app - engine.py - start_app - 23
+D 20.05 01:41:37 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 01:41:52 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093226, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 01:42:57 app - Start app - engine.py - start_app - 23
+D 20.05 01:42:57 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 01:42:58 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093226, 'timeout': 20} form: None - tg_service.py - _request - 79
+E 20.05 01:44:44 tg_client - request <class 'httpx.ConnectTimeout'>  - tg_service.py - _request - 91
+E 20.05 01:44:44 tg_client - response_dict None - tg_service.py - _listen - 55
+D 20.05 01:44:44 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093226, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 01:45:05 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093226, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 01:46:49 app - Start app - engine.py - start_app - 23
+D 20.05 01:46:49 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 01:46:57 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093227, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 01:58:25 app - Start app - engine.py - start_app - 23
+D 20.05 01:58:25 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 01:58:26 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093227, 'timeout': 20} form: None - tg_service.py - _request - 79
+E 20.05 01:59:42 tg_client - request <class 'httpx.ConnectTimeout'>  - tg_service.py - _request - 91
+E 20.05 01:59:42 tg_client - response_dict None - tg_service.py - _listen - 55
+D 20.05 01:59:42 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093227, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 01:59:56 app - Start app - engine.py - start_app - 23
+D 20.05 01:59:56 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 01:59:57 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093227, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 02:02:52 app - Start app - engine.py - start_app - 23
+D 20.05 02:02:52 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:02:53 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093227, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 02:07:46 app - Start app - engine.py - start_app - 23
+D 20.05 02:07:46 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:07:57 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093228, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 02:09:35 app - Start app - engine.py - start_app - 23
+D 20.05 02:09:35 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:09:44 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093229, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:10:07 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093229, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:10:27 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093229, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 02:17:37 app - Start app - engine.py - start_app - 23
+D 20.05 02:17:37 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:17:57 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093230, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 02:19:13 app - Start app - engine.py - start_app - 23
+D 20.05 02:19:13 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:19:14 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093230, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:19:35 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093230, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:19:36 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093231, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:20:20 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093231, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:20:40 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093231, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:21:01 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093231, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:21:22 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093231, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:21:43 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093231, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:22:04 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093231, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:22:24 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093231, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:22:45 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093231, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:23:06 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093231, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:23:27 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093231, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 02:23:31 app - Start app - engine.py - start_app - 23
+D 20.05 02:23:31 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:23:37 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093232, 'timeout': 20} form: None - tg_service.py - _request - 79
+E 20.05 02:23:37 tg_client - 'async_generator_asend' object has no attribute 'add' - tg_service.py - _manage_updates - 63
+Traceback (most recent call last):
+  File "/home/andrei/python_projects/registrator/app/tg_service.py", line 61, in _manage_updates
+    await self.accountant.process_message(message)
+  File "/home/andrei/python_projects/registrator/app/budget.py", line 12, in process_message
+    await self._save_message(message)
+  File "/home/andrei/python_projects/registrator/app/budget.py", line 23, in _save_message
+    await repo.create_item(record)
+  File "/home/andrei/python_projects/registrator/app/db_service/repository.py", line 28, in create_item
+    self._session.add(item)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'async_generator_asend' object has no attribute 'add'
+I 20.05 02:24:00 app - Start app - engine.py - start_app - 23
+D 20.05 02:24:00 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:24:05 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093233, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:24:37 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093233, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 02:24:52 app - Start app - engine.py - start_app - 23
+D 20.05 02:24:52 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 02:25:09 app - Start app - engine.py - start_app - 23
+D 20.05 02:25:09 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:25:18 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093234, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 02:25:48 app - Start app - engine.py - start_app - 23
+D 20.05 02:25:48 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:25:49 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093234, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 02:26:27 app - Start app - engine.py - start_app - 23
+D 20.05 02:26:27 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:26:28 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093234, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 02:31:58 app - Start app - engine.py - start_app - 23
+D 20.05 02:31:58 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:31:58 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093234, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 02:58:29 app - Start app - engine.py - start_app - 23
+D 20.05 02:58:29 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:58:29 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093234, 'timeout': 20} form: None - tg_service.py - _request - 79
+E 20.05 02:58:30 tg_client - _BaseRepo.__init__() missing 1 required positional argument: 'session' - tg_service.py - _manage_updates - 63
+Traceback (most recent call last):
+  File "/home/andrei/python_projects/registrator/app/tg_service.py", line 61, in _manage_updates
+    await self.accountant.process_message(message)
+  File "/home/andrei/python_projects/registrator/app/budget.py", line 12, in process_message
+    await self._save_message(message)
+  File "/home/andrei/python_projects/registrator/app/budget.py", line 15, in _save_message
+    repo: TGMessageRepo = TGMessageRepo()
+                          ^^^^^^^^^^^^^^^
+TypeError: _BaseRepo.__init__() missing 1 required positional argument: 'session'
+I 20.05 02:59:09 app - Start app - engine.py - start_app - 23
+D 20.05 02:59:09 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 02:59:17 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093235, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 03:00:08 app - Start app - engine.py - start_app - 23
+D 20.05 03:00:08 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:00:09 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093235, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 03:01:00 app - Start app - engine.py - start_app - 23
+D 20.05 03:01:00 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:01:01 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093235, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:02:55 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093235, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:03:16 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093235, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:03:37 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093235, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:03:58 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093235, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:04:19 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093235, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 03:04:35 app - Start app - engine.py - start_app - 23
+D 20.05 03:04:35 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:04:55 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:05:16 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:05:22 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093236, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:05:27 db - TGMessage -> {'message_id': 27, 'date': 1716185122, 'chat_id': -4257520710, 'other_info': {'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'type': 'group', 'title': 'Budget', 'all_members_are_administrators': True}, 'entities': [{'offset': 0, 'length': 7, 'type': 'hashtag'}], 'text': '#бюджет'}, 'id': None} - repository.py - create_item - 39
+E 20.05 03:05:27 db - (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.DataError'>: invalid input for query argument $2: 1716185122 (expected a datetime.date or datetime.datetime instance, got 'int')
+[SQL: INSERT INTO messages (message_id, date, chat_id, other_info) VALUES ($1::INTEGER, $2::TIMESTAMP WITHOUT TIME ZONE, $3::INTEGER, $4::JSON) RETURNING messages.id]
+[parameters: (27, 1716185122, -4257520710, '{"msg_from": {"id": 900025436, "is_bot": false, "first_name": "Andrey", "username": "Perceptor89", "language_code": "en"}, "chat": {"id": -4257520710 ... (45 characters truncated) ... mbers_are_administrators": true}, "entities": [{"offset": 0, "length": 7, "type": "hashtag"}], "text": "#\\u0431\\u044e\\u0434\\u0436\\u0435\\u0442"}')]
+(Background on this error at: https://sqlalche.me/e/20/dbapi) - repository.py - wrapper - 26
+D 20.05 03:05:48 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093236, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:06:08 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093236, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:06:29 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093236, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:06:50 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093236, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 03:07:02 app - Start app - engine.py - start_app - 23
+D 20.05 03:07:02 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:07:04 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093237, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:07:07 db - TGMessage -> {'message_id': 28, 'date': datetime.datetime(2024, 5, 20, 6, 7, 4, tzinfo=TzInfo(UTC)), 'chat_id': -4257520710, 'other_info': {'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'type': 'group', 'title': 'Budget', 'all_members_are_administrators': True}, 'entities': [{'offset': 0, 'length': 7, 'type': 'hashtag'}], 'text': '#бюджет'}, 'id': None} - repository.py - create_item - 39
+E 20.05 03:07:07 db - (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.DataError'>: invalid input for query argument $2: datetime.datetime(2024, 5, 20, 6, 7, 4, ... (can't subtract offset-naive and offset-aware datetimes)
+[SQL: INSERT INTO messages (message_id, date, chat_id, other_info) VALUES ($1::INTEGER, $2::TIMESTAMP WITHOUT TIME ZONE, $3::INTEGER, $4::JSON) RETURNING messages.id]
+[parameters: (28, datetime.datetime(2024, 5, 20, 6, 7, 4, tzinfo=TzInfo(UTC)), -4257520710, '{"msg_from": {"id": 900025436, "is_bot": false, "first_name": "Andrey", "username": "Perceptor89", "language_code": "en"}, "chat": {"id": -4257520710 ... (45 characters truncated) ... mbers_are_administrators": true}, "entities": [{"offset": 0, "length": 7, "type": "hashtag"}], "text": "#\\u0431\\u044e\\u0434\\u0436\\u0435\\u0442"}')]
+(Background on this error at: https://sqlalche.me/e/20/dbapi) - repository.py - wrapper - 26
+D 20.05 03:07:28 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093237, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:07:48 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093237, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:08:09 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093237, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:08:30 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093237, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:08:51 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093237, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:09:12 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093237, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:09:32 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093237, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:09:53 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093237, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:10:14 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093237, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:10:35 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093237, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:10:56 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093237, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:11:17 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093237, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:11:38 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093237, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 03:11:48 app - Start app - engine.py - start_app - 23
+D 20.05 03:11:48 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+E 20.05 03:11:53 tg_client - response validation 1 validation error for TGUpdateSchema
+message.date
+  Input should not have timezone info [type=timezone_naive, input_value=1716185513, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.7/v/timezone_naive - tg_service.py - _listen - 53
+D 20.05 03:11:53 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:12:14 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:12:35 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:12:56 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:13:16 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:13:37 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:13:58 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:14:19 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:14:40 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:15:01 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:15:21 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:15:42 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:16:03 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:16:24 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:16:45 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:17:05 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:17:26 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:17:47 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:18:08 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:18:29 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:18:50 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:19:10 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:19:31 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:19:52 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093238, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 03:20:11 app - Start app - engine.py - start_app - 23
+D 20.05 03:20:11 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+E 20.05 03:20:27 tg_client - response validation 1 validation error for TGUpdateSchema
+message.date
+  Input should not have timezone info [type=timezone_naive, input_value=1716186027, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.7/v/timezone_naive - tg_service.py - _listen - 53
+D 20.05 03:20:27 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093239, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:20:48 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093239, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 03:21:10 app - Start app - engine.py - start_app - 23
+D 20.05 03:21:10 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:21:16 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093240, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:21:24 db - TGMessage -> {'message_id': 31, 'date': datetime.datetime(2024, 5, 20, 3, 21, 16), 'chat_id': -4257520710, 'other_info': {'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'type': 'group', 'title': 'Budget', 'all_members_are_administrators': True}, 'entities': [{'offset': 0, 'length': 7, 'type': 'hashtag'}], 'text': '#бюджет'}, 'id': None} - repository.py - create_item - 39
+E 20.05 03:21:24 db - (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.DataError'>: invalid input for query argument $3: -4257520710 (value out of int32 range)
+[SQL: INSERT INTO messages (message_id, date, chat_id, other_info) VALUES ($1::INTEGER, $2::TIMESTAMP WITHOUT TIME ZONE, $3::INTEGER, $4::JSON) RETURNING messages.id]
+[parameters: (31, datetime.datetime(2024, 5, 20, 3, 21, 16), -4257520710, '{"msg_from": {"id": 900025436, "is_bot": false, "first_name": "Andrey", "username": "Perceptor89", "language_code": "en"}, "chat": {"id": -4257520710 ... (45 characters truncated) ... mbers_are_administrators": true}, "entities": [{"offset": 0, "length": 7, "type": "hashtag"}], "text": "#\\u0431\\u044e\\u0434\\u0436\\u0435\\u0442"}')]
+(Background on this error at: https://sqlalche.me/e/20/dbapi) - repository.py - wrapper - 26
+D 20.05 03:21:45 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093240, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:22:06 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093240, 'timeout': 20} form: None - tg_service.py - _request - 79
+D 20.05 03:22:27 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093240, 'timeout': 20} form: None - tg_service.py - _request - 79
+I 20.05 03:23:22 app - Start app - engine.py - start_app - 23
+D 20.05 03:23:22 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:23:27 tg_client - response dict {'ok': True, 'result': [{'update_id': 162093240, 'message': {'message_id': 32, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716186207, 'text': '#бюджет', 'entities': [{'offset': 0, 'length': 7, 'type': 'hashtag'}]}}]} - tg_service.py - _listen - 44
+D 20.05 03:23:27 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093241, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:23:33 db - TGMessage -> {'message_id': 32, 'date': datetime.datetime(2024, 5, 20, 3, 23, 27), 'chat_id': -4257520710, 'other_info': {'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'type': 'group', 'title': 'Budget', 'all_members_are_administrators': True}, 'entities': [{'offset': 0, 'length': 7, 'type': 'hashtag'}], 'text': '#бюджет'}, 'id': None} - repository.py - create_item - 39
+E 20.05 03:23:33 db - (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.DataError'>: invalid input for query argument $3: -4257520710 (value out of int32 range)
+[SQL: INSERT INTO messages (message_id, date, chat_id, other_info) VALUES ($1::INTEGER, $2::TIMESTAMP WITHOUT TIME ZONE, $3::INTEGER, $4::JSON) RETURNING messages.id]
+[parameters: (32, datetime.datetime(2024, 5, 20, 3, 23, 27), -4257520710, '{"msg_from": {"id": 900025436, "is_bot": false, "first_name": "Andrey", "username": "Perceptor89", "language_code": "en"}, "chat": {"id": -4257520710 ... (45 characters truncated) ... mbers_are_administrators": true}, "entities": [{"offset": 0, "length": 7, "type": "hashtag"}], "text": "#\\u0431\\u044e\\u0434\\u0436\\u0435\\u0442"}')]
+(Background on this error at: https://sqlalche.me/e/20/dbapi) - repository.py - wrapper - 26
+D 20.05 03:23:54 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:23:54 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093241, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:24:15 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:24:15 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093241, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:24:35 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:24:35 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093241, 'timeout': 20} form: None - tg_service.py - _request - 80
+I 20.05 03:33:49 app - Start app - engine.py - start_app - 23
+D 20.05 03:33:49 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:33:56 tg_client - response dict {'ok': True, 'result': [{'update_id': 162093241, 'message': {'message_id': 33, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716186836, 'text': '#бюджет', 'entities': [{'offset': 0, 'length': 7, 'type': 'hashtag'}]}}]} - tg_service.py - _listen - 44
+D 20.05 03:33:56 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:33:56 db - TGMessage -> {'message_id': 33, 'date': datetime.datetime(2024, 5, 20, 3, 33, 56), 'chat_id': -4257520710, 'other_info': {'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'type': 'group', 'title': 'Budget', 'all_members_are_administrators': True}, 'entities': [{'offset': 0, 'length': 7, 'type': 'hashtag'}], 'text': '#бюджет'}, 'id': None} - repository.py - create_item - 39
+D 20.05 03:34:17 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:34:17 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:34:38 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:34:38 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:34:59 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:34:59 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:35:20 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:35:20 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:35:40 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:35:40 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:36:01 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:36:01 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:36:22 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:36:22 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:36:43 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:36:43 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:37:04 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:37:04 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:37:25 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:37:25 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:37:45 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:37:45 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:38:06 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:38:06 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:38:27 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:38:27 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:38:48 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:38:48 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:39:09 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:39:09 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:39:29 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:39:29 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:39:50 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:39:50 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:40:11 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:40:11 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:40:32 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:40:32 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:40:53 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:40:53 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 03:41:13 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 03:41:13 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+E 20.05 05:11:55 tg_client - request <class 'httpx.ReadTimeout'>  - tg_service.py - _request - 92
+D 20.05 05:11:55 tg_client - response dict None - tg_service.py - _listen - 44
+E 20.05 05:11:55 tg_client - response_dict None - tg_service.py - _listen - 56
+D 20.05 05:11:55 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 05:12:16 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 05:12:16 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 05:12:36 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 05:12:36 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 05:12:57 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 05:12:57 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 05:13:18 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 05:13:18 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 05:13:39 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 05:13:39 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 05:14:00 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 05:14:00 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 05:14:21 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 05:14:21 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 05:14:41 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 05:14:41 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80
+D 20.05 05:15:02 tg_client - response dict {'ok': True, 'result': []} - tg_service.py - _listen - 44
+D 20.05 05:15:02 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093242, 'timeout': 20} form: None - tg_service.py - _request - 80

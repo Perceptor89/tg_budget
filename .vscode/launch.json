@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "app",
+            "type": "python",
+            "request": "launch",
+            "args": [],
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "PYTHONUNBUFFERED": "1"
+            },
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "program": "${workspaceFolder}/Scripts/run.py",
+            "justMyCode": true
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+.venv/
+.vscode/
+logs/
+docker-compose.yml
+.dockerignore
+.env

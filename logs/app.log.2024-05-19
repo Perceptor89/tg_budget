@@ -1,0 +1,685 @@
+I 19.05 07:07:51 app - Start app - engine.py - start_app - 18
+D 19.05 07:07:51 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:07:52 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:07:52 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:07:53 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:07:53 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:07:53 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:07:53 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:07:54 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:07:54 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:07:55 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:07:55 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:07:56 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:07:56 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:07:56 app - Stop app - engine.py - stop_app - 22
+I 19.05 07:07:57 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+I 19.05 07:09:43 app - Start app - engine.py - start_app - 18
+D 19.05 07:09:43 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:09:44 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:09:44 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:09:45 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:09:45 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:09:46 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:09:46 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:09:47 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:09:47 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:09:47 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:09:47 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:09:48 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:09:48 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:09:49 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:09:49 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:09:50 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:09:50 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:09:51 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:09:51 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:09:51 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:09:51 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:09:52 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:09:52 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:10:30 app - Start app - engine.py - start_app - 18
+D 19.05 07:10:30 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:10:35 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:10:35 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:10:36 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:10:36 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:10:36 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:10:36 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:10:37 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:10:37 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:10:38 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:10:38 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 50
+I 19.05 07:10:38 app - Stop app - engine.py - stop_app - 22
+I 19.05 07:10:39 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+I 19.05 07:25:36 app - Start app - engine.py - start_app - 18
+D 19.05 07:25:36 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 47
+I 19.05 07:25:37 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:25:37 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 47
+I 19.05 07:25:38 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:25:38 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 47
+I 19.05 07:25:39 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+D 19.05 07:25:39 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 47
+I 19.05 07:25:39 app - Stop app - engine.py - stop_app - 22
+I 19.05 07:25:39 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_ - telegram.py - _listen - 23
+I 19.05 07:26:40 app - Start app - engine.py - start_app - 18
+D 19.05 07:26:40 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 47
+I 19.05 07:26:41 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}, 'text': '. Кроссовки жене'}}, {'update_id': 773034648, 'message': {'message_id': 15412, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'text': ' - telegram.py - _listen - 23
+D 19.05 07:26:41 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 47
+I 19.05 07:26:41 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}, 'text': '. Кроссовки жене'}}, {'update_id': 773034648, 'message': {'message_id': 15412, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'text': ' - telegram.py - _listen - 23
+D 19.05 07:26:41 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 47
+I 19.05 07:26:42 app - Stop app - engine.py - stop_app - 22
+I 19.05 07:26:42 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}, 'text': '. Кроссовки жене'}}, {'update_id': 773034648, 'message': {'message_id': 15412, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'text': ' - telegram.py - _listen - 23
+I 19.05 07:27:04 app - Start app - engine.py - start_app - 18
+D 19.05 07:27:04 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 47
+I 19.05 07:27:05 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}, 'text': '. Кроссовки жене'}}, {'update_id': 773034648, 'message': {'message_id': 15412, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'text': 'привет'}}, {'update_id': 773034649, 'message': {'message_id': 15413, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'text': 'ghbdt'}}]} - telegram.py - _listen - 23
+D 19.05 07:27:05 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 47
+I 19.05 07:27:05 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}, 'text': '. Кроссовки жене'}}, {'update_id': 773034648, 'message': {'message_id': 15412, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'text': 'привет'}}, {'update_id': 773034649, 'message': {'message_id': 15413, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'text': 'ghbdt'}}]} - telegram.py - _listen - 23
+D 19.05 07:27:05 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _my_request - 47
+I 19.05 07:27:06 app - Stop app - engine.py - stop_app - 22
+I 19.05 07:27:06 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}, 'text': '. Кроссовки жене'}}, {'update_id': 773034648, 'message': {'message_id': 15412, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'text': 'привет'}}, {'update_id': 773034649, 'message': {'message_id': 15413, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'text': 'ghbdt'}}]} - telegram.py - _listen - 23
+I 19.05 07:31:10 app - Start app - engine.py - start_app - 18
+D 19.05 07:31:10 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 47
+I 19.05 07:31:11 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}, 'text': '. Кроссовки жене'}}, {'update_id': 773034648, 'message': {'message_id': 15412, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'text': 'привет'}}, {'update_id': 773034649, 'message': {'message_id': 15413, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'text': 'ghbdt'}}]} - telegram.py - _listen - 23
+D 19.05 07:31:11 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 47
+I 19.05 07:31:11 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}, 'text': '. Кроссовки жене'}}, {'update_id': 773034648, 'message': {'message_id': 15412, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'text': 'привет'}}, {'update_id': 773034649, 'message': {'message_id': 15413, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'text': 'ghbdt'}}]} - telegram.py - _listen - 23
+D 19.05 07:31:11 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 47
+I 19.05 07:31:12 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}, 'text': '. Кроссовки жене'}}, {'update_id': 773034648, 'message': {'message_id': 15412, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'text': 'привет'}}, {'update_id': 773034649, 'message': {'message_id': 15413, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'text': 'ghbdt'}}]} - telegram.py - _listen - 23
+D 19.05 07:31:12 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 47
+I 19.05 07:31:13 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}, 'text': '. Кроссовки жене'}}, {'update_id': 773034648, 'message': {'message_id': 15412, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'text': 'привет'}}, {'update_id': 773034649, 'message': {'message_id': 15413, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'text': 'ghbdt'}}]} - telegram.py - _listen - 23
+D 19.05 07:31:13 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 47
+I 19.05 07:31:13 app - Stop app - engine.py - stop_app - 22
+I 19.05 07:31:14 tg_client - {'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}, 'text': '. Кроссовки жене'}}, {'update_id': 773034648, 'message': {'message_id': 15412, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'text': 'привет'}}, {'update_id': 773034649, 'message': {'message_id': 15413, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'text': 'ghbdt'}}]} - telegram.py - _listen - 23
+I 19.05 07:57:19 app - Start app - engine.py - start_app - 18
+D 19.05 07:57:19 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+E 19.05 07:57:20 tg_client - response validation 6 validation errors for TGResponseSchema
+result.0.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.reply_to_message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15412, 'fr... 'text': 'привет'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15413, 'fr...113023, 'text': 'ghbdt'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 31
+D 19.05 07:57:20 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+E 19.05 07:57:20 tg_client - response validation 6 validation errors for TGResponseSchema
+result.0.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.reply_to_message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15412, 'fr... 'text': 'привет'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15413, 'fr...113023, 'text': 'ghbdt'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 31
+D 19.05 07:57:20 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+E 19.05 07:57:21 tg_client - response validation 6 validation errors for TGResponseSchema
+result.0.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.reply_to_message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15412, 'fr... 'text': 'привет'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15413, 'fr...113023, 'text': 'ghbdt'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 31
+D 19.05 07:57:21 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+E 19.05 07:57:22 tg_client - response validation 6 validation errors for TGResponseSchema
+result.0.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.reply_to_message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15412, 'fr... 'text': 'привет'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15413, 'fr...113023, 'text': 'ghbdt'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 31
+D 19.05 07:57:22 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+I 19.05 07:57:22 app - Stop app - engine.py - stop_app - 22
+E 19.05 07:57:23 tg_client - response validation 6 validation errors for TGResponseSchema
+result.0.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.reply_to_message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15412, 'fr... 'text': 'привет'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15413, 'fr...113023, 'text': 'ghbdt'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 31
+I 19.05 07:59:22 app - Start app - engine.py - start_app - 18
+D 19.05 07:59:22 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+E 19.05 07:59:23 tg_client - response validation
+6 validation errors for TGResponseSchema
+result.0.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.reply_to_message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15412, 'fr... 'text': 'привет'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15413, 'fr...113023, 'text': 'ghbdt'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+{'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715 - telegram.py - _listen - 31
+D 19.05 07:59:23 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+E 19.05 07:59:23 tg_client - response validation
+6 validation errors for TGResponseSchema
+result.0.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.reply_to_message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15412, 'fr... 'text': 'привет'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15413, 'fr...113023, 'text': 'ghbdt'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+{'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715 - telegram.py - _listen - 31
+D 19.05 07:59:23 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+E 19.05 07:59:24 tg_client - response validation
+6 validation errors for TGResponseSchema
+result.0.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.reply_to_message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15412, 'fr... 'text': 'привет'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15413, 'fr...113023, 'text': 'ghbdt'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+{'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715 - telegram.py - _listen - 31
+D 19.05 07:59:24 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+I 19.05 07:59:25 app - Stop app - engine.py - stop_app - 22
+E 19.05 07:59:25 tg_client - response validation
+6 validation errors for TGResponseSchema
+result.0.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.reply_to_message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.1.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15412, 'fr... 'text': 'привет'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.from.user_name
+  Field required [type=missing, input_value={'id': 900025436, 'is_bot..., 'language_code': 'en'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15413, 'fr...113023, 'text': 'ghbdt'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+{'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715 - telegram.py - _listen - 31
+I 19.05 08:01:20 app - Start app - engine.py - start_app - 18
+D 19.05 08:01:20 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+E 19.05 08:01:21 tg_client - response validation
+2 validation errors for TGResponseSchema
+result.1.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15412, 'fr... 'text': 'привет'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15413, 'fr...113023, 'text': 'ghbdt'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+{'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}, 'text': '. Кроссовки жене'}}, {'update_id': 773034648, 'message': {'message_id': 15412, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'text': 'привет'}}, {'update_id': 773034649, 'message': {'message_id': 15413, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'text': 'ghbdt'}}]} - telegram.py - _listen - 31
+D 19.05 08:01:21 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+E 19.05 08:01:21 tg_client - response validation
+2 validation errors for TGResponseSchema
+result.1.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15412, 'fr... 'text': 'привет'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15413, 'fr...113023, 'text': 'ghbdt'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+{'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}, 'text': '. Кроссовки жене'}}, {'update_id': 773034648, 'message': {'message_id': 15412, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'text': 'привет'}}, {'update_id': 773034649, 'message': {'message_id': 15413, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'text': 'ghbdt'}}]} - telegram.py - _listen - 31
+D 19.05 08:01:21 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+I 19.05 08:01:22 app - Stop app - engine.py - stop_app - 22
+E 19.05 08:01:22 tg_client - response validation
+2 validation errors for TGResponseSchema
+result.1.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15412, 'fr... 'text': 'привет'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.2.message.reply_to_message
+  Field required [type=missing, input_value={'message_id': 15413, 'fr...113023, 'text': 'ghbdt'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+{'ok': True, 'result': [{'update_id': 773034647, 'message': {'message_id': 15401, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}, 'text': '. Кроссовки жене'}}, {'update_id': 773034648, 'message': {'message_id': 15412, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'text': 'привет'}}, {'update_id': 773034649, 'message': {'message_id': 15413, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'text': 'ghbdt'}}]} - telegram.py - _listen - 31
+I 19.05 08:02:14 app - Start app - engine.py - start_app - 18
+D 19.05 08:02:14 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+I 19.05 08:02:15 tg_client - {'update_id': 773034647, 'message': {'message_id': 15401, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716046506, 'reply_to_message': {'message_id': 15213, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1715359204, 'edit_date': 1715437893, 'text': '. Phone\n. Kdmid\n. Mauro\n. GPT 4.0'}}} - telegram.py - _listen - 29
+I 19.05 08:02:15 tg_client - {'update_id': 773034648, 'message': {'message_id': 15412, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716112553, 'reply_to_message': None}} - telegram.py - _listen - 29
+I 19.05 08:02:15 tg_client - {'update_id': 773034649, 'message': {'message_id': 15413, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'reply_to_message': None}} - telegram.py - _listen - 29
+D 19.05 08:02:15 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034649, 'timeout': 60} form: None - telegram.py - _request - 55
+I 19.05 08:02:16 tg_client - {'update_id': 773034649, 'message': {'message_id': 15413, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'reply_to_message': None}} - telegram.py - _listen - 29
+D 19.05 08:02:16 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034649, 'timeout': 60} form: None - telegram.py - _request - 55
+I 19.05 08:02:16 tg_client - {'update_id': 773034649, 'message': {'message_id': 15413, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'reply_to_message': None}} - telegram.py - _listen - 29
+D 19.05 08:02:16 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034649, 'timeout': 60} form: None - telegram.py - _request - 55
+I 19.05 08:02:17 tg_client - {'update_id': 773034649, 'message': {'message_id': 15413, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'reply_to_message': None}} - telegram.py - _listen - 29
+D 19.05 08:02:17 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034649, 'timeout': 60} form: None - telegram.py - _request - 55
+I 19.05 08:02:18 tg_client - {'update_id': 773034649, 'message': {'message_id': 15413, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'reply_to_message': None}} - telegram.py - _listen - 29
+D 19.05 08:02:18 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034649, 'timeout': 60} form: None - telegram.py - _request - 55
+I 19.05 08:02:19 app - Stop app - engine.py - stop_app - 22
+E 19.05 08:02:24 tg_client - request  - telegram.py - _request - 67
+E 19.05 08:02:24 tg_client - response validation
+1 validation error for TGResponseSchema
+  Input should be a valid dictionary or instance of TGResponseSchema [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.7/v/model_type
+None - telegram.py - _listen - 31
+I 19.05 08:05:26 app - Start app - engine.py - start_app - 18
+D 19.05 08:05:26 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+I 19.05 08:05:27 tg_client - {'update_id': 773034649, 'message': {'message_id': 15413, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716113023, 'reply_to_message': None}} - telegram.py - _listen - 29
+D 19.05 08:05:27 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034650, 'timeout': 60} form: None - telegram.py - _request - 55
+E 19.05 08:05:33 tg_client - request  - telegram.py - _request - 67
+E 19.05 08:05:33 tg_client - response validation
+1 validation error for TGResponseSchema
+  Input should be a valid dictionary or instance of TGResponseSchema [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.7/v/model_type
+None - telegram.py - _listen - 31
+D 19.05 08:05:33 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034650, 'timeout': 60} form: None - telegram.py - _request - 55
+E 19.05 08:05:39 tg_client - request  - telegram.py - _request - 67
+E 19.05 08:05:39 tg_client - response validation
+1 validation error for TGResponseSchema
+  Input should be a valid dictionary or instance of TGResponseSchema [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.7/v/model_type
+None - telegram.py - _listen - 31
+D 19.05 08:05:39 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034650, 'timeout': 60} form: None - telegram.py - _request - 55
+I 19.05 08:05:44 app - Stop app - engine.py - stop_app - 22
+E 19.05 08:05:44 tg_client - request  - telegram.py - _request - 67
+E 19.05 08:05:44 tg_client - response validation
+1 validation error for TGResponseSchema
+  Input should be a valid dictionary or instance of TGResponseSchema [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.7/v/model_type
+None - telegram.py - _listen - 31
+I 19.05 08:07:30 app - Start app - engine.py - start_app - 18
+D 19.05 08:07:30 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+E 19.05 08:07:36 tg_client - request  - telegram.py - _request - 68
+E 19.05 08:07:36 tg_client - response validation 1 validation error for TGResponseSchema
+  Input should be a valid dictionary or instance of TGResponseSchema [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.7/v/model_type - telegram.py - _listen - 31
+D 19.05 08:07:36 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+E 19.05 08:07:41 tg_client - request  - telegram.py - _request - 68
+E 19.05 08:07:41 tg_client - response validation 1 validation error for TGResponseSchema
+  Input should be a valid dictionary or instance of TGResponseSchema [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.7/v/model_type - telegram.py - _listen - 31
+D 19.05 08:07:41 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+I 19.05 08:07:42 app - Stop app - engine.py - stop_app - 22
+E 19.05 08:07:47 tg_client - request  - telegram.py - _request - 68
+E 19.05 08:07:47 tg_client - response validation 1 validation error for TGResponseSchema
+  Input should be a valid dictionary or instance of TGResponseSchema [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.7/v/model_type - telegram.py - _listen - 31
+I 19.05 08:08:29 app - Start app - engine.py - start_app - 18
+D 19.05 08:08:29 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+I 19.05 08:10:40 app - Start app - engine.py - start_app - 18
+D 19.05 08:10:40 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 55
+I 19.05 08:10:53 app - Stop app - engine.py - stop_app - 22
+D 19.05 08:11:31 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 64
+I 19.05 08:14:35 app - Start app - engine.py - start_app - 18
+D 19.05 08:14:35 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:14:40 tg_client - response content b'{"ok":true,"result":[{"update_id":773034650,\n"message":{"message_id":15414,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":900025436,"first_name":"Andrey","username":"Perceptor89","type":"private"},"date":1716117280,"text":"ghbdtn"}}]}' - telegram.py - _request - 65
+I 19.05 08:14:40 tg_client - {'update_id': 773034650, 'message': {'message_id': 15414, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': 900025436, 'first_name': 'Andrey', 'username': 'Perceptor89', 'type': 'private'}, 'date': 1716117280, 'reply_to_message': None}} - telegram.py - _listen - 29
+D 19.05 08:14:40 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:15:31 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:15:31 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:16:22 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:16:22 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:17:13 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:17:13 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:18:04 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:18:04 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:18:54 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:18:54 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:19:45 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:19:45 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:20:36 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:20:36 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:21:27 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:21:27 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:22:18 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:22:18 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:23:08 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:23:08 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:23:59 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:23:59 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:24:50 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:24:50 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:25:41 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:25:41 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:26:32 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:26:32 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:27:23 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:27:23 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:28:13 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:28:13 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:29:04 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:29:04 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:29:55 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:29:55 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:30:46 tg_client - response content b'{"ok":true,"result":[]}' - telegram.py - _request - 65
+D 19.05 08:30:46 tg_client - request GET https://api.telegram.org/bot5738198812:AAHE91Z96FKHXV7qcWIg6a0JJFEfbIt00Xk/getUpdates json: {'offset': 773034651, 'timeout': 60} form: None - telegram.py - _request - 56
+I 19.05 08:31:09 app - Stop app - engine.py - stop_app - 22
+I 19.05 08:31:52 app - Start app - engine.py - start_app - 18
+D 19.05 08:31:52 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:31:59 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:31:59 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:31:59 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:00 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:00 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:00 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:00 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:00 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:00 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:01 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:01 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:01 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:02 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:02 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:02 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:03 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:03 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:03 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:04 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:04 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:04 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:05 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:05 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:05 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:05 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:05 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:05 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:06 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:06 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:06 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:07 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:07 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:07 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:08 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:08 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:08 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:08 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:08 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:08 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:09 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:09 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:09 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:10 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:10 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:10 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:11 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:11 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:11 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:12 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:12 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:12 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+D 19.05 08:32:12 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:12 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+D 19.05 08:32:12 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 56
+I 19.05 08:32:13 app - Stop app - engine.py - stop_app - 22
+D 19.05 08:32:13 tg_client - response content b'{"ok":true,"result":[{"update_id":162093212,\n"message":{"message_id":4,"from":{"id":900025436,"is_bot":false,"first_name":"Andrey","username":"Perceptor89","language_code":"en"},"chat":{"id":-4257520710,"title":"Budget","type":"group","all_members_are_administrators":true},"date":1716118319,"text":"/command1@HouseholdFinanceBot","entities":[{"offset":0,"length":29,"type":"bot_command"}]}}]}' - telegram.py - _request - 65
+E 19.05 08:32:13 tg_client - response validation 2 validation errors for TGResponseSchema
+result.0.message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+result.0.message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 32
+I 19.05 08:47:20 app - Start app - engine.py - start_app - 18
+D 19.05 08:47:20 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:47:21 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093212, 'message': {'message_id': 4, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716118319, 'text': '/command1@HouseholdFinanceBot', 'entities': [{'offset': 0, 'length': 29, 'type': 'bot_command'}]}}]} - telegram.py - _listen - 25
+D 19.05 08:47:21 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:47:21 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093212, 'message': {'message_id': 4, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716118319, 'text': '/command1@HouseholdFinanceBot', 'entities': [{'offset': 0, 'length': 29, 'type': 'bot_command'}]}}]} - telegram.py - _listen - 25
+D 19.05 08:47:21 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:47:22 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093212, 'message': {'message_id': 4, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716118319, 'text': '/command1@HouseholdFinanceBot', 'entities': [{'offset': 0, 'length': 29, 'type': 'bot_command'}]}}]} - telegram.py - _listen - 25
+D 19.05 08:47:22 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:47:23 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093212, 'message': {'message_id': 4, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716118319, 'text': '/command1@HouseholdFinanceBot', 'entities': [{'offset': 0, 'length': 29, 'type': 'bot_command'}]}}]} - telegram.py - _listen - 25
+D 19.05 08:47:23 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:47:24 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093212, 'message': {'message_id': 4, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716118319, 'text': '/command1@HouseholdFinanceBot', 'entities': [{'offset': 0, 'length': 29, 'type': 'bot_command'}]}}]} - telegram.py - _listen - 25
+D 19.05 08:47:24 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:47:25 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093212, 'message': {'message_id': 4, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716118319, 'text': '/command1@HouseholdFinanceBot', 'entities': [{'offset': 0, 'length': 29, 'type': 'bot_command'}]}}]} - telegram.py - _listen - 25
+D 19.05 08:47:25 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:47:26 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093212, 'message': {'message_id': 4, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716118319, 'text': '/command1@HouseholdFinanceBot', 'entities': [{'offset': 0, 'length': 29, 'type': 'bot_command'}]}}]} - telegram.py - _listen - 25
+D 19.05 08:47:26 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:47:26 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093212, 'message': {'message_id': 4, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716118319, 'text': '/command1@HouseholdFinanceBot', 'entities': [{'offset': 0, 'length': 29, 'type': 'bot_command'}]}}]} - telegram.py - _listen - 25
+D 19.05 08:47:26 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 62
+I 19.05 08:47:27 app - Stop app - engine.py - stop_app - 22
+D 19.05 08:47:27 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093212, 'message': {'message_id': 4, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716118319, 'text': '/command1@HouseholdFinanceBot', 'entities': [{'offset': 0, 'length': 29, 'type': 'bot_command'}]}}]} - telegram.py - _listen - 25
+I 19.05 08:47:55 app - Start app - engine.py - start_app - 18
+D 19.05 08:47:55 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:47:56 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093212, 'message': {'message_id': 4, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716118319, 'text': '/command1@HouseholdFinanceBot', 'entities': [{'offset': 0, 'length': 29, 'type': 'bot_command'}]}}]} - telegram.py - _listen - 25
+I 19.05 08:48:07 app - Start app - engine.py - start_app - 18
+D 19.05 08:48:07 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:48:08 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093212, 'message': {'message_id': 4, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716118319, 'text': '/command1@HouseholdFinanceBot', 'entities': [{'offset': 0, 'length': 29, 'type': 'bot_command'}]}}]} - telegram.py - _listen - 25
+E 19.05 08:48:19 tg_client - response validation 2 validation errors for TGUpdateSchema
+message.chat.first_name
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing
+message.chat.username
+  Field required [type=missing, input_value={'id': -4257520710, 'titl...e_administrators': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 35
+D 19.05 08:48:34 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093213, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:49:29 tg_client - response_dict {'ok': True, 'result': []} - telegram.py - _listen - 25
+I 19.05 08:55:11 app - Start app - engine.py - start_app - 18
+D 19.05 08:55:11 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:55:23 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093213, 'message': {'message_id': 5, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716119723, 'text': '/command1@HouseholdFinanceBot', 'entities': [{'offset': 0, 'length': 29, 'type': 'bot_command'}]}}]} - telegram.py - _listen - 25
+I 19.05 08:55:28 tg_client - {'update_id': 162093213, 'message': {'message_id': 5, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'first_name': None, 'username': None, 'type': 'group', 'title': 'Budget', 'all_members_are_administrators': True}, 'date': 1716119723, 'reply_to_message': None, 'entities': [{'offset': 0, 'length': 29, 'type': 'bot_command'}]}} - telegram.py - _listen - 32
+D 19.05 08:55:28 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093214, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:56:19 tg_client - response_dict {'ok': True, 'result': []} - telegram.py - _listen - 25
+D 19.05 08:56:19 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093214, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:57:09 tg_client - response_dict {'ok': True, 'result': []} - telegram.py - _listen - 25
+D 19.05 08:57:09 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093214, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:58:00 tg_client - response_dict {'ok': True, 'result': []} - telegram.py - _listen - 25
+D 19.05 08:58:00 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093214, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:58:51 tg_client - response_dict {'ok': True, 'result': []} - telegram.py - _listen - 25
+D 19.05 08:58:51 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093214, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 08:59:42 tg_client - response_dict {'ok': True, 'result': []} - telegram.py - _listen - 25
+D 19.05 08:59:42 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093214, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 09:00:33 tg_client - response_dict {'ok': True, 'result': []} - telegram.py - _listen - 25
+D 19.05 09:00:33 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093214, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 09:00:47 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093214, 'message': {'message_id': 6, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716120047, 'text': '#бюджет', 'entities': [{'offset': 0, 'length': 7, 'type': 'hashtag'}]}}]} - telegram.py - _listen - 25
+I 19.05 09:00:47 tg_client - {'update_id': 162093214, 'message': {'message_id': 6, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'first_name': None, 'username': None, 'type': 'group', 'title': 'Budget', 'all_members_are_administrators': True}, 'date': 1716120047, 'reply_to_message': None, 'entities': [{'offset': 0, 'length': 7, 'type': 'hashtag'}]}} - telegram.py - _listen - 32
+D 19.05 09:00:47 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093215, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 09:01:38 tg_client - response_dict {'ok': True, 'result': []} - telegram.py - _listen - 25
+D 19.05 09:01:38 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093215, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 09:02:29 tg_client - response_dict {'ok': True, 'result': []} - telegram.py - _listen - 25
+D 19.05 09:02:29 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093215, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 09:03:19 tg_client - response_dict {'ok': True, 'result': []} - telegram.py - _listen - 25
+D 19.05 09:03:19 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093215, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 09:04:10 tg_client - response_dict {'ok': True, 'result': []} - telegram.py - _listen - 25
+D 19.05 09:04:10 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093215, 'timeout': 60} form: None - telegram.py - _request - 62
+I 19.05 09:04:36 app - Start app - engine.py - start_app - 18
+D 19.05 09:04:36 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 09:04:53 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093215, 'message': {'message_id': 7, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716120293, 'text': '#бюджет', 'entities': [{'offset': 0, 'length': 7, 'type': 'hashtag'}]}}]} - telegram.py - _listen - 25
+I 19.05 09:04:53 tg_client - {'update_id': 162093215, 'message': {'message_id': 7, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'first_name': None, 'username': None, 'type': 'group', 'title': 'Budget', 'all_members_are_administrators': True}, 'date': 1716120293, 'reply_to_message': None, 'entities': [{'offset': 0, 'length': 7, 'type': 'hashtag'}], 'text': '#бюджет'}} - telegram.py - _listen - 32
+D 19.05 09:04:53 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093216, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 09:05:44 tg_client - response_dict {'ok': True, 'result': []} - telegram.py - _listen - 25
+D 19.05 09:05:44 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093216, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 09:06:31 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093216, 'message': {'message_id': 8, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716120391, 'text': 'sdsdsd'}}]} - telegram.py - _listen - 25
+E 19.05 09:06:31 tg_client - response validation 1 validation error for TGUpdateSchema
+message.entities
+  Field required [type=missing, input_value={'message_id': 8, 'from':...20391, 'text': 'sdsdsd'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.7/v/missing - telegram.py - _listen - 35
+D 19.05 09:06:31 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093217, 'timeout': 60} form: None - telegram.py - _request - 62
+I 19.05 09:06:57 app - Start app - engine.py - start_app - 18
+D 19.05 09:06:57 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 0, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 09:07:01 tg_client - response_dict {'ok': True, 'result': [{'update_id': 162093217, 'message': {'message_id': 9, 'from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'title': 'Budget', 'type': 'group', 'all_members_are_administrators': True}, 'date': 1716120421, 'text': 'sdsdsd'}}]} - telegram.py - _listen - 25
+I 19.05 09:07:01 tg_client - {'update_id': 162093217, 'message': {'message_id': 9, 'msg_from': {'id': 900025436, 'is_bot': False, 'first_name': 'Andrey', 'username': 'Perceptor89', 'language_code': 'en'}, 'chat': {'id': -4257520710, 'first_name': None, 'username': None, 'type': 'group', 'title': 'Budget', 'all_members_are_administrators': True}, 'date': 1716120421, 'reply_to_message': None, 'entities': None, 'text': 'sdsdsd'}} - telegram.py - _listen - 32
+D 19.05 09:07:01 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093218, 'timeout': 60} form: None - telegram.py - _request - 62
+D 19.05 09:07:52 tg_client - response_dict {'ok': True, 'result': []} - telegram.py - _listen - 25
+D 19.05 09:07:52 tg_client - request GET https://api.telegram.org/bot7035117306:AAG9ulHTUN8VEjk7dibhseaW6_HUxl6W-yY/getUpdates json: {'offset': 162093218, 'timeout': 60} form: None - telegram.py - _request - 62
