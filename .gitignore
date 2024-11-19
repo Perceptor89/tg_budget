@@ -1,3 +1,6 @@
-*/logs
-*.env
+/logs
+.env
 poetry.lock
+TODO.md
+__pycache__/
+.vscode

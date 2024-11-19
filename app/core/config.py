@@ -4,6 +4,14 @@ from environs import Env
 
 env = Env()
 
+# Time constants
+ONE_SECOND = 1
+ONE_MINUTE = ONE_SECOND * 60
+ONE_HOUR = ONE_MINUTE * 60
+ONE_DAY = ONE_HOUR * 24
+ONE_WEEK = ONE_DAY * 7
+ONE_YEAR = ONE_DAY * 365
+
 # directories
 APP_DIR = pathlib.Path(__file__).absolute().parent.parent
 PROJECT_ROOT_DIR = APP_DIR.parent
@@ -19,8 +27,14 @@ with env.prefixed('POSTGRES_'):
     name = env('DB')
 DATABASE_URL = f'postgresql+asyncpg://{user}:{password}@{host}:{port}/{name}'
 
+REDIS_HOST = env('REDIS_HOST', 'localhost')
+REDIS_PORT = env.int('REDIS_PORT', 6379)
+REDIS_DB = env.int('REDIS_DB', 0)
+REDIS_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB}'
+
 # telegram
 TG_TOKEN = env('TG_TOKEN')
+TG_BASE_URL = f'https://api.telegram.org/bot{TG_TOKEN}'
 POLLER_REQUEST_TIMEOUT = env.int('POLLER_REQUEST_TIMEOUT', 60)
 
 LOGGER_CONFIG = {
@@ -63,5 +77,9 @@ LOGGER_CONFIG = {
             'handlers': ['fileAppHandler', 'console'],
             'level': 'DEBUG',
         },
+        'rq': {
+            'handlers': ['fileAppHandler', 'console'],
+            'level': 'DEBUG',
+        }
     },
 }

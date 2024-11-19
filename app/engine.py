@@ -1,6 +1,7 @@
 from logging import getLogger
 
-from app.budget import Accountant
+from app.accountant.base import Accountant
+from app.core import config
 
 from .core.logger import setup_logger
 from .tg_service import TelegramClient
@@ -15,9 +16,10 @@ class Engine:
     accountant: Accountant
 
     def __init__(self):
-        self.tg_client = TelegramClient()
+        self.tg_client = TelegramClient(config.TG_BASE_URL)
         self.accountant = Accountant()
-        self.tg_client.accountant, self.accountant.tg_client = self.accountant, self.tg_client
+        self.tg_client.accountant = self.accountant
+        self.accountant.tg_client = self.tg_client
 
     async def start_app(self):
         logger.info('Start app')

@@ -1,10 +1,12 @@
 from functools import wraps
 from logging import getLogger
-from typing import Optional, Type, TypeVar
+from typing import List, Optional, Type, TypeVar
 
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+from sqlalchemy.orm import Load, joinedload
 
-from .models import _Base
+from .models import Category, TGChat, TGMessage, TGUser, _Base
 from .session import session_factory
 
 
@@ -43,6 +45,56 @@ class _BaseRepo:
         logger.debug('%s -> %s', altered.__class__.__name__, altered.as_dict())
         return altered
 
+    @handle_session_errors
+    async def _get_by_tg_id(
+        self,
+        session: AsyncSession,
+        tg_id: int,
+        options: Optional[List[Load]] = None,
+    ) -> Optional[T]:
+        query = select(self._model).where(self._model.tg_id == tg_id)
+        if options:
+            query = query.options(*options)
+        result = await session.execute(query)
+        return result.unique().scalar()
 
-class TGMessageRepo(_BaseRepo):
-    ...
+
+class TGChatRepository(_BaseRepo):
+
+    _model = TGChat
+
+    async def get_by_tg_id(self, tg_id: int) -> TGChat | None:
+        options = [joinedload(TGChat.categories)]
+        return await super()._get_by_tg_id(tg_id, options)
+
+
+class TGMessageRepository(_BaseRepo):
+
+    _model = TGMessage
+
+    async def get_user_last_message(user_id: int) -> Optional[TGMessage]:
+        pass
+
+
+class TGUserRepository(_BaseRepo):
+
+    _model = TGUser
+
+    async def get_by_tg_id(self, tg_id: int) -> TGUser | None:
+        return await super()._get_by_tg_id(tg_id)
+
+
+class CategoryRepository(_BaseRepo):
+
+    _model = Category
+
+
+class DatabaseAccessor:
+    chat_repo: TGChatRepository
+    user_repo: TGUserRepository
+    message_repo: TGMessageRepository
+
+    def __init__(self) -> None:
+        self.chat_repo = TGChatRepository()
+        self.user_repo = TGUserRepository()
+        self.message_repo = TGMessageRepository()

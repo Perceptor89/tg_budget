@@ -1,0 +1,167 @@
+import asyncio
+import typing
+from json import JSONDecodeError
+from logging import getLogger
+from typing import TYPE_CHECKING, Literal, Type, Union
+
+from httpx import AsyncClient, RequestError, Response
+from pydantic import ValidationError
+
+from app.tg_service.api import TGAPI
+from app.utils import custom_urljoin
+
+from ..core.config import POLLER_REQUEST_TIMEOUT
+from .schemas import RequestSchema, ResponseSchema, TGUpdateSchema
+
+
+if TYPE_CHECKING:
+    from app.accountant.base import Accountant
+
+logger = getLogger('tg_client')
+
+
+class SendTaskSchema:
+    method: Type[TGAPI]
+    data: RequestSchema
+    response: Union[dict, ResponseSchema, None]
+
+    def __init__(self, method: Type[TGAPI], data: RequestSchema) -> None:
+        self.response = None
+        self.method = method
+        self.data = data
+
+
+class TelegramClient:
+    base_url: str
+    manage_tasks: list[asyncio.Task]
+    send_tasks: list[asyncio.Task]
+    managers_count: int = 1
+    senders_count: int = 1
+    is_running: bool = False
+    listen_task: asyncio.Task = None
+    manage_queue: asyncio.Queue = None
+    send_queue: asyncio.Queue = None
+    offset: int = 0
+
+    accountant: 'Accountant' = None
+
+    def __init__(self, base_url: str, managers_count: int = 1, senders_count: int = 1):
+        self.base_url = base_url
+        self.manage_tasks = []
+        self.send_tasks = []
+        self.managers_count = managers_count
+        self.senders_count = senders_count
+
+    async def start(self):
+        self.manage_queue = asyncio.Queue()
+        self.send_queue = asyncio.Queue()
+        self.is_running = True
+        self.listen_task = asyncio.create_task(self._listen())
+        for _ in range(self.managers_count):
+            self.manage_tasks.append(asyncio.create_task(self._manage_updates()))
+        for _ in range(self.senders_count):
+            self.send_tasks.append(asyncio.create_task(self._send_messages()))
+
+    async def stop(self):
+        self.is_running = False
+        await self.listen_task
+        await self.manage_queue.join()
+        await self.send_queue.join()
+        for _ in self.manage_tasks:
+            await self.manage_queue.put(None)
+        for _ in self.send_tasks:
+            await self.send_queue.put(None)
+        for task in self.manage_tasks:
+            await task
+        for task in self.send_tasks:
+            await task
+
+    async def send(self, method: Type[TGAPI], data: RequestSchema) -> SendTaskSchema:
+        task = SendTaskSchema(method=method, data=data)
+        await self.send_queue.put(task)
+        return task
+
+    async def _listen(self):
+        url = self._make_url('getUpdates')
+        while self.is_running:
+            params = {'offset': self.offset, 'timeout': POLLER_REQUEST_TIMEOUT}
+            response_dict = await self._request(url=url, json_params=params)
+            logger.debug('response dict %s', response_dict)
+            if response_dict and response_dict.get('ok'):
+                for result in response_dict.get('result', []):
+                    update_id = result.get('update_id')
+                    self.offset = update_id + 1 if update_id else self.offset
+                    try:
+                        update = TGUpdateSchema.model_validate(result)
+                        await self.manage_queue.put(update.message)
+                    except Exception as error:
+                        # TODO: bot report
+                        logger.error('response_validation-E %s', error)
+            else:
+                logger.error('response_dict %s', response_dict)
+
+    async def _send(self, send_task: SendTaskSchema):
+        url = self._make_url(send_task.method.name)
+        json_params = send_task.data.model_dump(exclude_none=True)
+        response = await self._request(url=url, json_params=json_params)
+        if send_task.method.response_schema:
+            try:
+                validated = send_task.method.response_schema.model_validate(response)
+            except ValidationError as error:
+                logger.error('response_validation-E %s', error)
+            else:
+                send_task.response = validated
+        # TODO: trigger event
+
+    async def _manage_updates(self):
+        while self.is_running or not self.manage_queue.empty():
+            try:
+                if message := await self.manage_queue.get():
+                    await self.accountant.process_message(message)
+            except Exception as error:
+                logger.exception(error)
+            finally:
+                self.manage_queue.task_done()
+
+    async def _send_messages(self):
+        while self.is_running or not self.send_queue.empty():
+            try:
+                if send_task := await self.send_queue.get():
+                    await self._send(send_task)
+            except Exception as error:
+                logger.exception(error)
+            finally:
+                self.send_queue.task_done()
+
+    def _make_url(self, method: str):
+        return custom_urljoin(self.base_url, method)
+
+    async def _request(
+        self,
+        *,
+        url: str,
+        method: Literal['GET', 'POST'] = 'POST',
+        headers: dict = None,
+        json_params: dict = None,
+        form_data: dict = None,
+        timeout: int = POLLER_REQUEST_TIMEOUT * 2,
+    ) -> Response:
+        logger.debug('request %s %s json: %s form: %s', method, url, json_params, form_data)
+        request_params = dict(method=method, url=url, timeout=timeout)
+        if json_params:
+            request_params['json'] = json_params
+        if form_data:
+            request_params['data'] = form_data
+        if headers:
+            request_params['headers'] = headers
+        try:
+            async with AsyncClient() as client:
+                response = await client.request(**request_params)
+                content = response.json()
+                if response.status_code != 200:
+                    logger.error('request-E %s %s', response.status_code, content)
+                return content
+        except RequestError as error:
+            logger.error('request-E %s %s', error.__class__, error)
+        except JSONDecodeError as error:
+            logger.error('json_decode-E %s %s', error, response.content)

@@ -17,3 +17,8 @@ def utcnow(is_timezone: bool = False):
     """Get current datetime object."""
     now = datetime.now().astimezone(UTC)
     return now if is_timezone else now.replace(tzinfo=None)
+
+
+def custom_urljoin(base_url: str, path: str) -> str:
+    """Join two url parts."""
+    return '{}/{}'.format(base_url.rstrip('/'), path.lstrip('/'))
