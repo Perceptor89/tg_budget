@@ -1,5 +1,4 @@
 import asyncio
-import typing
 from json import JSONDecodeError
 from logging import getLogger
 from typing import TYPE_CHECKING, Literal, Type, Union
@@ -23,12 +22,14 @@ logger = getLogger('tg_client')
 class SendTaskSchema:
     method: Type[TGAPI]
     data: RequestSchema
+    event: asyncio.Event
     response: Union[dict, ResponseSchema, None]
 
     def __init__(self, method: Type[TGAPI], data: RequestSchema) -> None:
         self.response = None
         self.method = method
         self.data = data
+        self.event = asyncio.Event()
 
 
 class TelegramClient:
@@ -93,7 +94,7 @@ class TelegramClient:
                     self.offset = update_id + 1 if update_id else self.offset
                     try:
                         update = TGUpdateSchema.model_validate(result)
-                        await self.manage_queue.put(update.message)
+                        await self.manage_queue.put(update.message or update.callback_query)
                     except Exception as error:
                         # TODO: bot report
                         logger.error('response_validation-E %s', error)
@@ -111,7 +112,7 @@ class TelegramClient:
                 logger.error('response_validation-E %s', error)
             else:
                 send_task.response = validated
-        # TODO: trigger event
+        send_task.event.set()
 
     async def _manage_updates(self):
         while self.is_running or not self.manage_queue.empty():

@@ -1,3 +1,27 @@
 NO_CATEGORIES = 'В чате пока нет ни одной категории'
-CATEGORY_LIMIT = 'Чат уже содержит максимальное количество категорий - {}'
+CATEGORY_LIMIT_ERROR = 'Чат уже содержит максимальное количество категорий - {}'
 CATEGORY_ENTER_NEW = 'Введите название категории'
+CATEGORY_ENTER_NEW_PLACEHOLDER = 'название категории'
+CATEGORY_EXISTS_ERROR = 'Категория {} уже существует'
+CATEGORY_CREATED = 'Категория {} создана'
+
+BUDGET_ITEM_ADD_CATEGORY = 'Укажите категорию'
+BUDGET_ITEM_ADD_NAME = 'Категория {}, тип {}. {} Введите название статьи'
+BUDGET_ITEM_ADD_LIMIT_ERROR = 'Категория {} уже содержит максимальное количество статей - {}'
+BUDGET_ITEM_ADD_NAME_PLACEHOLDER = 'название статьи'
+BUDGET_ITEM_ADD_EXISTS_ERROR = (
+    'категория {}\nстатья {}\nтип {}\nуже существует\n{}\nвыберите другое название'
+)
+BUDGET_ITEM_ADD_TYPE = 'Выберите тип статьи'
+BUDGET_ITEM_ADDED = 'статья {}\nтип {}\nдобавлена'
+
+ENTRY_ADD_CATEGORY = 'Укажите категорию'
+ENTRY_ADD_BUDGET_ITEM = 'Категория {}\nУкажите статью'
+ENTRY_ADD_NO_BUDGET_ITEMS_ERROR = 'В категории {} нет ни одной статьи\nВыберите другую или добавьте новую'
+ENTRY_ADD_VALUTE = '{} - {}\nВыберите валюту'
+ENTRY_ADD_AMOUNT_MAIN = '{} - {} - {}'
+ENTRY_ADD_AMOUNT_SECONDARY = '{} Введите сумму'
+ENTRY_ADD_AMOUNT_PLACEHOLDER = '123.45'
+ENTRY_ADD_AMOUNT_ERROR = 'Неверный формат суммы {}'
+ENTRY_ADD_ADDED = 'Запись добавлена'
+ENTRY_ADD_FINISH = 'Ввод завершен'

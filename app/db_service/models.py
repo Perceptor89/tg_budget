@@ -1,7 +1,11 @@
+from functools import cached_property
 import sqlalchemy as sa
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, Mapped
+from sqlalchemy.orm import Mapped, relationship
 from sqlalchemy.sql import func
+
+from app.db_service.schemas import StateDataSchema
 
 
 Base = declarative_base()
@@ -17,6 +21,33 @@ class _Base(Base):
         return {column.name: getattr(self, column.name) for column in self.__table__.columns}
 
 
+class ChatBudgetItem(_Base):
+    __tablename__ = 'chat_budget_items'
+
+    category_id = sa.Column(
+        sa.BigInteger,
+        sa.ForeignKey('categories.id', ondelete='SET NULL'),
+        nullable=False,
+    )
+    budget_item_id = sa.Column(
+        sa.BigInteger,
+        sa.ForeignKey('budget_items.id', ondelete='SET NULL'),
+        nullable=True,
+    )
+    chat_id = sa.Column(
+        sa.BigInteger,
+        sa.ForeignKey('tg_chats.id', ondelete='CASCADE'),
+        nullable=False,
+    )
+
+    __table_args__ = (
+        sa.UniqueConstraint(
+            'category_id', 'budget_item_id', 'chat_id',
+            name='uq_chat_budget_category'
+        ),
+    )
+
+
 class TGChat(_Base):
     __tablename__ = 'tg_chats'
 
@@ -28,6 +59,11 @@ class TGChat(_Base):
         'Category',
         back_populates='chats',
         secondary='chat_budget_items',
+    )
+    valutes: Mapped[list['Valute']] = relationship(
+        'Valute',
+        back_populates='chats',
+        secondary='chat_valutes',
     )
 
 
@@ -61,6 +97,12 @@ class Category(_Base):
         back_populates='categories',
         secondary='chat_budget_items',
     )
+    budget_items: Mapped[list['BudgetItem']] = relationship(
+        'BudgetItem',
+        back_populates='categories',
+        secondary='chat_budget_items',
+        overlaps='categories,chats',
+    )
 
 
 class BudgetItem(_Base):
@@ -69,29 +111,75 @@ class BudgetItem(_Base):
     name = sa.Column(sa.String, nullable=False)
     type = sa.Column(sa.String, nullable=False)
 
+    categories: Mapped[list['Category']] = relationship(
+        'Category',
+        back_populates='budget_items',
+        secondary='chat_budget_items',
+        overlaps='categories,chats',
+    )
 
-class ChatBudgetItem(_Base):
-    __tablename__ = 'chat_budget_items'
 
-    category_id = sa.Column(
+class TGUserState(_Base):
+    __tablename__ = 'tg_user_states'
+
+    tg_user_id = sa.Column(
         sa.BigInteger,
-        sa.ForeignKey('categories.id', ondelete='SET NULL'),
+        sa.ForeignKey('tg_users.id', ondelete='CASCADE'),
         nullable=False,
     )
-    budget_item_id = sa.Column(
-        sa.BigInteger,
-        sa.ForeignKey('budget_items.id', ondelete='SET NULL'),
-        nullable=True,
+    state = sa.Column(sa.String, nullable=False)
+    data_raw = sa.Column(JSONB, nullable=False, default=dict())
+
+    @cached_property
+    def data(self) -> StateDataSchema:
+        return StateDataSchema.model_validate(self.data_raw)
+
+
+class Valute(_Base):
+    __tablename__ = 'valutes'
+
+    name = sa.Column(sa.String, nullable=False)
+    symbol = sa.Column(sa.String, nullable=False)
+    code = sa.Column(sa.String, nullable=False)
+
+    chats: Mapped[list['TGChat']] = relationship(
+        'TGChat',
+        back_populates='valutes',
+        secondary='chat_valutes',
     )
+
+
+class ChatValute(_Base):
+    __tablename__ = 'chat_valutes'
+
     chat_id = sa.Column(
         sa.BigInteger,
         sa.ForeignKey('tg_chats.id', ondelete='CASCADE'),
         nullable=False,
     )
+    valute_id = sa.Column(
+        sa.BigInteger,
+        sa.ForeignKey('valutes.id', ondelete='CASCADE'),
+        nullable=False,
+    )
 
     __table_args__ = (
-        sa.UniqueConstraint(
-            'category_id', 'budget_item_id', 'chat_id',
-            name='uq_chat_budget_category_budget_chat'
-        ),
+        sa.UniqueConstraint('chat_id', 'valute_id', name='uq_chat_valute'),
     )
+
+
+class Entry(_Base):
+    __tablename__ = 'entries'
+
+    chat_budget_item_id = sa.Column(
+        sa.BigInteger,
+        sa.ForeignKey('chat_budget_items.id', ondelete='CASCADE'),
+        nullable=False,
+    )
+    valute_id = sa.Column(
+        sa.BigInteger,
+        sa.ForeignKey('valutes.id', ondelete='CASCADE'),
+        nullable=False,
+    )
+    amount = sa.Column(sa.Float, nullable=False)
+    data_raw = sa.Column(JSONB, nullable=False, default=dict())
