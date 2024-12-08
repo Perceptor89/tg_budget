@@ -6,15 +6,6 @@ on:
       - master
   workflow_dispatch:
 
-env:
-  TG_TOKEN: ${{ secrets.TG_TOKEN }}
-  POSTGRES_USER: ${{ vars.POSTGRES_USER }}
-  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-  POSTGRES_DB: ${{ vars.POSTGRES_DB }}
-  POSTGRES_HOST: ${{ vars.POSTGRES_HOST }}
-  POLLER_REQUEST_TIMEOUT: ${{ vars.POLLER_REQUEST_TIMEOUT }}
-  DELOY_KEY: ${{ secrets.DEPLOY_KEY }}
-
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -63,6 +54,14 @@ jobs:
 
       # 3. Деплой на сервер
       - name: Deploy to Server
+        env:
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          POSTGRES_USER: ${{ vars.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ vars.POSTGRES_DB }}
+          POSTGRES_HOST: ${{ vars.POSTGRES_HOST }}
+          POLLER_REQUEST_TIMEOUT: ${{ vars.POLLER_REQUEST_TIMEOUT }}
+          DELOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
           ssh -o StrictHostKeyChecking=no perceptor@45.132.107.67 << 'EOF'
           set -e
@@ -85,12 +84,12 @@ jobs:
           echo "POSTGRES_HOST=$POSTGRES_HOST"
           echo "POLLER_REQUEST_TIMEOUT=$POLLER_REQUEST_TIMEOUT"
 
-          export TG_TOKEN=${TG_TOKEN}
-          export POSTGRES_USER=${POSTGRES_USER}
-          export POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-          export POSTGRES_DB=${POSTGRES_DB}
-          export POSTGRES_HOST=${POSTGRES_HOST}
-          export POLLER_REQUEST_TIMEOUT=${POLLER_REQUEST_TIMEOUT}
+          export TG_TOKEN=$TG_TOKEN
+          export POSTGRES_USER=$POSTGRES_USER
+          export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+          export POSTGRES_DB=$POSTGRES_DB
+          export POSTGRES_HOST=$POSTGRES_HOST
+          export POLLER_REQUEST_TIMEOUT=$POLLER_REQUEST_TIMEOUT
           docker compose up --build -d
 
           echo "Удаляю старые Docker-образы..."
