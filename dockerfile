@@ -8,7 +8,7 @@ WORKDIR /app
 
 RUN pip install --no-cache-dir "poetry==$POETRY_VERSION"
 
-COPY pyproject.toml poetry.lock ./
+COPY pyproject.toml ./
 
 RUN poetry install --no-interaction --no-ansi
 
