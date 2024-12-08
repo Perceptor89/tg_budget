@@ -30,40 +30,54 @@ jobs:
         run: |
           poetry run flake8 .
 
-deploy:
-  runs-on: ubuntu-latest
-  needs: lint
+  deploy:
+    runs-on: ubuntu-latest
+    needs: lint
 
-  steps:
-    # 1. Клонирование репозитория
-    - name: Checkout code
-      uses: actions/checkout@v3
+    env:
+      TG_TOKEN: ${{ secrets.TG_TOKEN }}
+      POSTGRES_USER: ${{ variables.POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      POSTGRES_DB: ${{ variables.POSTGRES_DB }}
+      POSTGRES_HOST: ${{ variables.POSTGRES_HOST }}
+      POLLER_REQUEST_TIMEOUT: ${{ variables.POLLER_REQUEST_TIMEOUT }}
 
-    # 2. Настройка SSH-доступа
-    - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.8.1
-      with:
-        ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+    steps:
+      # 1. Клонирование репозитория
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    # 3. Деплой на сервер
-    - name: Deploy to Server
-      run: |
-        ssh -o StrictHostKeyChecking=no perceptor@45.132.107.67 << 'EOF'
-        set -e
+      # 2. Настройка SSH-доступа
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.8.1
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
-        echo "Перехожу в директорию проекта..."
-        cd /home/perceptor/projects/tg_budget
+      # 3. Деплой на сервер
+      - name: Deploy to Server
+        run: |
+          ssh -o StrictHostKeyChecking=no perceptor@45.132.107.67 << 'EOF'
+          set -e
 
-        echo "Обновляю код из репозитория..."
-        git pull origin master
+          echo "Перехожу в директорию проекта..."
+          cd /home/perceptor/projects/tg_budget
 
-        echo "Останавливаю старые контейнеры..."
-        docker-compose down
+          echo "Обновляю код из репозитория..."
+          git pull origin master
 
-        echo "Собираю и запускаю новые контейнеры..."
-        docker-compose up --build -d
+          echo "Останавливаю старые контейнеры..."
+          docker-compose down
 
-        echo "Удаляю старые Docker-образы..."
-        docker image prune -f
+          echo "Собираю и запускаю новые контейнеры с переменными окружения..."
+          export TG_TOKEN=${TG_TOKEN}
+          export POSTGRES_USER=${POSTGRES_USER}
+          export POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+          export POSTGRES_DB=${POSTGRES_DB}
+          export POSTGRES_HOST=${POSTGRES_HOST}
+          export POLLER_REQUEST_TIMEOUT=${POLLER_REQUEST_TIMEOUT}
+          docker-compose up --build -d
 
-        EOF
+          echo "Удаляю старые Docker-образы..."
+          docker image prune -f
+
+          EOF
