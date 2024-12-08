@@ -8,3 +8,6 @@ run:
 
 style:
 	poetry run flake8 app/
+
+compose:
+	docker compose --env-file ./.env up -d

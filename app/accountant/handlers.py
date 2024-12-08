@@ -546,7 +546,7 @@ class BudgetItemAddNameHandler(MessageHandler):
                     chat_id=chat.id,
                     category_id=state.data.category_id,
                     budget_item_id=budget_item.id,
-                )           
+                )
                 await self.db.chat_budget_item_repo.create_item(chat_budget_item)
             text = BUDGET_ITEM_ADDED.format(new_name, type.value)
             await self.delete_message(message.reply_to_message)
