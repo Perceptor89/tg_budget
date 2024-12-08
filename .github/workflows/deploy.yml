@@ -36,11 +36,11 @@ jobs:
 
     env:
       TG_TOKEN: ${{ secrets.TG_TOKEN }}
-      POSTGRES_USER: ${{ variables.POSTGRES_USER }}
+      POSTGRES_USER: ${{ vars.POSTGRES_USER }}
       POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-      POSTGRES_DB: ${{ variables.POSTGRES_DB }}
-      POSTGRES_HOST: ${{ variables.POSTGRES_HOST }}
-      POLLER_REQUEST_TIMEOUT: ${{ variables.POLLER_REQUEST_TIMEOUT }}
+      POSTGRES_DB: ${{ vars.POSTGRES_DB }}
+      POSTGRES_HOST: ${{ vars.POSTGRES_HOST }}
+      POLLER_REQUEST_TIMEOUT: ${{ vars.POLLER_REQUEST_TIMEOUT }}
 
     steps:
       # 1. Клонирование репозитория
