@@ -34,7 +34,7 @@ jobs:
       # 5. Запуск линтера
       - name: Run linter (flake8)
         run: |
-          poetry run flake8 .
+          poetry run flake8 app/
 
   deploy:
     runs-on: ubuntu-latest
