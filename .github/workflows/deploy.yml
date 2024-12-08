@@ -73,7 +73,7 @@ jobs:
           git pull origin master
 
           echo "Останавливаю старые контейнеры..."
-          docker-compose down
+          docker compose down
 
           echo "Собираю и запускаю новые контейнеры с переменными окружения..."
           export TG_TOKEN=${TG_TOKEN}
