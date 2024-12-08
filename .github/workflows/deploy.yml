@@ -76,10 +76,15 @@ jobs:
           docker compose down
 
           echo "Собираю и запускаю новые контейнеры с переменными окружения..."
-          export TG_TOKEN=${TG_TOKEN}
-          export POSTGRES_USER=${POSTGRES_USER}
+
+          echo "TG_TOKEN=$TG_TOKEN"
+          echo "POSTGRES_USER=$POSTGRES_USER"
+          echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD"
+          echo "POSTGRES_DB=$POSTGRES_DB"
+          echo "POSTGRES_HOST=$POSTGRES_HOST"
+          echo "POLLER_REQUEST_TIMEOUT=$POLLER_REQUEST_TIMEOUT"
+
           export POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-          export POSTGRES_DB=${POSTGRES_DB}
           export POSTGRES_HOST=${POSTGRES_HOST}
           export POLLER_REQUEST_TIMEOUT=${POLLER_REQUEST_TIMEOUT}
           docker compose up --build -d
