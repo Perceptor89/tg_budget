@@ -174,7 +174,7 @@ class BaseHandler(Protocol):
         return state
 
     async def get_or_create_budget_item(self, name: str, type: BudgetItemTypeEnum) -> BudgetItem:
-        if not (budget_item := await self.db.budget_item_repo.get_by_name(name=name)):
+        if not (budget_item := await self.db.budget_item_repo.get_by_name_type(name=name, type=type)):
             budget_item = BudgetItem(name=name, type=type.value)
             budget_item = await self.db.budget_item_repo.create_item(budget_item)
         return budget_item

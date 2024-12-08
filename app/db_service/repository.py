@@ -193,6 +193,22 @@ class BudgetItemRepository(_BaseRepo):
     async def get_by_name(self, name: str) -> Optional[BudgetItem]:
         return await super()._get_by_name(name)
 
+    @handle_session
+    async def get_by_name_type(
+        self,
+        session: AsyncSession,
+        name: str,
+        type: BudgetItemTypeEnum,
+    ) -> Optional[BudgetItem]:
+        query = select(self._model).where(
+            and_(
+                self._model.name == name,
+                self._model.type == type.value,
+            ),
+        )
+        result = await session.execute(query)
+        return result.scalar()
+
 
 class CategoryRepository(_BaseRepo):
 

@@ -118,6 +118,10 @@ class BudgetItem(_Base):
         overlaps='categories,chats',
     )
 
+    __table_args__ = (
+        sa.UniqueConstraint('name', 'type', name='uq_budget_item'),
+    )
+
 
 class TGUserState(_Base):
     __tablename__ = 'tg_user_states'
