@@ -36,7 +36,7 @@ REDIS_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB}'
 # telegram
 TG_TOKEN = env('TG_TOKEN')
 TG_BASE_URL = f'https://api.telegram.org/bot{TG_TOKEN}'
-POLLER_REQUEST_TIMEOUT = int(os.getenv('POLLER_REQUEST_TIMEOUT', 60))
+POLLER_REQUEST_TIMEOUT = env.int('POLLER_REQUEST_TIMEOUT', 60)
 
 LOGGER_CONFIG = {
     'version': 1,
