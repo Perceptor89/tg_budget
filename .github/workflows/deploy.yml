@@ -82,7 +82,7 @@ jobs:
           export POSTGRES_DB=${POSTGRES_DB}
           export POSTGRES_HOST=${POSTGRES_HOST}
           export POLLER_REQUEST_TIMEOUT=${POLLER_REQUEST_TIMEOUT}
-          docker-compose up --build -d
+          docker compose up --build -d
 
           echo "Удаляю старые Docker-образы..."
           docker image prune -f
