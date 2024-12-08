@@ -39,8 +39,12 @@ class TGMessageEditor:
         return self.create_inline_keyboard(buttons, KEYBOARD_ROWS_DEFAULT)
 
     def get_budget_item_keyboard(self, budget_items: list[BudgetItem]) -> InlineKeyboardMarkup:
+        emoji = {
+            BudgetItemTypeEnum.INCOME: '➕',
+            BudgetItemTypeEnum.EXPENSE: '➖',
+        }
         if budget_items:
-            buttons = [(b.name, b.name) for b in budget_items]
+            buttons = [(b.name + ' ' + emoji[b.type], b.name) for b in budget_items]
             return self.create_inline_keyboard(buttons, KEYBOARD_ROWS_DEFAULT)
 
     def get_valute_keyboard(self, valutes: list[Valute]) -> InlineKeyboardMarkup:
