@@ -6,7 +6,7 @@ from app.db_service.schemas import StateEntryDataSchema
 from app.tg_service.schemas import InlineKeyboardButtonSchema, InlineKeyboardMarkup
 
 
-KEYBOARD_ROWS_DEFAULT = 3
+KEYBOARD_ROWS_DEFAULT = 2
 
 
 class TGMessageEditor:
@@ -76,7 +76,7 @@ class TGMessageEditor:
         categories.sort(key=lambda c: c.name)
         lines = []
         for category in categories:
-            category_line = '# {}'.format(category.name.upper())
+            category_line = '### {}'.format(category.name.upper())
             lines.append(category_line)
             budget_items = category.budget_items
             budget_items.sort(key=lambda b: b.type)
