@@ -355,8 +355,10 @@ class CategoryListHandler(CommandHandler):
         **_,
     ) -> None:
         await self.delete_message(message)
-        text = '\n'.join('. ' + c.name for c in chat.categories)
-        text = text or NO_CATEGORIES
+        if chat.categories:
+            text = self.editor.make_category_list(chat.categories)
+        else:
+            text = text or NO_CATEGORIES
         await self.send_message(chat, message, text)
 
 

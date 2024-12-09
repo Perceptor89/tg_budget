@@ -39,12 +39,13 @@ class TGMessageEditor:
         return self.create_inline_keyboard(buttons, KEYBOARD_ROWS_DEFAULT)
 
     def get_budget_item_keyboard(self, budget_items: list[BudgetItem]) -> InlineKeyboardMarkup:
-        emoji = {
-            BudgetItemTypeEnum.INCOME: '➕',
-            BudgetItemTypeEnum.EXPENSE: '➖',
-        }
         if budget_items:
-            buttons = [(b.name + ' ' + emoji[b.type], b.name) for b in budget_items]
+            buttons = [
+                (
+                    self.get_budget_item_button_name(b),
+                    b.name,
+                )
+                for b in budget_items]
             return self.create_inline_keyboard(buttons, KEYBOARD_ROWS_DEFAULT)
 
     def get_valute_keyboard(self, valutes: list[Valute]) -> InlineKeyboardMarkup:
@@ -70,3 +71,23 @@ class TGMessageEditor:
             line = f'{entry.category_name} - {entry.budget_item_name} - {entry.valute_code} - {entry.amount}'
             lines.append(line)
         return '\n'.join(lines) + '\n\n' + text
+
+    def make_category_list(self, categories: list[Category]) -> str:
+        categories.sort(key=lambda c: c.name)
+        lines = []
+        for category in categories:
+            category_line = '# {}'.format(category.name.upper())
+            lines.append(category_line)
+            budget_items = category.budget_items
+            budget_items.sort(key=lambda b: b.type)
+            for budget_item in category.budget_items:
+                budget_item_line = '> {}'.format(self.get_budget_item_button_name(budget_item))
+                lines.append(budget_item_line)
+        return '\n'.join(lines)
+    
+    def get_budget_item_button_name(self, budget_item: BudgetItem) -> str:
+        emoji = {
+            BudgetItemTypeEnum.INCOME: '➕',
+            BudgetItemTypeEnum.EXPENSE: '➖',
+        }
+        return '{} {}'.format(budget_item.name, emoji.get(budget_item.type))
