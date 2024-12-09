@@ -84,7 +84,7 @@ class TGMessageEditor:
                 budget_item_line = '> {}'.format(self.get_budget_item_button_name(budget_item))
                 lines.append(budget_item_line)
         return '\n'.join(lines)
-    
+
     def get_budget_item_button_name(self, budget_item: BudgetItem) -> str:
         emoji = {
             BudgetItemTypeEnum.INCOME: '➕',
