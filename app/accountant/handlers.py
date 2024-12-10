@@ -315,9 +315,12 @@ class MessageHandler(BaseHandler):
 
     @staticmethod
     def _validate_answer_message_id(
-        message: TGMessageSchema, state: Optional[TGUserState],
+        message: TGMessageSchema,
+        state: Optional[TGUserState],
     ) -> bool:
         if not state:
+            return False
+        elif not message.reply_to_message:
             return False
         return state.data.message_id == message.reply_to_message.message_id
 
@@ -372,15 +375,17 @@ class CategoryAddHandler(CommandHandler):
         state: Optional[TGUserState],
         **_,
     ) -> None:
+        await self.delete_message(message)
         if len(chat.categories) >= CATEGORY_AMOUNT_LIMIT:
-            text = CATEGORY_AMOUNT_LIMIT.format(CATEGORY_AMOUNT_LIMIT)
+            text = CATEGORY_LIMIT_ERROR.format(CATEGORY_AMOUNT_LIMIT)
             keyboard = None
         else:
-            text = CATEGORY_ENTER_NEW
+            mention = self.editor.get_mention(user.username)
+            text = CATEGORY_ENTER_NEW.format(mention)
             keyboard = ForceReplySchema(
                 input_field_placeholder=CATEGORY_ENTER_NEW_PLACEHOLDER,
             )
-        task = await self.send_message(chat, message, text, keyboard)
+        task = await self.send_message(chat, message, text, keyboard, False)
         await task.event.wait()
         response: Optional[SendMessageResponseSchema] = task.response
         if response:
@@ -398,20 +403,20 @@ class CategoryAddNameHandler(MessageHandler):
         state: Optional[TGUserState],
         **_,
     ) -> None:
-        await super().handle(message=message, state=state, **_)
+        await self.delete_message(message)
+        await super().handle(user=user, message=message, state=state, **_)
         categories = chat.categories
         new_name = message.text.strip().lower()
         is_exists = bool([c.name for c in categories if c.name == new_name])
         if is_exists:
             text = CATEGORY_EXISTS_ERROR.format(new_name)
-        elif len(categories) >= CATEGORY_AMOUNT_LIMIT:
-            text = CATEGORY_LIMIT_ERROR.format(CATEGORY_AMOUNT_LIMIT)
         else:
             category = Category(name=new_name)
             chat.categories.append(category)
             await self.db.chat_repo.update_item(chat)
             text = CATEGORY_CREATED.format(new_name)
-        await self.send_message(chat, message, text)
+        await self.send_message(chat, message, text, False)
+        await self.set_state(user, state, MessageHandlerEnum.DEFAULT, {})
 
 
 class BudgetItemAddHandler(CommandHandler):
@@ -515,7 +520,7 @@ class BudgetItemAddNameHandler(MessageHandler):
         state: Optional[TGUserState],
         **_,
     ) -> None:
-        await super().handle(message=message, state=state, **_)
+        await super().handle(user=user, message=message, state=state, **_)
         category = await self.db.category_repo.get_by_id(state.data.category_id)
         new_name = message.text.strip().lower()
         type = BudgetItemTypeEnum(state.data.budget_item_type)
@@ -554,6 +559,7 @@ class BudgetItemAddNameHandler(MessageHandler):
             await self.delete_message(message.reply_to_message)
             await self.delete_message(message)
             await self.send_message(chat, message, text)
+            await self.set_state(user, state, MessageHandlerEnum.DEFAULT, {})
 
 
 class EntryAddHandler(CommandHandler):
@@ -675,7 +681,7 @@ class EntryAddAmountHandler(MessageHandler):
         state: Optional[TGUserState],
         **_,
     ) -> None:
-        await super().handle(message=message, state=state, **_)
+        await super().handle(user=user, message=message, state=state, **_)
         await self.delete_message(message)
         if message.reply_to_message:
             await self.delete_message(message.reply_to_message)

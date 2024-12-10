@@ -69,7 +69,7 @@ class Accountant:
         state = await self.db.state_repo.get_tg_user_state(user.id)
         try:
             if is_message and update.command:
-                await self._execute_command(chat, user, update, state)
+                await self._process_command(chat, user, update, state)
             elif not is_message:
                 await self._process_callback(chat, user, update, state)
             else:
@@ -85,7 +85,7 @@ class Accountant:
                 chat.id, user.id, update, is_message, error,
             )
 
-    async def _execute_command(
+    async def _process_command(
         self,
         chat: TGChat,
         user: TGUser,
@@ -105,7 +105,11 @@ class Accountant:
         state: Optional[TGUserState],
     ):
         handler: Optional[BaseHandler] = None
-        if state:
+        if not state:
+            return
+        elif state.state not in list(CallbackHandlerEnum):
+            return
+        else:
             state_enum = CallbackHandlerEnum(state.state)
             handler = self.callback_handlers.get(state_enum)
         if handler:
@@ -120,7 +124,11 @@ class Accountant:
         state: Optional[TGUserState],
     ):
         handler: Optional[BaseHandler] = None
-        if state:
+        if not state:
+            return
+        if state.state not in list(MessageHandlerEnum):
+            return
+        else:
             state_enum = MessageHandlerEnum(state.state)
             handler = self.message_handlers.get(state_enum)
         if handler:

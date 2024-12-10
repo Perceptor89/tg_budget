@@ -1,6 +1,6 @@
 NO_CATEGORIES = 'В чате пока нет ни одной категории'
 CATEGORY_LIMIT_ERROR = 'Чат уже содержит максимальное количество категорий - {}'
-CATEGORY_ENTER_NEW = 'Введите название категории'
+CATEGORY_ENTER_NEW = '{} Введите название категории'
 CATEGORY_ENTER_NEW_PLACEHOLDER = 'название категории'
 CATEGORY_EXISTS_ERROR = 'Категория {} уже существует'
 CATEGORY_CREATED = 'Категория {} создана'
