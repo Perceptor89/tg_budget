@@ -362,7 +362,7 @@ class CategoryListHandler(CommandHandler):
             text = self.editor.make_category_list(chat.categories)
         else:
             text = text or NO_CATEGORIES
-        await self.send_message(chat, message, text)
+        await self.send_message(chat, message, text, is_answer=False)
 
 
 class CategoryAddHandler(CommandHandler):
@@ -415,7 +415,7 @@ class CategoryAddNameHandler(MessageHandler):
             chat.categories.append(category)
             await self.db.chat_repo.update_item(chat)
             text = CATEGORY_CREATED.format(new_name)
-        await self.send_message(chat, message, text, False)
+        await self.send_message(chat, message, text, is_answer=False)
         await self.set_state(user, state, MessageHandlerEnum.DEFAULT, {})
 
 
