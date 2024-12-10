@@ -84,7 +84,7 @@ class TGUser(_Base):
     first_name = sa.Column(sa.String)
     username = sa.Column(sa.String)
     is_bot = sa.Column(sa.Boolean, nullable=False)
-    language_code = sa.Column(sa.String, nullable=False)
+    language_code = sa.Column(sa.String)
 
 
 class Category(_Base):
