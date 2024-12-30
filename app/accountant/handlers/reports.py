@@ -114,7 +114,7 @@ def _make_report(report_data: list[tuple[Category, BudgetItem, Valute, int]]) ->
     }
 
     for category, budget_item, valute, amount in report_data:
-        mapper[budget_item.type][category.name][budget_item.name][valute.name] = amount
+        mapper[budget_item.type][category.name][budget_item.name][valute.code] = amount
 
     lines = []
     for item_type, data in mapper.items():
