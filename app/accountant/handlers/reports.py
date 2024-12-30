@@ -109,20 +109,22 @@ def _make_report(report_data: list[tuple[Category, BudgetItem, Valute, int]]) ->
     }
 
     mapper = {
-        BudgetItemTypeEnum.INCOME.value: defaultdict(dict),
-        BudgetItemTypeEnum.EXPENSE.value: defaultdict(dict),
+        BudgetItemTypeEnum.INCOME.value: defaultdict(lambda: defaultdict(dict)),
+        BudgetItemTypeEnum.EXPENSE.value: defaultdict(lambda: defaultdict(dict)),
     }
+
     for category, budget_item, valute, amount in report_data:
-        mapper[budget_item.type][category.name][budget_item.name] = (amount, valute.code)
+        mapper[budget_item.type][category.name][budget_item.name][valute.name] = amount
 
     lines = []
-    for type, data in mapper.items():
-        lines.append(types[type].upper())
+    for item_type, data in mapper.items():
+        lines.append(types[item_type].upper())
         for category, items in data.items():
             lines.append(f'  {category.capitalize()}')
-            for budget_item, item_details in items.items():
-                amount, valute = item_details
-                line = f'    {budget_item} - {amount} - {valute}'
-                lines.append(line)
+            for budget_item, item_data in items.items():
+                for valute, amount in item_data.items():
+                    line = f'    {budget_item} - {amount} - {valute}'
+                    lines.append(line)
+        lines.append('')
 
     return '\n'.join(lines)
