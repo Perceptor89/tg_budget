@@ -1,5 +1,6 @@
 from typing import Optional
 from app.accountant.enums import DecisionEnum
+from app.constants import MONTHS_MAPPER
 from app.db_service.enums import BudgetItemTypeEnum
 from app.db_service.models import BudgetItem, Category, Valute
 from app.db_service.schemas import StateEntryDataSchema
@@ -91,3 +92,15 @@ class TGMessageEditor:
             BudgetItemTypeEnum.EXPENSE: '➖',
         }
         return '{} {}'.format(budget_item.name, emoji.get(budget_item.type))
+
+    def get_months_keyboard(self, months: list[int]) -> InlineKeyboardMarkup:
+        buttons = [(MONTHS_MAPPER.get(m), str(m)) for m in months]
+        return self.create_inline_keyboard(buttons, columns_amount=3)
+
+    def get_years_keyboard(self, years: list[int]) -> InlineKeyboardMarkup:
+        buttons = [(str(y), str(y)) for y in years]
+        return self.create_inline_keyboard(buttons, columns_amount=1)
+
+    def get_hide_keyboard(self) -> InlineKeyboardMarkup:
+        button = ('Скрыть', 'hide')
+        return self.create_inline_keyboard([button], columns_amount=1)

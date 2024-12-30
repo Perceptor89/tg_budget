@@ -2,7 +2,7 @@ from functools import wraps
 from logging import getLogger
 from typing import List, Optional, Type, TypeVar
 
-from sqlalchemy import and_
+from sqlalchemy import Integer, and_, asc, cast, desc, func
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy.orm import Load, contains_eager, joinedload
@@ -240,6 +240,73 @@ class ChatValuteRepository(_BaseRepo):
 class EntryRepository(_BaseRepo):
 
     _model = Entry
+
+    @handle_session
+    async def get_years(self, session: AsyncSession, chat_id: int) -> List[int]:
+        query = select(
+            cast(func.extract('year', self._model.created_at), Integer).label('year'),
+        ).select_from(
+            Entry,
+        ).join(
+            ChatBudgetItem, ChatBudgetItem.id == Entry.chat_budget_item_id,
+        ).where(
+            ChatBudgetItem.chat_id == chat_id,
+        ).order_by(
+            desc('year'),
+        ).distinct()
+        result = await session.execute(query)
+        return result.scalars().all()
+
+    @handle_session
+    async def get_months(self, session: AsyncSession, chat_id: int, year: int) -> List[int]:
+        query = select(
+            cast(func.extract('month', self._model.created_at), Integer).label('month'),
+        ).select_from(
+            Entry,
+        ).join(
+            ChatBudgetItem, ChatBudgetItem.id == Entry.chat_budget_item_id,
+        ).where(
+            ChatBudgetItem.chat_id == chat_id,
+            func.extract('year', self._model.created_at) == year,
+        ).order_by(
+            asc('month'),
+        ).distinct()
+        result = await session.execute(query)
+        return result.scalars().all()
+
+    @handle_session
+    async def get_report(
+        self,
+        session: AsyncSession,
+        chat_id: int,
+        year: int,
+        month: int,
+    ) -> list[tuple[Category, BudgetItem, Valute, int]]:
+        query = select(
+            Category, BudgetItem, Valute, func.sum(Entry.amount).label('amount'),
+        ).select_from(
+            Entry,
+        ).join(
+            ChatBudgetItem, ChatBudgetItem.id == Entry.chat_budget_item_id,
+        ).join(
+            Category, Category.id == ChatBudgetItem.category_id,
+        ).join(
+            BudgetItem, BudgetItem.id == ChatBudgetItem.budget_item_id,
+        ).join(
+            TGChat, TGChat.id == ChatBudgetItem.chat_id,
+        ).join(
+            Valute, Valute.id == Entry.valute_id,
+        ).where(
+            ChatBudgetItem.chat_id == chat_id,
+            func.extract('year', self._model.created_at) == year,
+            func.extract('month', self._model.created_at) == month,
+        ).group_by(
+            Category, BudgetItem, Valute,
+        ).order_by(
+            Category.name, BudgetItem.name, Valute.name,
+        )
+        result = await session.execute(query)
+        return result.all()
 
 
 class DatabaseAccessor:

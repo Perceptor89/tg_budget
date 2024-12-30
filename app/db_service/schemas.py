@@ -12,6 +12,7 @@ class StateDataSchema(BaseModel):
     valute_id: Optional[int] = Field(None)
     entries: list['StateEntryDataSchema'] = Field(default_factory=list)
     main_message_id: Optional[int] = Field(None)
+    year: Optional[int] = Field(None)
 
 
 class StateEntryDataSchema(BaseModel):

@@ -13,7 +13,7 @@ BUDGET_ITEM_ADD_EXISTS_ERROR = (
     'категория {}\nстатья {}\nтип {}\nуже существует\n{}\nвыберите другое название'
 )
 BUDGET_ITEM_ADD_TYPE = 'Выберите тип статьи'
-BUDGET_ITEM_ADDED = 'статья {}\nтип {}\nдобавлена'
+BUDGET_ITEM_ADDED = 'категория {category}\nстатья {budget_item}\nтип {type}\nдобавлена'
 
 ENTRY_ADD_CATEGORY = 'Укажите категорию'
 ENTRY_ADD_BUDGET_ITEM = 'Категория {}\nУкажите статью'
@@ -25,3 +25,8 @@ ENTRY_ADD_AMOUNT_PLACEHOLDER = '123.45'
 ENTRY_ADD_AMOUNT_ERROR = 'Неверный формат суммы {}'
 ENTRY_ADD_ADDED = 'Запись добавлена'
 ENTRY_ADD_FINISH = 'Ввод завершен'
+
+REPORT_SELECT_YEAR = 'ОТЧЕТ\nВыберите год'
+REPORT_SELECT_MONTH = 'ОТЧЕТ\nгод {year}\nВыберите месяц'
+REPORT_RESULT = 'ОТЧЕТ\nгод {year} месяц {month}'
+REPORT_NO_ENTRIES = 'В чате еще нет ни одной записи'

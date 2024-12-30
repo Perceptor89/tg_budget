@@ -9,6 +9,7 @@ class CommandHadlerEnum(str, enum.Enum):
     CATEGORY_DELETE = '/category_delete'
     BUDGET_ITEM_ADD = '/budget_item_add'
     ENTRY_ADD = '/entry_add'
+    REPORT = '/report'
 
 
 class MessageHandlerEnum(str, enum.Enum):
@@ -29,6 +30,9 @@ class CallbackHandlerEnum(str, enum.Enum):
     ENTRY_ADD_BUDGET_ITEM = 'entry_add_budget_item'
     ENTRY_ADD_VALUTE = 'entry_add_valute'
     ENTRY_ADD_FINISH = 'entry_add_finish'
+    REPORT_SELECT_YEAR = 'report_select_year'
+    REPORT_SELECT_MONTH = 'report_select_month'
+    HIDE = 'hide'
 
 
 class DecisionEnum(str, enum.Enum):
