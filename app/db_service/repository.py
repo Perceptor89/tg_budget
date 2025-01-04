@@ -308,6 +308,30 @@ class EntryRepository(_BaseRepo):
         result = await session.execute(query)
         return result.all()
 
+    @handle_session
+    async def get_message_entries(
+        self, session: AsyncSession, message_id: int,
+    ) -> List[tuple[Category, BudgetItem, Entry, Valute]]:
+        query = select(
+            Category, BudgetItem, Entry, Valute,
+        ).select_from(
+            Entry,
+        ).join(
+            ChatBudgetItem,
+            and_(
+                ChatBudgetItem.id == Entry.chat_budget_item_id,
+                cast(Entry.data_raw['message_id'], Integer) == message_id,
+            )
+        ).join(
+            Category, Category.id == ChatBudgetItem.category_id,
+        ).join(
+            BudgetItem, BudgetItem.id == ChatBudgetItem.budget_item_id,
+        ).join(
+            Valute, Valute.id == Entry.valute_id,
+        )
+        result = await session.execute(query)
+        return result.all()
+
 
 class DatabaseAccessor:
     chat_repo: TGChatRepository

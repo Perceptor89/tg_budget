@@ -1,9 +1,9 @@
 from typing import Optional
+
 from app.accountant.enums import DecisionEnum
-from app.constants import MONTHS_MAPPER
+from app.constants import EMOJIES, MONTHS_MAPPER
 from app.db_service.enums import BudgetItemTypeEnum
 from app.db_service.models import BudgetItem, Category, Valute
-from app.db_service.schemas import StateEntryDataSchema
 from app.tg_service.schemas import InlineKeyboardButtonSchema, InlineKeyboardMarkup
 
 
@@ -43,8 +43,8 @@ class TGMessageEditor:
         if budget_items:
             buttons = [
                 (
-                    self.get_budget_item_button_name(b),
-                    b.name,
+                    '{} {}'.format(b.name, self.get_emoji(b.type)),
+                    str(b.id),
                 )
                 for b in budget_items]
             return self.create_inline_keyboard(buttons, KEYBOARD_ROWS_DEFAULT)
@@ -64,14 +64,35 @@ class TGMessageEditor:
         buttons = [(ru_names.get(name), name.value) for name in buttons_names]
         return self.create_inline_keyboard(buttons, KEYBOARD_ROWS_DEFAULT)
 
-    def add_state_entries_lines(self, text: str, entries: list[StateEntryDataSchema]) -> str:
-        if not entries:
-            return text
-        lines = []
-        for entry in entries:
-            line = f'{entry.category_name} - {entry.budget_item_name} - {entry.valute_code} - {entry.amount}'
-            lines.append(line)
-        return '\n'.join(lines) + '\n\n' + text
+    def make_entry_line(
+        self,
+        category_name: str,
+        budget_item_name: Optional[str] = None,
+        budget_item_type: Optional[str] = None,
+        amount: Optional[float] = None,
+        valute_code: Optional[str] = None,
+        category_name_length: Optional[int] = None,
+        budget_item_length: Optional[int] = None,
+    ) -> str:
+        if not category_name:
+            raise ValueError('category_name is empty')
+
+        emoji = self.get_emoji(budget_item_type) if budget_item_type else None
+        category_line = category_name.upper()
+        if category_name_length:
+            category_line = category_line.ljust(category_name_length)
+        line = category_line
+        if budget_item_name:
+            item_line = f'{budget_item_name} {emoji}' if emoji else budget_item_name
+            if budget_item_length:
+                item_line = item_line.ljust(budget_item_length)
+            line = f'{line} | {item_line}'
+        if amount:
+            amount_line = '{:.2f}'.format(amount)
+            line = f'{line} {amount_line}'
+        if valute_code:
+            line = f'{line} {valute_code}'
+        return line
 
     def make_category_list(self, categories: list[Category]) -> str:
         categories.sort(key=lambda c: c.name)
@@ -82,16 +103,19 @@ class TGMessageEditor:
             budget_items = category.budget_items
             budget_items.sort(key=lambda b: b.type)
             for budget_item in category.budget_items:
-                budget_item_line = '> {}'.format(self.get_budget_item_button_name(budget_item))
+                emoji = self.get_emoji(budget_item.type)
+                budget_item_line = '  {} {}'.format(budget_item.name, emoji)
                 lines.append(budget_item_line)
         return '\n'.join(lines)
 
-    def get_budget_item_button_name(self, budget_item: BudgetItem) -> str:
-        emoji = {
-            BudgetItemTypeEnum.INCOME: '➕',
-            BudgetItemTypeEnum.EXPENSE: '➖',
-        }
-        return '{} {}'.format(budget_item.name, emoji.get(budget_item.type))
+    def add_name_emoji(self, name: str) -> str:
+        emoji = EMOJIES.get(name)
+        if emoji:
+            name = '{} {}'.format(name, emoji)
+        return name
+
+    def get_emoji(self, name: str) -> Optional[str]:
+        return EMOJIES.get(name)
 
     def get_months_keyboard(self, months: list[int]) -> InlineKeyboardMarkup:
         buttons = [(MONTHS_MAPPER.get(m), str(m)) for m in months]

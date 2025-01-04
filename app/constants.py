@@ -1,3 +1,6 @@
+from app.db_service.enums import BudgetItemTypeEnum
+
+
 MONTHS_MAPPER = {
     1: 'Январь',
     2: 'Февраль',
@@ -11,4 +14,9 @@ MONTHS_MAPPER = {
     10: 'Октябрь',
     11: 'Ноябрь',
     12: 'Декабрь',
+}
+
+EMOJIES = {
+    BudgetItemTypeEnum.INCOME.value: '➕',
+    BudgetItemTypeEnum.EXPENSE.value: '➖',
 }

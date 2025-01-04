@@ -123,7 +123,8 @@ def _make_report(report_data: list[tuple[Category, BudgetItem, Valute, int]]) ->
             lines.append(f'  {category.capitalize()}')
             for budget_item, item_data in items.items():
                 for valute, amount in item_data.items():
-                    line = f'    {budget_item} - {amount} - {valute}'
+                    amount_line = '{:.2f}'.format(amount)
+                    line = f'    {budget_item} - {amount_line} - {valute}'
                     lines.append(line)
         lines.append('')
 

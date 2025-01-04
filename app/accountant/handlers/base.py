@@ -189,9 +189,9 @@ class BaseHandler(Protocol):
         callback: TGCallbackQuerySchema,
     ) -> BudgetItem:
         budget_item: Optional[BudgetItem] = None
-        budget_item_name = callback.data
+        budget_item_id = int(callback.data)
         category = self.get_state_category(chat, state)
-        if not (budget_item := [b for b in category.budget_items if b.name == budget_item_name]):
+        if not (budget_item := [b for b in category.budget_items if b.id == budget_item_id]):
             raise RuntimeError('selected budget item not found')
         else:
             budget_item = budget_item[0]
@@ -261,6 +261,30 @@ class BaseHandler(Protocol):
         if error:
             raise RuntimeError(error)
         return chat_budget_item
+
+    def add_name_emoji(self, name: str) -> str:
+        return self.editor.add_name_emoji(name)
+
+    async def get_message_entries_line(self, message_id: int) -> Optional[str]:
+        data_rows = await self.db.entry_repo.get_message_entries(message_id=message_id)
+        if not data_rows:
+            return None
+
+        lines = []
+        category_length = max(len(row[0].name) for row in data_rows)
+        budget_item_length = max(len(row[1].name) for row in data_rows)
+        for category, budget_item, entry, valute in data_rows:
+            line = self.editor.make_entry_line(
+                category_name=category.name,
+                budget_item_name=budget_item.name,
+                budget_item_type=budget_item.type,
+                amount=entry.amount,
+                valute_code=valute.code,
+                category_name_length=category_length,
+                budget_item_length=budget_item_length,
+            )
+            lines.append(line)
+        return '\n'.join(lines)
 
 
 class MessageHandler(BaseHandler):

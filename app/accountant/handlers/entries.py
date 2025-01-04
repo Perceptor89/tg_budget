@@ -3,10 +3,9 @@ from typing import Optional
 from app.accountant.enums import CallbackHandlerEnum, DecisionEnum, MessageHandlerEnum
 from app.accountant.messages import (
     ENTRY_ADD_ADDED,
+    ENTRY_ADD_AMOUNT,
     ENTRY_ADD_AMOUNT_ERROR,
-    ENTRY_ADD_AMOUNT_MAIN,
     ENTRY_ADD_AMOUNT_PLACEHOLDER,
-    ENTRY_ADD_AMOUNT_SECONDARY,
     ENTRY_ADD_BUDGET_ITEM,
     ENTRY_ADD_CATEGORY,
     ENTRY_ADD_FINISH,
@@ -14,7 +13,6 @@ from app.accountant.messages import (
     ENTRY_ADD_VALUTE,
 )
 from app.db_service.models import Entry, TGChat, TGUser, TGUserState
-from app.db_service.schemas import StateDataSchema
 from app.tg_service.schemas import (
     EditMessageTextResponseSchema,
     ForceReplySchema,
@@ -57,19 +55,24 @@ class EntryAddCategoryHandler(CallbackHandler):
         state: Optional[TGUserState],
         **_,
     ) -> None:
-        if not self._validate_callback_message_id(callback.message, state):
-            return
+        await super().handle(callback=callback, state=state, **_)
+        message_id = callback.message.message_id
+
         if not (category := self.get_selected_category(chat, callback)):
             return
         if not category.budget_items:
             text = ENTRY_ADD_NO_BUDGET_ITEMS_ERROR.format(category.name)
             keyboard = self.editor.get_category_keyboard(chat.categories)
-            await self.edit_message(chat.tg_id, callback.message.message_id, text, keyboard)
+            await self.edit_message(chat.tg_id, message_id, text, keyboard)
         else:
             keyboard = self.editor.get_budget_item_keyboard(category.budget_items)
-            text = ENTRY_ADD_BUDGET_ITEM.format(category.name)
-            text = self.editor.add_state_entries_lines(text, state.data.entries)
-            task = await self.edit_message(chat.tg_id, callback.message.message_id, text, keyboard)
+
+            current_entry = self.editor.make_entry_line(category.name)
+            text = '\n'.join([current_entry, ENTRY_ADD_BUDGET_ITEM])
+            if entered := await self.get_message_entries_line(message_id=message_id):
+                text = '\n\n'.join([entered, text])
+
+            task = await self.edit_message(chat.tg_id, message_id, text, keyboard)
             await task.event.wait()
             response: Optional[EditMessageTextResponseSchema] = task.response
             if response:
@@ -89,13 +92,16 @@ class EntryAddBudgetItemHandler(CallbackHandler):
         **_,
     ) -> None:
         await super().handle(callback=callback, state=state, **_)
+        message_id = callback.message.message_id
         category = self.get_state_category(chat=chat, state=state)
         budget_item = self.get_selected_budget_item(chat=chat, state=state, callback=callback)
         valutes = await self.get_chat_valutes(chat=chat)
         keyboard = self.editor.get_valute_keyboard(valutes)
-        text = ENTRY_ADD_VALUTE.format(category.name, budget_item.name)
-        text = self.editor.add_state_entries_lines(text, state.data.entries)
-        task = await self.edit_message(chat.tg_id, callback.message.message_id, text, keyboard)
+        current_entry = self.editor.make_entry_line(category.name, budget_item.name, budget_item.type)
+        text = '\n'.join([current_entry, ENTRY_ADD_VALUTE])
+        if entered := await self.get_message_entries_line(message_id=message_id):
+            text = '\n\n'.join([entered, text])
+        task = await self.edit_message(chat.tg_id, message_id, text, keyboard)
         await task.event.wait()
         response: Optional[EditMessageTextResponseSchema] = task.response
         if response:
@@ -115,15 +121,18 @@ class EntryAddValuteHandler(CallbackHandler):
         **_,
     ) -> None:
         await super().handle(callback=callback, state=state, **_)
+        message_id = callback.message.message_id
         category, budget_item = self.get_state_budget_item(chat=chat, state=state)
         valute = self.get_selected_valute(chat=chat, callback=callback)
-        text = ENTRY_ADD_AMOUNT_MAIN.format(category.name, budget_item.name, valute.code)
-        text = self.editor.add_state_entries_lines(text, state.data.entries)
-        keyboard = ForceReplySchema(input_field_placeholder=ENTRY_ADD_AMOUNT_PLACEHOLDER)
-        await self.edit_message(chat.tg_id, callback.message.message_id, text)
+
+        text = self.editor.make_entry_line(category.name, budget_item.name, budget_item.type, valute_code=valute.code)
+        if entered := await self.get_message_entries_line(message_id=message_id):
+            text = '\n\n'.join([entered, text])
+        await self.edit_message(chat.tg_id, message_id, text)
 
         mention = self.editor.get_mention(user.username)
-        text = ENTRY_ADD_AMOUNT_SECONDARY.format(mention or '')
+        text = ENTRY_ADD_AMOUNT.format(mention or '')
+        keyboard = ForceReplySchema(input_field_placeholder=ENTRY_ADD_AMOUNT_PLACEHOLDER)
         task = await self.send_message(chat, None, text, keyboard, is_answer=False)
         await task.event.wait()
         response: Optional[SendMessageResponseSchema] = task.response
@@ -131,7 +140,7 @@ class EntryAddValuteHandler(CallbackHandler):
             data_raw = state.data_raw
             data_raw['valute_id'] = valute.id
             data_raw['message_id'] = response.result.message_id
-            data_raw['main_message_id'] = callback.message.message_id
+            data_raw['main_message_id'] = message_id
             await self.set_state(user, state, MessageHandlerEnum.ENTRY_ADD_AMOUNT, data_raw)
 
 
@@ -152,13 +161,13 @@ class EntryAddAmountHandler(MessageHandler):
         amount: Optional[float] = None
         inputed = message.text.strip()
         try:
-            amount = float(message.text.strip())
+            amount = _count_entry_amount(inputed)
         except ValueError:
             pass
         if not amount:
             mention = self.editor.get_mention(user.username)
             text = ENTRY_ADD_AMOUNT_ERROR.format(inputed)
-            text += '\n' + ENTRY_ADD_AMOUNT_SECONDARY.format(mention or '')
+            text += '\n' + ENTRY_ADD_AMOUNT.format(mention or '')
             keyboard = ForceReplySchema(input_field_placeholder=ENTRY_ADD_AMOUNT_PLACEHOLDER)
             task = await self.send_message(chat, None, text, keyboard, is_answer=False)
             await task.event.wait()
@@ -168,32 +177,38 @@ class EntryAddAmountHandler(MessageHandler):
                 data_raw['message_id'] = response.result.message_id
                 await self.set_state(user, state, MessageHandlerEnum.ENTRY_ADD_AMOUNT, data_raw)
         else:
-            category, budget_item = self.get_state_budget_item(chat=chat, state=state)
             chat_budget_item = await self.get_state_chat_budget_item(chat=chat, state=state)
             valute = self.get_state_valute(chat=chat, state=state)
+            entry_message_id = state.data.main_message_id
+
             entry = Entry(
                 chat_budget_item_id=chat_budget_item.id,
                 valute_id=valute.id,
                 amount=amount,
-                data_raw=dict(message_id=state.data.main_message_id),
+                data_raw=dict(message_id=entry_message_id),
             )
             await self.db.entry_repo.create_item(entry)
-            entry_data = dict(
-                category_name=category.name,
-                budget_item_name=budget_item.name,
-                valute_code=valute.code,
-                amount=amount,
-            )
-            data_raw = dict(
-                message_id=state.data.main_message_id,
-                entries=state.data.entries + [entry_data],
-            )
-            state.data = StateDataSchema.model_validate(data_raw)
-            await self.set_state(user, state, CallbackHandlerEnum.ENTRY_ADD_FINISH, state.data.model_dump())
+
+            data_raw = dict(message_id=entry_message_id)
+            await self.set_state(user, state, CallbackHandlerEnum.ENTRY_ADD_FINISH, data_raw)
             keyboard = self.editor.get_finish_keyboard(chat.categories)
             text = ENTRY_ADD_ADDED
-            text = self.editor.add_state_entries_lines(text, state.data.entries)
-            await self.edit_message(chat.tg_id, state.data.message_id, text, keyboard)
+            if entered := await self.get_message_entries_line(message_id=entry_message_id):
+                text = '\n\n'.join([entered, text])
+            await self.edit_message(chat.tg_id, entry_message_id, text, keyboard)
+
+
+def _count_entry_amount(inputed: str) -> float:
+    if '+' in inputed:
+        lines = inputed.split('+')
+    else:
+        lines = [inputed]
+
+    lines = [line.strip() for line in lines]
+    lines = [line for line in lines if line]
+    lines = [float(line) for line in lines]
+
+    return sum(lines)
 
 
 class EntryAddFinishHandler(CallbackHandler):
@@ -207,15 +222,22 @@ class EntryAddFinishHandler(CallbackHandler):
         **_,
     ) -> None:
         await super().handle(callback=callback, state=state, **_)
+        message_id = callback.message.message_id
         decision = callback.data
         if decision == DecisionEnum.FINISH:
             text = ENTRY_ADD_FINISH
-            text = self.editor.add_state_entries_lines(text, state.data.entries)
+            details = str(message_id)
+            if user.username:
+                details = '{} {}'.format(user.username, details)
+            text = '\n'.join([text, details])
+            if entered := await self.get_message_entries_line(message_id=message_id):
+                text = '\n\n'.join([entered, text])
             await self.set_state(user, state, MessageHandlerEnum.DEFAULT, {})
-            await self.edit_message(chat.tg_id, callback.message.message_id, text)
+            await self.edit_message(chat.tg_id, message_id, text)
         elif decision == DecisionEnum.MORE:
             await self.set_state(user, state, CallbackHandlerEnum.ENTRY_ADD_CATEGORY, state.data_raw)
             text = ENTRY_ADD_CATEGORY
-            text = self.editor.add_state_entries_lines(text, state.data.entries)
+            if entered := await self.get_message_entries_line(message_id=message_id):
+                text = '\n\n'.join([entered, text])
             keyboard = self.editor.get_category_keyboard(chat.categories)
-            await self.edit_message(chat.tg_id, callback.message.message_id, text, keyboard)
+            await self.edit_message(chat.tg_id, message_id, text, keyboard)
