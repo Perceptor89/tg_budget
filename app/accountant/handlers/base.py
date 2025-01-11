@@ -271,8 +271,6 @@ class BaseHandler(Protocol):
             return None
 
         lines = []
-        category_length = max(len(row[0].name) for row in data_rows)
-        budget_item_length = max(len(row[1].name) for row in data_rows)
         for category, budget_item, entry, valute in data_rows:
             line = self.editor.make_entry_line(
                 category_name=category.name,
@@ -280,8 +278,6 @@ class BaseHandler(Protocol):
                 budget_item_type=budget_item.type,
                 amount=entry.amount,
                 valute_code=valute.code,
-                category_name_length=category_length,
-                budget_item_length=budget_item_length,
             )
             lines.append(line)
         return '\n'.join(lines)

@@ -71,21 +71,15 @@ class TGMessageEditor:
         budget_item_type: Optional[str] = None,
         amount: Optional[float] = None,
         valute_code: Optional[str] = None,
-        category_name_length: Optional[int] = None,
-        budget_item_length: Optional[int] = None,
     ) -> str:
         if not category_name:
             raise ValueError('category_name is empty')
 
         emoji = self.get_emoji(budget_item_type) if budget_item_type else None
         category_line = category_name.upper()
-        if category_name_length:
-            category_line = category_line.ljust(category_name_length)
         line = category_line
         if budget_item_name:
             item_line = f'{budget_item_name} {emoji}' if emoji else budget_item_name
-            if budget_item_length:
-                item_line = item_line.ljust(budget_item_length)
             line = f'{line} | {item_line}'
         if amount:
             amount_line = '{:.2f}'.format(amount)
