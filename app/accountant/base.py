@@ -176,7 +176,7 @@ class Accountant:
 
     async def _get_or_create_state(self, user: TGUser) -> TGUserState:
         if not (state := await self.db.state_repo.get_tg_user_state(user.id)):
-            state = TGUserState(user_id=user.id, state=MessageHandlerEnum.DEFAULT.value, data_raw={})
+            state = TGUserState(tg_user_id=user.id, state=MessageHandlerEnum.DEFAULT.value, data_raw={})
             state = await self.db.state_repo.create_item(state)
 
         return state
