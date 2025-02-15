@@ -3,6 +3,7 @@ from logging import getLogger
 from app.accountant.base import Accountant
 from app.core import config
 from app.db_service.repository import DatabaseAccessor
+from app.scheduler import scheduler
 from app.tg_service.editor import TGMessageEditor
 
 from .core.logger import setup_logger
@@ -29,8 +30,10 @@ class Engine:
 
     async def start_app(self):
         logger.info('Start app')
+        scheduler.start()
         await self.tg_client.start()
 
     async def stop_app(self):
         logger.info('Stop app')
+        scheduler.shutdown(wait=True)
         await self.tg_client.stop()

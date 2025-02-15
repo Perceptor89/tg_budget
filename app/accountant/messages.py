@@ -27,5 +27,5 @@ ENTRY_ADD_FINISH = 'Ввод завершен'
 
 REPORT_SELECT_YEAR = 'ОТЧЕТ\nВыберите год'
 REPORT_SELECT_MONTH = 'ОТЧЕТ\nгод {year}\nВыберите месяц'
-REPORT_RESULT = 'ОТЧЕТ\nгод {year} месяц {month}'
+REPORT_RESULT = 'ОТЧЕТ\nгод {year}\nмесяц {month}'
 REPORT_NO_ENTRIES = 'В чате еще нет ни одной записи'
