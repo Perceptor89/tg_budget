@@ -9,7 +9,6 @@ services:
       - budget
     volumes:
       - tg_budget_data:/var/lib/postgresql/data/
-      - ./logs:/app/logs
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -34,6 +33,8 @@ services:
       bash -c "
       alembic upgrade head &&
       python Scripts/run.py"
+    volumes:
+      - ./logs:/app/logs
     environment:
       - TG_TOKEN=${TG_TOKEN}
       - POSTGRES_USER=${POSTGRES_USER}
