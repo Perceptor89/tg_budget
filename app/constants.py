@@ -15,8 +15,13 @@ MONTHS_MAPPER = {
     11: 'Ноябрь',
     12: 'Декабрь',
 }
-
 EMOJIES = {
     BudgetItemTypeEnum.INCOME.value: '➕',
     BudgetItemTypeEnum.EXPENSE.value: '➖',
+}
+USD_CODE = 'USD'
+USDT_CODE = 'USDT'
+VALUTE_SUBSTITUTES = {
+    USD_CODE: [USDT_CODE],
+    USDT_CODE: [USD_CODE],
 }

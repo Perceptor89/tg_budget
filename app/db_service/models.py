@@ -3,7 +3,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Mapped, relationship
-from sqlalchemy.sql import func
+from sqlalchemy.sql import func, text
 
 from app.db_service.schemas import StateDataSchema
 
@@ -14,14 +14,18 @@ Base = declarative_base()
 class _Base(Base):
     __abstract__ = True
 
-    id = sa.Column(sa.BigInteger, primary_key=True, autoincrement=True)
-    created_at = sa.Column(sa.DateTime(timezone=True), nullable=False, server_default=func.now())
-
     def as_dict(self):
         return {column.name: getattr(self, column.name) for column in self.__table__.columns}
 
 
-class ChatBudgetItem(_Base):
+class _BaseExtended(_Base):
+    __abstract__ = True
+
+    id = sa.Column(sa.BigInteger, primary_key=True, autoincrement=True)
+    created_at = sa.Column(sa.DateTime(timezone=True), nullable=False, server_default=func.now())
+
+
+class ChatBudgetItem(_BaseExtended):
     __tablename__ = 'chat_budget_items'
 
     category_id = sa.Column(
@@ -48,7 +52,7 @@ class ChatBudgetItem(_Base):
     )
 
 
-class TGChat(_Base):
+class TGChat(_BaseExtended):
     __tablename__ = 'tg_chats'
 
     tg_id = sa.Column(sa.BigInteger, nullable=False)
@@ -67,7 +71,7 @@ class TGChat(_Base):
     )
 
 
-class TGMessage(_Base):
+class TGMessage(_BaseExtended):
     __tablename__ = 'tg_messages'
 
     message_id = sa.Column(sa.BigInteger, nullable=False, unique=True)
@@ -76,7 +80,7 @@ class TGMessage(_Base):
     data = sa.Column(sa.JSON, nullable=True)
 
 
-class TGUser(_Base):
+class TGUser(_BaseExtended):
     """Telegram users."""
     __tablename__ = 'tg_users'
 
@@ -87,7 +91,7 @@ class TGUser(_Base):
     language_code = sa.Column(sa.String)
 
 
-class Category(_Base):
+class Category(_BaseExtended):
     __tablename__ = 'categories'
 
     name = sa.Column(sa.String, nullable=False)
@@ -105,7 +109,7 @@ class Category(_Base):
     )
 
 
-class BudgetItem(_Base):
+class BudgetItem(_BaseExtended):
     __tablename__ = 'budget_items'
 
     name = sa.Column(sa.String, nullable=False)
@@ -123,7 +127,7 @@ class BudgetItem(_Base):
     )
 
 
-class TGUserState(_Base):
+class TGUserState(_BaseExtended):
     __tablename__ = 'tg_user_states'
 
     tg_user_id = sa.Column(
@@ -139,7 +143,7 @@ class TGUserState(_Base):
         return StateDataSchema.model_validate(self.data_raw)
 
 
-class Valute(_Base):
+class Valute(_BaseExtended):
     __tablename__ = 'valutes'
 
     name = sa.Column(sa.String, nullable=False)
@@ -153,7 +157,7 @@ class Valute(_Base):
     )
 
 
-class ChatValute(_Base):
+class ChatValute(_BaseExtended):
     __tablename__ = 'chat_valutes'
 
     chat_id = sa.Column(
@@ -172,7 +176,7 @@ class ChatValute(_Base):
     )
 
 
-class Entry(_Base):
+class Entry(_BaseExtended):
     __tablename__ = 'entries'
 
     chat_budget_item_id = sa.Column(
@@ -187,3 +191,44 @@ class Entry(_Base):
     )
     amount = sa.Column(sa.Float, nullable=False)
     data_raw = sa.Column(JSONB, nullable=False, default=dict())
+
+
+class ValuteRate(_Base):
+    __tablename__ = 'valute_rates'
+
+    valute_from_id = sa.Column(
+        sa.BigInteger,
+        sa.ForeignKey('valutes.id', ondelete='CASCADE'),
+        nullable=False,
+        primary_key=True,
+    )
+    valute_to_id = sa.Column(
+        sa.BigInteger,
+        sa.ForeignKey('valutes.id', ondelete='CASCADE'),
+        nullable=False,
+        primary_key=True,
+    )
+    rate = sa.Column(sa.Float, nullable=False)
+    date = sa.Column(sa.Date, nullable=False, server_default=text('CURRENT_DATE'), primary_key=True)
+
+
+class ValuteExchange(_BaseExtended):
+    __tablename__ = 'valute_exchanges'
+
+    chat_id = sa.Column(
+        sa.BigInteger,
+        sa.ForeignKey('tg_chats.id', ondelete='CASCADE'),
+        nullable=False,
+    )
+    valute_from_id = sa.Column(
+        sa.BigInteger,
+        sa.ForeignKey('valutes.id', ondelete='CASCADE'),
+        nullable=False,
+    )
+    valute_to_id = sa.Column(
+        sa.BigInteger,
+        sa.ForeignKey('valutes.id', ondelete='CASCADE'),
+        nullable=False,
+    )
+    valute_from_amount = sa.Column(sa.Float, nullable=False)
+    valute_to_amount = sa.Column(sa.Float, nullable=False)

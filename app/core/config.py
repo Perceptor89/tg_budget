@@ -26,11 +26,7 @@ with env.prefixed('POSTGRES_'):
     port = env.int('PORT', 5432)
     name = env('DB')
 DATABASE_URL = f'postgresql+asyncpg://{user}:{password}@{host}:{port}/{name}'
-
-REDIS_HOST = env('REDIS_HOST', 'localhost')
-REDIS_PORT = env.int('REDIS_PORT', 6379)
-REDIS_DB = env.int('REDIS_DB', 0)
-REDIS_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB}'
+APSCHEDULER_DB_URL = f'postgresql+psycopg2://{user}:{password}@{host}:{port}/{name}'
 
 # telegram
 TG_TOKEN = env('TG_TOKEN')
@@ -43,7 +39,7 @@ LOGGER_CONFIG = {
     'formatters': {
         'main_formatter': {
             'format': (
-                '%(levelname)1.1s %(asctime)s %(name)s - %(message).2000s'
+                '%(levelname)1.1s %(asctime)s %(name)s - %(message)s'
                 ' - %(filename)s - %(funcName)s - %(lineno)s'
             ),
             'datefmt': "%d.%m %H:%M:%S",
@@ -77,9 +73,9 @@ LOGGER_CONFIG = {
             'handlers': ['fileAppHandler', 'console'],
             'level': 'DEBUG',
         },
-        'rq': {
+        'rates': {
             'handlers': ['fileAppHandler', 'console'],
             'level': 'DEBUG',
-        }
+        },
     },
 }
