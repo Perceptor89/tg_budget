@@ -9,6 +9,7 @@ services:
       - budget
     volumes:
       - tg_budget_data:/var/lib/postgresql/data/
+      - ./logs:/app/logs
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
