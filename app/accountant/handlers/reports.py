@@ -133,15 +133,7 @@ def _make_report(
         BudgetItemTypeEnum.EXPENSE.value: 'расходы',
     }
 
-    mapper = {
-        BudgetItemTypeEnum.INCOME.value: defaultdict(lambda: defaultdict(lambda: defaultdict(int))),
-        BudgetItemTypeEnum.EXPENSE.value: defaultdict(lambda: defaultdict(lambda: defaultdict(int))),
-    }
-
-    for category, budget_item, valute, amount in report_data:
-        code = report_valute.code if rates else valute.code
-        amount = amount * rates.get(valute.code) if rates else amount
-        mapper[budget_item.type][category.name][budget_item.name][code] += amount
+    mapper = _map_report_data(report_data, report_valute, rates)
 
     totals = dict()
     lines = []
@@ -180,6 +172,23 @@ def _make_report(
         lines.append(total_line)
 
     return '\n'.join(lines)
+
+
+def _map_report_data(
+    report_data: list[tuple[Category, BudgetItem, Valute, int]],
+    report_valute: Optional[Valute] = None,
+    rates: Optional[dict[str, float]] = None,
+) -> dict:
+    mapper = {
+        BudgetItemTypeEnum.INCOME.value: defaultdict(lambda: defaultdict(lambda: defaultdict(int))),
+        BudgetItemTypeEnum.EXPENSE.value: defaultdict(lambda: defaultdict(lambda: defaultdict(int))),
+    }
+    for category, budget_item, valute, amount in report_data:
+        code = report_valute.code if rates else valute.code
+        if rates and valute.code != report_valute.code:
+            amount = amount * rates.get(valute.code)
+        mapper[budget_item.type][category.name][budget_item.name][code] += amount
+    return mapper
 
 
 async def _get_valute_rates(
