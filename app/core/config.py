@@ -59,6 +59,14 @@ LOGGER_CONFIG = {
             'when': 'midnight',
             'backupCount': 5,
         },
+        'fileSchedulerHandler': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': (LOG_PATH_DIR / 'scheduler.log').as_posix(),
+            'formatter': 'main_formatter',
+            'when': 'midnight',
+            'backupCount': 5,
+        },
     },
     'loggers': {
         'app': {
@@ -75,6 +83,10 @@ LOGGER_CONFIG = {
         },
         'rates': {
             'handlers': ['fileAppHandler', 'console'],
+            'level': 'DEBUG',
+        },
+        'apscheduler': {
+            'handlers': ['fileSchedulerHandler'],
             'level': 'DEBUG',
         },
     },
