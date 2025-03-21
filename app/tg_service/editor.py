@@ -1,3 +1,4 @@
+import json
 from typing import Optional
 
 from app.accountant.enums import DecisionEnum
@@ -12,7 +13,7 @@ KEYBOARD_ROWS_DEFAULT = 2
 
 class TGMessageEditor:
     def create_inline_keyboard(
-        self, buttons: list[tuple[str, str]], columns_amount: int,
+        self, buttons: list[tuple[str, str]], columns_amount: int = 1,
     ) -> InlineKeyboardMarkup:
         buttons = [
             InlineKeyboardButtonSchema(text=text, callback_data=callback_data)
@@ -119,6 +120,9 @@ class TGMessageEditor:
         buttons = [(str(y), str(y)) for y in years]
         return self.create_inline_keyboard(buttons, columns_amount=1)
 
-    def get_hide_keyboard(self) -> InlineKeyboardMarkup:
-        button = ('Скрыть', 'hide')
+    def get_hide_keyboard(self, delete_also: Optional[list[int]] = None) -> InlineKeyboardMarkup:
+        callback = dict(common_action='hide')
+        if delete_also:
+            callback['delete_also'] = delete_also
+        button = ('Скрыть', json.dumps(callback))
         return self.create_inline_keyboard([button], columns_amount=1)

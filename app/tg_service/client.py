@@ -1,7 +1,7 @@
 import asyncio
 from json import JSONDecodeError
 from logging import getLogger
-from typing import TYPE_CHECKING, Literal, Type, Union
+from typing import TYPE_CHECKING, Literal, Optional, Type, Union
 
 from httpx import AsyncClient, RequestError, Response
 from pydantic import ValidationError
@@ -25,7 +25,9 @@ class SendTaskSchema:
     event: asyncio.Event
     response: Union[dict, ResponseSchema, None]
 
-    def __init__(self, method: Type[TGAPI], data: RequestSchema) -> None:
+    def __init__(
+        self, method: Type[TGAPI], data: RequestSchema,
+    ) -> None:
         self.response = None
         self.method = method
         self.data = data
@@ -77,7 +79,9 @@ class TelegramClient:
         for task in self.send_tasks:
             await task
 
-    async def send(self, method: Type[TGAPI], data: RequestSchema) -> SendTaskSchema:
+    async def send(
+        self, method: Type[TGAPI], data: RequestSchema,
+    ) -> SendTaskSchema:
         task = SendTaskSchema(method=method, data=data)
         await self.send_queue.put(task)
         return task
@@ -85,8 +89,8 @@ class TelegramClient:
     async def _listen(self):
         url = self._make_url('getUpdates')
         while self.is_running:
-            params = {'offset': self.offset, 'timeout': POLLER_REQUEST_TIMEOUT}
-            response_dict = await self._request(url=url, json_params=params)
+            json = {'offset': self.offset, 'timeout': POLLER_REQUEST_TIMEOUT}
+            response_dict = await self._request(url=url, json=json)
             logger.debug('response dict %s', response_dict)
             if response_dict and response_dict.get('ok'):
                 for result in response_dict.get('result', []):
@@ -102,9 +106,12 @@ class TelegramClient:
                 logger.error('response_dict %s', response_dict)
 
     async def _send(self, send_task: SendTaskSchema):
-        url = self._make_url(send_task.method.name)
-        json_params = send_task.data.model_dump(exclude_none=True)
-        response = await self._request(url=url, json_params=json_params)
+        params = dict(url=self._make_url(send_task.method.name))
+        payload_key = 'data' if getattr(send_task.data, 'is_form', False) else 'json'
+        params[payload_key] = send_task.data.model_dump(exclude_none=True, exclude={'files', 'is_form'})
+        if getattr(send_task.data, 'files', None):
+            params['files'] = send_task.data.files.model_dump()
+        response = await self._request(**params)
         if send_task.method.response_schema:
             try:
                 validated = send_task.method.response_schema.model_validate(response)
@@ -142,23 +149,24 @@ class TelegramClient:
         *,
         url: str,
         method: Literal['GET', 'POST'] = 'POST',
-        headers: dict = None,
-        json_params: dict = None,
-        form_data: dict = None,
+        headers: Optional[dict] = None,
+        json: Optional[dict] = None,
+        data: Optional[dict] = None,
+        files: Optional[dict] = None,
         timeout: int = POLLER_REQUEST_TIMEOUT * 2,
     ) -> Response:
-        logger.debug('request %s %s json: %s form: %s', method, url, json_params, form_data)
-        request_params = dict(method=method, url=url, timeout=timeout)
-        if json_params:
-            request_params['json'] = json_params
-        if form_data:
-            request_params['data'] = form_data
-        if headers:
-            request_params['headers'] = headers
+        files = files or {}
+        logger.debug(
+            'request %s %s json: %s form: %s files: %s',
+            method, url, json, data, files.keys(),
+        )
         try:
             async with AsyncClient() as client:
-                response = await client.request(**request_params)
+                response = await client.request(method=method, url=url, timeout=timeout,
+                                                headers=headers, json=json, data=data,
+                                                files=files)
                 content = response.json()
+                logger.debug('response %s %s', response.status_code, content)
                 if response.status_code != 200:
                     logger.error('request-E %s %s', response.status_code, content)
                 return content

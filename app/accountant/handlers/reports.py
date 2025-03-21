@@ -5,12 +5,15 @@ from typing import TYPE_CHECKING, Optional
 from app.constants import MONTHS_MAPPER, USD_CODE, USDT_CODE, VALUTE_SUBSTITUTES
 from app.db_service.enums import BudgetItemTypeEnum
 from app.db_service.models import BudgetItem, Category, TGChat, TGUser, TGUserState, Valute
+from app.tg_service import api as tg_api
 from app.tg_service.schemas import (
     EditMessageTextResponseSchema,
     SendMessageResponseSchema,
+    SendPhotoResponseSchema,
     TGCallbackQuerySchema,
     TGMessageSchema,
 )
+from app.utils import make_pie_chart
 
 from ..enums import CallbackHandlerEnum, MessageHandlerEnum
 from ..messages import REPORT_NO_ENTRIES, REPORT_RESULT, REPORT_SELECT_MONTH, REPORT_SELECT_YEAR
@@ -117,13 +120,31 @@ class ReportSelectMonthHandler(CallbackHandler):
             if rates and substitutes:
                 rates.update(dict.fromkeys(substitutes, 1))
 
-        report_text = _make_report(report_data, report_valute, rates)
-        text += '\n\n' + report_text
-        await self.edit_message(chat.tg_id, callback.message.message_id, text, keyboard)
-        await self.set_state(user, state, MessageHandlerEnum.DEFAULT, {})
+        images, fin_result = _make_image_report(report_data, report_valute, rates)
+        if images and fin_result:
+            await self.call_tg(tg_api.DeleteMessage, chat_id=chat.tg_id, message_id=callback.message.message_id)
+            delete_also = []
+            for image in images:
+                params = dict(chat_id=chat.tg_id, files=dict(photo=image))
+                task = await self.call_tg(tg_api.SendPhoto, **params)
+                await task.event.wait()
+                response: Optional[SendPhotoResponseSchema] = task.response
+                if response and response.result:
+                    delete_also.append(response.result.message_id)
+
+            text = '\n\n'.join([text, f'Результат: {fin_result:.2f} {report_valute.code}'])
+            keyboard = self.editor.get_hide_keyboard(delete_also=delete_also)
+            await self.call_tg(tg_api.SendMessage, chat_id=chat.tg_id, text=text, reply_markup=keyboard)
+            await self.set_state(user, state, MessageHandlerEnum.DEFAULT, {})
+
+        else:
+            report_text = _make_text_report(report_data, report_valute, rates)
+            text += '\n\n' + report_text
+            await self.edit_message(chat.tg_id, callback.message.message_id, text, keyboard)
+            await self.set_state(user, state, MessageHandlerEnum.DEFAULT, {})
 
 
-def _make_report(
+def _make_text_report(
     report_data: list[tuple[Category, BudgetItem, Valute, int]],
     report_valute: Optional[Valute] = None,
     rates: Optional[dict[str, float]] = None,
@@ -260,3 +281,40 @@ async def _get_daily_rate(
         rate = round(1 / rate.rate, RATE_PRECISION)
         rates.append(rate)
     return geometric_mean(rates) if rates else None
+
+
+def _make_image_report(
+    report_data: list[tuple[Category, BudgetItem, Valute, int]],
+    report_valute: Optional[Valute] = None,
+    rates: Optional[dict[str, float]] = None,
+) -> tuple[Optional[list[bytes]], Optional[float]]:
+    if not rates:
+        return None, None
+
+    mapper = _map_report_data(report_data, report_valute, rates)
+    ru_types = {
+        BudgetItemTypeEnum.INCOME.value: 'ДОХОДЫ',
+        BudgetItemTypeEnum.EXPENSE.value: 'РАСХОДЫ',
+    }
+    images = []
+
+    totals = dict()
+    for item_type, data in mapper.items():
+        total = 0
+        chart_labels = []
+        chart_data = []
+        for category, items in data.items():
+            for budget_item, item_data in items.items():
+                for _, amount in item_data.items():
+                    total += amount
+                    chart_labels.append(f'{category} - {budget_item}')
+                    chart_data.append(amount)
+
+        legend_title = f'{ru_types.get(item_type)} {total:.2f} {report_valute.code}'
+        image = make_pie_chart(chart_labels, chart_data, title=None, legend_title=legend_title)
+        images.append(image)
+        totals[item_type] = total
+
+    fin_result = totals.get(BudgetItemTypeEnum.INCOME.value, 0) - totals.get(BudgetItemTypeEnum.EXPENSE.value, 0)
+
+    return images, fin_result

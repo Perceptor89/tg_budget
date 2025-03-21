@@ -47,7 +47,7 @@ class TGMessageSchema(BaseModel):
     date: datetime.datetime
     reply_to_message: Optional[TGReplyToMessageSchema] = Field(None)
     entities: list[TGEntitySchema] = Field(default_factory=list)
-    text: str
+    text: Optional[str] = Field(None)
     reply_markup: Optional['InlineKeyboardMarkup'] = Field(None)
 
     @cached_property
@@ -70,6 +70,10 @@ class TGUpdateSchema(BaseModel):
     update_id: int
     message: Optional[TGMessageSchema] = Field(None)
     callback_query: Optional[TGCallbackQuerySchema] = Field(None)
+
+
+class PhotoFileSchema(BaseModel):
+    photo: bytes
 
 
 class RequestSchema(BaseModel):
@@ -136,5 +140,20 @@ class EditMessageReplyMarkupRequestSchema(RequestSchema):
 
 
 class EditMessageReplyMarkupResponseSchema(ResponseSchema):
+    ok: bool
+    result: Optional[TGMessageSchema] = Field(None)
+
+
+class SendPhotoRequestSchema(RequestSchema):
+    chat_id: Union[int, str]
+    files: PhotoFileSchema
+    reply_markup: Optional[str] = Field(None)
+    caption: Optional[str] = Field(None)
+    protect_content: Optional[bool] = Field(True)
+    is_form: bool = Field(True)
+    files: Optional[PhotoFileSchema] = Field(None)
+
+
+class SendPhotoResponseSchema(ResponseSchema):
     ok: bool
     result: Optional[TGMessageSchema] = Field(None)

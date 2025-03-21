@@ -17,6 +17,7 @@ from app.tg_service.schemas import (
     InlineKeyboardMarkup,
     ReplyParametersRequestSchema,
     SendMessageRequestSchema,
+    SendPhotoRequestSchema,
     TGCallbackQuerySchema,
     TGMessageSchema,
 )
@@ -114,6 +115,24 @@ class BaseHandler(Protocol):
             reply_markup=reply_markup,
         )
         return await self.tg.send(tg_api.EditMessageReplyMarkup, request)
+
+    async def send_photo(
+        self,
+        chat_tg_id: int,
+        photo: bytes,
+        caption: Optional[str] = None,
+        reply_markup: Union[ForceReplySchema, InlineKeyboardMarkup, None] = None
+    ) -> SendTaskSchema:
+        request = SendPhotoRequestSchema(chat_id=chat_tg_id,
+                                         caption=caption,
+                                         reply_markup=reply_markup)
+        return await self.tg.send(tg_api.SendPhoto, request, files={'photo': photo})
+
+    async def call_tg(self, tg_method: tg_api.TGAPI, **kwargs) -> SendTaskSchema:
+        """Call Telegram API method."""
+        # TODO: replace other specific calls by this method
+        request = tg_method.request_schema(**kwargs)
+        return await self.tg.send(tg_method, request)
 
     async def set_state(
         self,

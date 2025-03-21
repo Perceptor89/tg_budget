@@ -1,3 +1,4 @@
+import json
 from logging import getLogger
 from typing import Optional, Union
 
@@ -55,13 +56,14 @@ class Accountant:
         CallbackHandlerEnum.ENTRY_ADD_FINISH.value: EntryAddFinishHandler,
         CallbackHandlerEnum.REPORT_SELECT_YEAR.value: ReportSelectYearHandler,
         CallbackHandlerEnum.REPORT_SELECT_MONTH.value: ReportSelectMonthHandler,
-        CallbackHandlerEnum.HIDE.value: HideCallbackHandler,
-
     }
     message_handlers = {
         MessageHandlerEnum.CATEGORY_ADD_NAME.value: CategoryAddNameHandler,
         MessageHandlerEnum.BUDGET_ITEM_ADD_NAME.value: BudgetItemAddNameHandler,
         MessageHandlerEnum.ENTRY_ADD_AMOUNT.value: EntryAddAmountHandler,
+    }
+    common_callback_handlers = {
+        CallbackHandlerEnum.HIDE.value: HideCallbackHandler,
     }
 
     def __init__(self, db: DatabaseAccessor, tg_client: TelegramClient, editor: TGMessageEditor):
@@ -79,8 +81,8 @@ class Accountant:
         try:
             if is_message and update.command:
                 await self._process_command(chat, user, update, state)
-            elif not is_message and update.data == 'hide':
-                await self._process_hide_callback(chat, user, update, state)
+            elif not is_message and 'common_action' in update.data:
+                await self._process_common_callback(chat, user, update, state)
             elif not is_message:
                 await self._process_callback(chat, user, update, state)
             else:
@@ -127,15 +129,18 @@ class Accountant:
             handler = handler(self.db, self.tg_client, self.editor)
             await handler.handle(chat=chat, user=user, callback=callback, state=state)
 
-    async def _process_hide_callback(
+    async def _process_common_callback(
         self,
         chat: TGChat,
         user: TGUser,
         callback: TGCallbackQuerySchema,
         state: Optional[TGUserState],
     ):
-        handler = HideCallbackHandler(self.db, self.tg_client, self.editor)
-        await handler.handle(chat=chat, user=user, callback=callback, state=state)
+        callback.data = json.loads(callback.data)
+        handler_type = self.common_callback_handlers.get(callback.data['common_action'])
+        if handler_type:
+            handler = handler_type(self.db, self.tg_client, self.editor)
+            await handler.handle(chat=chat, user=user, callback=callback, state=state)
 
     async def _process_message(
         self,

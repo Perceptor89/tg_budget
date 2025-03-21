@@ -5,8 +5,8 @@ from app.tg_service import schemas as api_schemas
 
 class TGAPI:
     name: str
-    request_shema: BaseModel
-    response_schema: BaseModel
+    request_schema: type[BaseModel]
+    response_schema: type[BaseModel]
 
 
 class SendMessage(TGAPI):
@@ -23,11 +23,17 @@ class DeleteMessage(TGAPI):
 
 class EditMessageText(TGAPI):
     name = 'editMessageText'
-    request_shema = api_schemas.EditMessageTextRequestSchema
+    request_schema = api_schemas.EditMessageTextRequestSchema
     response_schema = api_schemas.EditMessageTextResponseSchema
 
 
 class EditMessageReplyMarkup(TGAPI):
     name = 'editMessageReplyMarkup'
-    request_shema = api_schemas.EditMessageReplyMarkupRequestSchema
+    request_schema = api_schemas.EditMessageReplyMarkupRequestSchema
     response_schema = api_schemas.EditMessageReplyMarkupResponseSchema
+
+
+class SendPhoto(TGAPI):
+    name = 'sendPhoto'
+    request_schema = api_schemas.SendPhotoRequestSchema
+    response_schema = api_schemas.SendPhotoResponseSchema
