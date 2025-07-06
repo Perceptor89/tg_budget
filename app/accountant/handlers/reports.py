@@ -1,3 +1,5 @@
+"""Reports handlers."""
+
 from collections import defaultdict
 from statistics import geometric_mean
 from typing import TYPE_CHECKING, Optional
