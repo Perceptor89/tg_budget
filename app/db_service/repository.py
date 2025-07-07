@@ -290,7 +290,7 @@ class EntryRepository(_BaseRepo):
         chat_id: int,
         year: int,
         month: int,
-    ) -> list[tuple[Category, BudgetItem, Valute, int]]:
+    ) -> list[tuple[Category, BudgetItem, Valute, float]]:
         query = select(
             Category, BudgetItem, Valute, func.sum(Entry.amount).label('amount'),
         ).select_from(
@@ -352,6 +352,7 @@ class ValuteRateRepository(_BaseRepo):
         session: AsyncSession,
         from_codes: list[str],
         to_codes: list[str],
+        year: int,
         month: int,
     ) -> list[ValuteRate]:
         ValuteFrom = aliased(Valute)
@@ -367,6 +368,7 @@ class ValuteRateRepository(_BaseRepo):
             ValuteTo, ValuteTo.id == ValuteRate.valute_to_id,
         ).where(
             and_(
+                func.extract('year', ValuteRate.date) == year,
                 func.extract('month', ValuteRate.date) == month,
                 ValuteFrom.code.in_(from_codes),
                 ValuteTo.code.in_(to_codes),
@@ -415,6 +417,7 @@ class ValuteExchangeRepository(_BaseRepo):
         session: AsyncSession,
         from_codes: list[str],
         to_codes: list[str],
+        year: int,
         month: int,
     ) -> list[ValuteExchange]:
         ValuteFrom = aliased(Valute)
@@ -430,6 +433,7 @@ class ValuteExchangeRepository(_BaseRepo):
             ValuteTo, ValuteTo.id == ValuteExchange.valute_to_id,
         ).where(
             and_(
+                func.extract('year', ValuteExchange.created_at) == year,
                 func.extract('month', ValuteExchange.created_at) == month,
                 ValuteFrom.code.in_(from_codes),
                 ValuteTo.code.in_(to_codes),

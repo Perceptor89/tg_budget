@@ -88,10 +88,7 @@ class Accountant:
             else:
                 await self._process_message(chat, user, update, state)
         except Exception as error:
-            known_errors = (
-                RuntimeError,
-                ValueError,
-            )
+            known_errors = (RuntimeError,)
             level = logger.error if isinstance(error, known_errors) else logger.exception
             level(
                 'chat[%s] user[%s] update %s is_message %s error %s',
