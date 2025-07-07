@@ -45,6 +45,7 @@ class TelegramClient:
     manage_queue: asyncio.Queue = None
     send_queue: asyncio.Queue = None
     offset: int = 0
+    _sleep_for: int = 5
 
     accountant: 'Accountant' = None
 
@@ -102,13 +103,16 @@ class TelegramClient:
                     except Exception as error:
                         # TODO: bot report
                         logger.error('response_validation-E %s', error)
+                        await asyncio.sleep(self._sleep_for)
             else:
                 logger.error('response_dict %s', response_dict)
+                await asyncio.sleep(self._sleep_for)
 
     async def _send(self, send_task: SendTaskSchema):
         params = dict(url=self._make_url(send_task.method.name))
         payload_key = 'data' if getattr(send_task.data, 'is_form', False) else 'json'
-        params[payload_key] = send_task.data.model_dump(exclude_none=True, exclude={'files', 'is_form'})
+        params[payload_key] = send_task.data.model_dump(
+            exclude_none=True, exclude={'files', 'is_form'})
         if getattr(send_task.data, 'files', None):
             params['files'] = send_task.data.files.model_dump()
         response = await self._request(**params)
