@@ -65,20 +65,12 @@ class ReportCategory:
         return sum(bi.amount for bi in self.budget_items if bi.type_ == BudgetItemTypeEnum.EXPENSE)
 
     @property
-    def total_amount(self):
-        return self.income or self.expense
-
-    @property
     def income_str(self):
         return f'{self.income:.2f}'
 
     @property
     def expense_str(self):
         return f'{self.expense:.2f}'
-
-    @property
-    def total_str(self):
-        return f'{self.total_amount:.2f}'
 
 
 @dataclass
@@ -198,7 +190,7 @@ class Report:
     @cached_property
     def image_height(self) -> int:
         """Image height."""
-        return self.PIE_CHART_HEIGHT * 2 + self.total_items_count * self.LEGEND_ITEM_HEIGHT
+        return self.income_section_height + self.expense_section_height
 
     @cached_property
     def income_title(self) -> str:
@@ -249,6 +241,7 @@ class Report:
             raise NoRatesError(f'rates not found {to_find - found}')
         if substitutes:
             rates.update(dict.fromkeys(substitutes, 1))
+        rates.update({self.valute.code: 1})
         self.rates = rates
 
     async def _get_valute_rates(self, rates_to_find: set[Valute]) -> dict[str, float]:
@@ -337,11 +330,11 @@ class Report:
         fig = plt.figure(figsize=(self.REPORT_IMAGE_WIDTH, self.image_height))
         gs = fig.add_gridspec(
             2, 1, height_ratios=[self.income_section_height, self.expense_section_height])
-        for gs, categories, items_count, title in (
-            (gs[0], self.income_categories, self.income_title, self.income_legend_height),
-            (gs[1], self.expense_categories, self.expense_title, self.expense_legend_height),
+        for gs, categories, budget_item_type in (
+            (gs[0], self.income_categories, BudgetItemTypeEnum.INCOME),
+            (gs[1], self.expense_categories, BudgetItemTypeEnum.EXPENSE),
         ):
-            self._create_section_plot(fig, gs, categories, items_count, title, 'pastel')
+            self._create_section_plot(fig, gs, categories, budget_item_type)
         plt.tight_layout(pad=2.0)
         buf = BytesIO()
         plt.savefig(buf, format='png', bbox_inches='tight', pad_inches=0.2, dpi=100)
@@ -351,32 +344,39 @@ class Report:
         return image_bytes
 
     def _create_section_plot(
-            self, fig, subplot_pos, categories: list[ReportCategory], title: str,
-            section_legend_height: int, palette='pastel') -> bytes:
+            self, fig: plt.Figure, subplot_pos: gridspec.GridSpec,
+            categories: list[ReportCategory],
+            budget_item_type: BudgetItemTypeEnum, palette='pastel') -> None:
         """Create a section of the report with title, pie chart and legend."""
         if not categories:
             return
-        category_totals = [c.total_amount for c in categories]
+
+        if budget_item_type == BudgetItemTypeEnum.INCOME:
+            category_totals = [c.income for c in categories]
+            legend_height = self.income_legend_height
+            pie_labels = [f'{c.name} [{c.income_str}]' for c in categories]
+            title = self.income_title
+        else:
+            category_totals = [c.expense for c in categories]
+            legend_height = self.expense_legend_height
+            pie_labels = [f'{c.name} [{c.expense_str}]' for c in categories]
+            title = self.expense_title
+
         gs = gridspec.GridSpecFromSubplotSpec(
-            2, 1, subplot_pos, height_ratios=[self.PIE_CHART_HEIGHT, section_legend_height])
+            2, 1, subplot_pos, height_ratios=[self.PIE_CHART_HEIGHT, legend_height])
         pie_ax = fig.add_subplot(gs[0])
         colors = sns.color_palette(palette, n_colors=len(categories))
         pie_ax.pie(
-            category_totals,
-            labels=[f'{c.name} |{c.total_str}|' for c in categories],
-            colors=colors,
-            autopct='%1.1f%%',
-            startangle=90,
-        )
+            category_totals, labels=pie_labels, colors=colors, autopct='%1.1f%%', startangle=90)
         pie_ax.set_title(title, fontsize=14, pad=20)
         legend_ax = fig.add_subplot(gs[1])
         legend_ax.axis('off')
         legend_items = []
         for category, color in zip(categories, colors):
-            for item in category.budget_items:
+            for item in [i for i in category.budget_items if i.type_ == budget_item_type]:
                 formatted_text = (
                     f'{category.name.upper():{self.max_category_name_length}} '
-                    f'| {item.name:{self.max_item_name_length}} - {item.amount_str}'
+                    f'| {item.name:{self.max_item_name_length}} | {item.amount_str}'
                 )
                 legend_items.append((color, formatted_text, item.amount))
         legend_items.sort(key=lambda x: x[2], reverse=True)
