@@ -346,7 +346,7 @@ class Report:
     def _create_section_plot(
             self, fig: plt.Figure, subplot_pos: gridspec.GridSpec,
             categories: list[ReportCategory],
-            budget_item_type: BudgetItemTypeEnum, palette='pastel') -> None:
+            budget_item_type: BudgetItemTypeEnum, palette='deep') -> None:
         """Create a section of the report with title, pie chart and legend."""
         if not categories:
             return
