@@ -232,3 +232,21 @@ class ValuteExchange(_BaseExtended):
     )
     valute_from_amount = sa.Column(sa.Float, nullable=False)
     valute_to_amount = sa.Column(sa.Float, nullable=False)
+
+
+class ChatBalance(_BaseExtended):
+    """Chat balances."""
+    __tablename__ = 'chat_balances'
+
+    chat_id = sa.Column(
+        sa.BigInteger,
+        sa.ForeignKey('tg_chats.id', ondelete='CASCADE'),
+        nullable=False,
+    )
+    name = sa.Column(sa.String, nullable=False)
+    amount = sa.Column(sa.Float, nullable=False, server_default=sa.text('0'))
+    valute_id = sa.Column(
+        sa.BigInteger,
+        sa.ForeignKey('valutes.id', ondelete='CASCADE'),
+        nullable=False,
+    )

@@ -61,6 +61,7 @@ class Accountant:
         MessageHandlerEnum.CATEGORY_ADD_NAME.value: CategoryAddNameHandler,
         MessageHandlerEnum.BUDGET_ITEM_ADD_NAME.value: BudgetItemAddNameHandler,
         MessageHandlerEnum.ENTRY_ADD_AMOUNT.value: EntryAddAmountHandler,
+        MessageHandlerEnum.BALANCE_ADD_NAME.value: BalanceAddNameHandler,
     }
     common_callback_handlers = {
         CallbackHandlerEnum.HIDE.value: HideCallbackHandler,

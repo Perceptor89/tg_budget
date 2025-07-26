@@ -34,7 +34,7 @@ class BudgetItemAddHandler(CommandHandler):
         state: Optional[TGUserState],
         **_,
     ) -> None:
-        await self.delete_message(message)
+        await self.delete_request_messages()
         keyboard = self.editor.get_category_keyboard(chat.categories)
         task = await self.send_message(chat, message, BUDGET_ITEM_ADD_CATEGORY, keyboard, is_answer=False)
         await task.event.wait()
@@ -104,7 +104,7 @@ class BudgetItemAddTypeHandler(CallbackHandler):
         await send_task.event.wait()
         response: Optional[SendMessageResponseSchema] = send_task.response
         if response:
-            await self.delete_message(callback.message)
+            await self.delete_(callback.message)
             data_raw = dict(
                 message_id=response.result.message_id,
                 category_id=category.id,

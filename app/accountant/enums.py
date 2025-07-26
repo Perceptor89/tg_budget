@@ -10,15 +10,20 @@ class CommandHadlerEnum(str, enum.Enum):
     BUDGET_ITEM_ADD = '/budget_item_add'
     ENTRY_ADD = '/entry_add'
     REPORT = '/report'
+    BALANCE_CREATE = '/balance_create'
+    BALANCE_LIST = 'balance_list'
+    BALANCE_DELETE = 'balance_delete'
+    BALANCE_UPDATE_BATCH = 'balance_update_batch'
 
 
 class MessageHandlerEnum(str, enum.Enum):
     """Accountant message names."""
 
+    DEFAULT = 'default'
     CATEGORY_ADD_NAME = 'category_add_name'
     BUDGET_ITEM_ADD_NAME = 'budget_item_add_name'
     ENTRY_ADD_AMOUNT = 'entry_add_amount'
-    DEFAULT = 'default'
+    BALANCE_ADD_NAME = 'balance_add_name'
 
 
 class CallbackHandlerEnum(str, enum.Enum):

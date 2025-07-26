@@ -29,3 +29,6 @@ REPORT_SELECT_YEAR = 'ОТЧЕТ\nВыберите год'
 REPORT_SELECT_MONTH = 'ОТЧЕТ\nгод {year}\nВыберите месяц'
 REPORT_RESULT = 'ОТЧЕТ\nгод {year}\nмесяц {month}'
 REPORT_NO_ENTRIES = 'В чате еще нет ни одной записи'
+
+BALANCE_ADD_NAME = 'Введите название баланса'
+BALANCE_ADD_NAME_PLACEHOLDER = 'Наличные USD'

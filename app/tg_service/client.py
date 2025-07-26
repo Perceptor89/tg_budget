@@ -80,9 +80,8 @@ class TelegramClient:
         for task in self.send_tasks:
             await task
 
-    async def send(
-        self, method: Type[TGAPI], data: RequestSchema,
-    ) -> SendTaskSchema:
+    async def send(self, method: Type[TGAPI], data: RequestSchema) -> SendTaskSchema:
+        """Send request to Telegram API."""
         task = SendTaskSchema(method=method, data=data)
         await self.send_queue.put(task)
         return task

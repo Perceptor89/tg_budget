@@ -1,10 +1,19 @@
 
 from logging import getLogger
-from typing import Optional, Protocol, Union
+from typing import Optional, Union
 
 from app.accountant.enums import CallbackHandlerEnum, MessageHandlerEnum
 from app.db_service.enums import BudgetItemTypeEnum
-from app.db_service.models import BudgetItem, Category, ChatBudgetItem, ChatValute, TGChat, TGUser, TGUserState, Valute
+from app.db_service.models import (
+    BudgetItem,
+    Category,
+    ChatBudgetItem,
+    ChatValute,
+    TGChat,
+    TGUser,
+    TGUserState,
+    Valute,
+)
 from app.db_service.repository import DatabaseAccessor
 from app.tg_service import api as tg_api
 from app.tg_service.client import SendTaskSchema, TelegramClient
@@ -22,7 +31,6 @@ from app.tg_service.schemas import (
     TGMessageSchema,
 )
 
-
 CATEGORY_AMOUNT_LIMIT = 12
 BUDGET_ITEM_AMOUNT_LIMIT = 12
 
@@ -30,11 +38,10 @@ DEFAULT_VALUTE_CODE = 'RUB'
 DEFAULT_VALUTE_NAME = 'Российский рубль'
 DEFAULT_VALUTE_SYMBOL = '₽'
 
-ErrorMessage = str
 logger = getLogger('app')
 
 
-class BaseHandler(Protocol):
+class BaseHandler:
 
     db: DatabaseAccessor
     tg: TelegramClient
@@ -83,11 +90,18 @@ class BaseHandler(Protocol):
         )
         return await self.tg.send(tg_api.SendMessage, request)
 
-    async def delete_message(self, message: TGMessageSchema) -> SendTaskSchema:
-        request = DeleteMessageRequestSchema(
-            chat_id=message.chat.tg_id, message_id=message.message_id,
-        )
-        return await self.tg.send(tg_api.DeleteMessage, request)
+    async def delete_request_messages(self, delete_reply_to_msg: bool = False) -> SendTaskSchema:
+        """Delete request messages."""
+        messages = [self.message]
+        reply_to_msg = self.message.reply_to_message
+        tasks = []
+        if delete_reply_to_msg and reply_to_msg:
+            messages.append(reply_to_msg)
+        for msg in messages:
+            request = DeleteMessageRequestSchema(chat_id=self.chat.id,
+                                                 message_id=msg.message_id)
+            tasks.append(await self.tg.send(tg_api.DeleteMessage, request))
+        return tasks[-1]
 
     async def edit_message(
         self,
@@ -198,7 +212,7 @@ class BaseHandler(Protocol):
         else:
             category = category[0]
         if error:
-            raise RuntimeError(error)
+            raise ValueError(error)
         return category
 
     def get_selected_budget_item(
@@ -327,10 +341,12 @@ class MessageHandler(BaseHandler):
 
 
 class CommandHandler(BaseHandler):
-    pass
+    """Base command handler."""
 
 
 class CallbackHandler(BaseHandler):
+    """Base callback handler."""
+
     @staticmethod
     def _validate_callback_message_id(
         message: TGMessageSchema, state: Optional[TGUserState],
@@ -346,5 +362,6 @@ class CallbackHandler(BaseHandler):
         state: Optional[TGUserState],
         **_,
     ):
+        """Handle callback."""
         if not self._validate_callback_message_id(callback.message, state):
             return
