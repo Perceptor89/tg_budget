@@ -85,10 +85,13 @@ class ResponseSchema(BaseModel):
 
 
 class SendMessageRequestSchema(RequestSchema):
+    """Send message to chat."""
+
     chat_id: Union[int, str]
     text: str
     reply_parameters: Optional['ReplyParametersRequestSchema'] = Field(None)
     reply_markup: Union[None, 'ForceReplySchema', 'InlineKeyboardMarkup'] = Field(None)
+    parse_mode: Optional[str] = Field(None)
 
 
 class ReplyParametersRequestSchema(RequestSchema):
@@ -98,6 +101,8 @@ class ReplyParametersRequestSchema(RequestSchema):
 
 
 class ForceReplySchema(RequestSchema):
+    """Force reply schema."""
+
     force_reply: bool = Field(True)
     input_field_placeholder: Optional[str] = Field(None)
     selective: Optional[bool] = Field(True)
@@ -123,10 +128,13 @@ class DeleteMessageRequestSchema(RequestSchema):
 
 
 class EditMessageTextRequestSchema(RequestSchema):
+    """Edit message text schema."""
+
     chat_id: Union[int, str]
     message_id: int
     text: str
     reply_markup: Union[None, InlineKeyboardMarkup, ForceReplySchema] = Field(None)
+    parse_mode: Optional[str] = Field(None)
 
 
 class EditMessageTextResponseSchema(SendMessageResponseSchema):

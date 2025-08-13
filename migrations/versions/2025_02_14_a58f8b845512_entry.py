@@ -26,16 +26,19 @@ def upgrade() -> None:
         sa.Column('amount', sa.Float(), nullable=False),
         sa.Column('data_raw', postgresql.JSONB(astext_type=sa.Text()), nullable=False),
         sa.Column('id', sa.BigInteger(), autoincrement=True, nullable=False),
-        sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+        sa.Column(
+            'created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
         sa.ForeignKeyConstraint(['chat_budget_item_id'], ['chat_budget_items.id'], ondelete='CASCADE'),
         sa.ForeignKeyConstraint(['valute_id'], ['valutes.id'], ondelete='CASCADE'),
         sa.PrimaryKeyConstraint('id')
     )
     op.drop_constraint('uq_chat_budget_category_budget_chat', 'chat_budget_items', type_='unique')
-    op.create_unique_constraint('uq_chat_budget_category', 'chat_budget_items', ['category_id', 'budget_item_id', 'chat_id'])
+    op.create_unique_constraint(
+        'uq_chat_budget_category', 'chat_budget_items', ['category_id', 'budget_item_id', 'chat_id'])
 
 
 def downgrade() -> None:
     op.drop_constraint('uq_chat_budget_category', 'chat_budget_items', type_='unique')
-    op.create_unique_constraint('uq_chat_budget_category_budget_chat', 'chat_budget_items', ['category_id', 'budget_item_id', 'chat_id'])
+    op.create_unique_constraint(
+        'uq_chat_budget_category_budget_chat', 'chat_budget_items', ['category_id', 'budget_item_id', 'chat_id'])
     op.drop_table('entries')

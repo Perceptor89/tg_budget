@@ -5,6 +5,7 @@ from app.accountant.enums import DecisionEnum
 from app.constants import EMOJIES, MONTHS_MAPPER
 from app.db_service.enums import BudgetItemTypeEnum
 from app.db_service.models import BudgetItem, Category, Valute
+from app.tg_service.btn_labels import BUTTON_LABELS
 from app.tg_service.schemas import InlineKeyboardButtonSchema, InlineKeyboardMarkup
 
 
@@ -12,16 +13,25 @@ KEYBOARD_ROWS_DEFAULT = 2
 
 
 class TGMessageEditor:
+    """Telegram message editor."""
+
     def create_inline_keyboard(
-        self, buttons: list[tuple[str, str]], columns_amount: int = 1,
+        self, buttons: list[tuple[str, str]],
+        columns_amount: int = 1,
+        add_hide_button: bool = False,
     ) -> InlineKeyboardMarkup:
+        """Create inline keyboard."""
         buttons = [
             InlineKeyboardButtonSchema(text=text, callback_data=callback_data)
             for text, callback_data in buttons
         ]
+        if add_hide_button:
+            buttons.append(
+                InlineKeyboardButtonSchema(
+                    text=BUTTON_LABELS['hide'],
+                    callback_data=json.dumps({'common_action': 'hide'})))
         return InlineKeyboardMarkup(
-            inline_keyboard=list(self.split_into_chunks(buttons, columns_amount)),
-        )
+            inline_keyboard=list(self.split_into_chunks(buttons, columns_amount)))
 
     @staticmethod
     def split_into_chunks(items: list, chunk_size: int):
@@ -29,8 +39,9 @@ class TGMessageEditor:
             yield items[i:i + chunk_size]
 
     @staticmethod
-    def get_mention(user: str) -> Optional[str]:
-        return f'@{user}' if user else None
+    def get_mention(username: str) -> Optional[str]:
+        """Get mention from username."""
+        return f'@{username} ' if username else None
 
     def get_category_keyboard(self, categories: list[Category]) -> InlineKeyboardMarkup:
         buttons = [(c.name, c.name) for c in categories]
@@ -124,5 +135,11 @@ class TGMessageEditor:
         callback = dict(common_action='hide')
         if delete_also:
             callback['delete_also'] = delete_also
-        button = ('Скрыть', json.dumps(callback))
+        button = (BUTTON_LABELS['hide'], json.dumps(callback))
         return self.create_inline_keyboard([button], columns_amount=1)
+
+    def get_yes_no_keyboard(self, add_hide_button: bool = False) -> InlineKeyboardMarkup:
+        """Get yes no keyboard."""
+        buttons = [(BUTTON_LABELS['yes'], '1'), (BUTTON_LABELS['no'], '0')]
+        return self.create_inline_keyboard(
+            buttons, columns_amount=2, add_hide_button=add_hide_button)

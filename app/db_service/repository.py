@@ -13,6 +13,7 @@ from app.db_service.enums import BudgetItemTypeEnum
 from .models import (
     BudgetItem,
     Category,
+    ChatBalance,
     ChatBudgetItem,
     ChatValute,
     Entry,
@@ -32,6 +33,7 @@ T = TypeVar('T', bound=_Base)
 
 
 def handle_session(function):
+    """Provide session to function."""
     @wraps(function)
     async def wrapper(self, *args, **kwargs):
         session = session_factory()
@@ -52,6 +54,7 @@ class _BaseRepo:
 
     @handle_session
     async def create_item(self, session: AsyncSession, item: T) -> Optional[T]:
+        """Create item."""
         session.add(item)
         await session.flush([item])
         logger.debug('%s -> %s', item.__class__.__name__, item.as_dict())
@@ -59,9 +62,18 @@ class _BaseRepo:
 
     @handle_session
     async def update_item(self, session: AsyncSession, altered: T) -> Optional[T]:
+        """Update item."""
         altered = await session.merge(altered)
         logger.debug('%s -> %s', altered.__class__.__name__, altered.as_dict())
         return altered
+
+    @handle_session
+    async def delete_item(self, session: AsyncSession, item: T) -> Optional[T]:
+        """Delete item."""
+        await session.delete(item)
+        await session.flush([item])
+        logger.debug('%s item %s deleted', item.__class__.__name__, item.as_dict())
+        return item
 
     @handle_session
     async def _get_by_tg_id(
@@ -92,7 +104,7 @@ class _BaseRepo:
         session: AsyncSession,
         name: str,
     ) -> Optional[T]:
-        query = select(self._model).where(self._model.name == name)
+        query = select(self._model).where(self._model.name.ilike(name))
         result = await session.execute(query)
         return result.scalar()
 
@@ -109,14 +121,18 @@ class TGChatRepository(_BaseRepo):
 
     @handle_session
     async def get_by_tg_id(self, session: AsyncSession, tg_id: int) -> TGChat | None:
-        query = select(TGChat)\
-            .outerjoin(ChatBudgetItem, ChatBudgetItem.chat_id == TGChat.id)\
-            .outerjoin(Category, Category.id == ChatBudgetItem.category_id)\
-            .outerjoin(BudgetItem, BudgetItem.id == ChatBudgetItem.budget_item_id)\
+        """Get chat by Telegram ID."""
+        query = (
+            select(TGChat)
+            .outerjoin(ChatBudgetItem, ChatBudgetItem.chat_id == TGChat.id)
+            .outerjoin(Category, Category.id == ChatBudgetItem.category_id)
+            .outerjoin(BudgetItem, BudgetItem.id == ChatBudgetItem.budget_item_id)
             .options(
                 contains_eager(TGChat.categories).contains_eager(Category.budget_items),
                 joinedload(TGChat.valutes),
+                joinedload(TGChat.balances).joinedload(ChatBalance.valute),
             ).where(TGChat.tg_id == tg_id)
+        )
         result = await session.execute(query)
         return result.unique().scalar()
 
@@ -156,6 +172,7 @@ class ChatCategoryBudgetItemRepository(_BaseRepo):
         budget_item_type: Optional[BudgetItemTypeEnum] = None,
         budget_item_id: Optional[int] = None,
     ) -> Optional[ChatBudgetItem]:
+        """Get chat budget item."""
         if not budget_item_id and not (budget_item_name and budget_item_type):
             raise ValueError('No budget_item specified')
         query = select(
@@ -173,7 +190,7 @@ class ChatCategoryBudgetItemRepository(_BaseRepo):
         else:
             query = query.where(
                 and_(
-                    BudgetItem.name == budget_item_name,
+                    BudgetItem.name.ilike(budget_item_name),
                     BudgetItem.type == budget_item_type.value,
                 ),
             )
@@ -224,7 +241,12 @@ class CategoryRepository(_BaseRepo):
     _model = Category
 
     async def get_by_id(self, category_id: int) -> Optional[Category]:
+        """Get category by id."""
         return await super()._get_by_id(category_id)
+
+    async def get_by_name(self, name: str) -> Optional[Category]:
+        """Get category by name."""
+        return await super()._get_by_name(name=name)
 
 
 class ValuteRepository(_BaseRepo):
@@ -236,6 +258,7 @@ class ValuteRepository(_BaseRepo):
 
     @handle_session
     async def get_by_code(self, session: AsyncSession, code: str) -> Optional[Valute]:
+        """Get valute by code."""
         query = select(self._model).where(self._model.code == code)
         result = await session.execute(query)
         return result.scalar()
@@ -253,7 +276,7 @@ class EntryRepository(_BaseRepo):
     @handle_session
     async def get_years(self, session: AsyncSession, chat_id: int) -> List[int]:
         query = select(
-            cast(func.extract('year', self._model.created_at), Integer).label('year'),
+            cast(func.extract('year', Entry.created_at), Integer).label('year'),
         ).select_from(
             Entry,
         ).join(
@@ -269,14 +292,14 @@ class EntryRepository(_BaseRepo):
     @handle_session
     async def get_months(self, session: AsyncSession, chat_id: int, year: int) -> List[int]:
         query = select(
-            cast(func.extract('month', self._model.created_at), Integer).label('month'),
+            cast(func.extract('month', Entry.created_at), Integer).label('month'),
         ).select_from(
             Entry,
         ).join(
             ChatBudgetItem, ChatBudgetItem.id == Entry.chat_budget_item_id,
         ).where(
             ChatBudgetItem.chat_id == chat_id,
-            func.extract('year', self._model.created_at) == year,
+            func.extract('year', Entry.created_at) == year,
         ).order_by(
             asc('month'),
         ).distinct()
@@ -443,7 +466,15 @@ class ValuteExchangeRepository(_BaseRepo):
         return result.scalars().all()
 
 
+class ChatBalanceRepository(_BaseRepo):
+    """Telegram chat balance repository."""
+
+    _model = ChatBalance
+
+
 class DatabaseAccessor:
+    """Database accessor."""
+
     chat_repo: TGChatRepository
     user_repo: TGUserRepository
     state_repo: UserStateRepository
@@ -455,6 +486,7 @@ class DatabaseAccessor:
     valute_exchange_repo: ValuteExchangeRepository
     entry_repo: EntryRepository
     chat_valute_repo: ChatValuteRepository
+    chat_balance_repo: ChatBalanceRepository
 
     def __init__(self) -> None:
         self.chat_repo = TGChatRepository()
@@ -468,3 +500,4 @@ class DatabaseAccessor:
         self.valute_exchange_repo = ValuteExchangeRepository()
         self.entry_repo = EntryRepository()
         self.chat_valute_repo = ChatValuteRepository()
+        self.chat_balance_repo = ChatBalanceRepository()

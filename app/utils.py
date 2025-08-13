@@ -13,7 +13,7 @@ def convert_time(
     return time.replace(tzinfo=None) if is_offset_naive else time
 
 
-def utcnow(is_timezone: bool = False):
+def utcnow(is_timezone: bool = True):
     """Get current datetime object."""
     now = datetime.now().astimezone(UTC)
     return now if is_timezone else now.replace(tzinfo=None)

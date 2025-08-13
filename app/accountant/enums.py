@@ -10,10 +10,10 @@ class CommandHadlerEnum(str, enum.Enum):
     BUDGET_ITEM_ADD = '/budget_item_add'
     ENTRY_ADD = '/entry_add'
     REPORT = '/report'
-    BALANCE_CREATE = '/balance_create'
-    BALANCE_LIST = 'balance_list'
-    BALANCE_DELETE = 'balance_delete'
-    BALANCE_UPDATE_BATCH = 'balance_update_batch'
+    BALANCE_CREATE = '/balance_add'
+    BALANCE_LIST = '/balance_list'
+    BALANCE_SET = '/balance_set'
+    BALANCE_DELETE = '/balance_delete'
 
 
 class MessageHandlerEnum(str, enum.Enum):
@@ -23,7 +23,8 @@ class MessageHandlerEnum(str, enum.Enum):
     CATEGORY_ADD_NAME = 'category_add_name'
     BUDGET_ITEM_ADD_NAME = 'budget_item_add_name'
     ENTRY_ADD_AMOUNT = 'entry_add_amount'
-    BALANCE_ADD_NAME = 'balance_add_name'
+    BALANCE_CREATE_NAME = 'balance_add_name'
+    BALANCE_SET_SAVE_AMOUNT = 'balance_set_save_amount'
 
 
 class CallbackHandlerEnum(str, enum.Enum):
@@ -38,6 +39,10 @@ class CallbackHandlerEnum(str, enum.Enum):
     REPORT_SELECT_YEAR = 'report_select_year'
     REPORT_SELECT_MONTH = 'report_select_month'
     HIDE = 'hide'
+    BALANCE_CREATE_VALUTE = 'balance_add_valute'
+    BALANCE_SET_CHOOSE_ONE = 'balance_set_choose_one'
+    BALANCE_DELETE_CHOOSE_ONE = 'balance_delete_choose_one'
+    BALANCE_DELETE_CONFIRM = 'balance_delete_confirm'
 
 
 class DecisionEnum(str, enum.Enum):

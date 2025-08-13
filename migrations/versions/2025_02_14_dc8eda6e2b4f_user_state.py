@@ -19,14 +19,17 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    op.create_table('tg_user_states',
-    sa.Column('tg_user_id', sa.BigInteger(), nullable=False),
-    sa.Column('state', sa.String(), nullable=False),
-    sa.Column('data_raw', postgresql.JSONB(astext_type=sa.Text()), nullable=False),
-    sa.Column('id', sa.BigInteger(), autoincrement=True, nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
-    sa.ForeignKeyConstraint(['tg_user_id'], ['tg_users.id'], ondelete='CASCADE'),
-    sa.PrimaryKeyConstraint('id')
+    op.create_table(
+        'tg_user_states',
+        sa.Column('tg_user_id', sa.BigInteger(), nullable=False),
+        sa.Column('state', sa.String(), nullable=False),
+        sa.Column('data_raw', postgresql.JSONB(astext_type=sa.Text()), nullable=False),
+        sa.Column('id', sa.BigInteger(), autoincrement=True, nullable=False),
+        sa.Column(
+            'created_at',
+            sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+        sa.ForeignKeyConstraint(['tg_user_id'], ['tg_users.id'], ondelete='CASCADE'),
+        sa.PrimaryKeyConstraint('id')
     )
 
 

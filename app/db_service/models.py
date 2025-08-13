@@ -1,8 +1,9 @@
+import datetime
 from functools import cached_property
 import sqlalchemy as sa
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import Mapped, relationship
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.sql import func, text
 
 from app.db_service.schemas import StateDataSchema
@@ -53,6 +54,8 @@ class ChatBudgetItem(_BaseExtended):
 
 
 class TGChat(_BaseExtended):
+    """Telegram chat."""
+
     __tablename__ = 'tg_chats'
 
     tg_id = sa.Column(sa.BigInteger, nullable=False)
@@ -69,6 +72,7 @@ class TGChat(_BaseExtended):
         back_populates='chats',
         secondary='chat_valutes',
     )
+    balances: Mapped[list['ChatBalance']] = relationship('ChatBalance', back_populates='chat')
 
 
 class TGMessage(_BaseExtended):
@@ -92,6 +96,8 @@ class TGUser(_BaseExtended):
 
 
 class Category(_BaseExtended):
+    """Category."""
+
     __tablename__ = 'categories'
 
     name = sa.Column(sa.String, nullable=False)
@@ -128,6 +134,8 @@ class BudgetItem(_BaseExtended):
 
 
 class TGUserState(_BaseExtended):
+    """Telegram user state."""
+
     __tablename__ = 'tg_user_states'
 
     tg_user_id = sa.Column(
@@ -135,11 +143,12 @@ class TGUserState(_BaseExtended):
         sa.ForeignKey('tg_users.id', ondelete='CASCADE'),
         nullable=False,
     )
-    state = sa.Column(sa.String, nullable=False)
+    name: Mapped[str] = mapped_column(sa.String, nullable=False)
     data_raw = sa.Column(JSONB, nullable=False, default=dict())
 
     @cached_property
     def data(self) -> StateDataSchema:
+        """Get state data."""
         return StateDataSchema.model_validate(self.data_raw)
 
 
@@ -155,6 +164,7 @@ class Valute(_BaseExtended):
         back_populates='valutes',
         secondary='chat_valutes',
     )
+    balances: Mapped[list['ChatBalance']] = relationship('ChatBalance', back_populates='valute')
 
 
 class ChatValute(_BaseExtended):
@@ -236,6 +246,7 @@ class ValuteExchange(_BaseExtended):
 
 class ChatBalance(_BaseExtended):
     """Chat balances."""
+
     __tablename__ = 'chat_balances'
 
     chat_id = sa.Column(
@@ -245,8 +256,32 @@ class ChatBalance(_BaseExtended):
     )
     name = sa.Column(sa.String, nullable=False)
     amount = sa.Column(sa.Float, nullable=False, server_default=sa.text('0'))
+    updated_at = sa.Column(sa.DateTime(timezone=True), nullable=False, server_default=func.now())
     valute_id = sa.Column(
         sa.BigInteger,
         sa.ForeignKey('valutes.id', ondelete='CASCADE'),
         nullable=False,
     )
+
+    chat: Mapped['TGChat'] = relationship('TGChat', back_populates='balances')
+    valute: Mapped['Valute'] = relationship('Valute', back_populates='balances')
+
+    @property
+    def amount_str(self) -> str:
+        """Get amount string."""
+        return f'{self.amount:.2f}'
+
+    @property
+    def updated_at_date(self) -> datetime.date:
+        """Get updated at date."""
+        return self.updated_at.date()
+
+    @property
+    def updated_at_date_str(self) -> str:
+        """Get updated at string."""
+        return self.updated_at_date.isoformat()
+
+    @property
+    def info(self) -> str:
+        """Get balance info."""
+        return f'{self.name} | {self.amount_str} {self.valute.code} | {self.updated_at_date_str}'
