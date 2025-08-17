@@ -102,6 +102,7 @@ class BaseHandler:
     ) -> SendTaskSchema:
         """Send message to chat."""
         reply_parameters = None
+        text = self.editor.escape(text)
         if is_reply:
             reply_parameters = ReplyParametersRequestSchema(message_id=self.update.message_id,
                                                             chat_id=self.chat.tg_id)
@@ -113,11 +114,14 @@ class BaseHandler:
         return await self.tg.send(tg_api.SendMessage, request)
 
     async def edit_message(
-        self, message_id: int, text: str,
+        self,
+        message_id: int,
+        text: str,
         reply_markup: Union[ForceReplySchema, InlineKeyboardMarkup, None] = None,
         parse_mode: str = 'MarkdownV2'
     ) -> SendTaskSchema:
         """Edit Telegram message text and keyboard."""
+        text = self.editor.escape(text)
         request = EditMessageTextRequestSchema(chat_id=self.chat.tg_id,
                                                message_id=message_id,
                                                text=text,
@@ -132,10 +136,14 @@ class BaseHandler:
         reply_markup: Union[ForceReplySchema, InlineKeyboardMarkup, None] = None
     ) -> SendTaskSchema:
         """Send photo to chat."""
-        request = SendPhotoRequestSchema(chat_id=self.chat.tg_id,
-                                         caption=caption,
-                                         reply_markup=reply_markup)
-        return await self.tg.send(tg_api.SendPhoto, request, files={'photo': photo})
+        request = {
+            'chat_id': self.chat.tg_id,
+            'caption': caption,
+            'reply_markup': reply_markup,
+            'files': {'photo': photo}
+        }
+        request = SendPhotoRequestSchema.model_validate(request)
+        return await self.tg.send(tg_api.SendPhoto, request)
 
     def get_selected_category(self) -> Category:
         """Get selected category."""

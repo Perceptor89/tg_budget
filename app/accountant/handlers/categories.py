@@ -66,5 +66,6 @@ class CategoryAddNameHandler(MessageHandler):
             chat.categories.append(category)
             await self.db.chat_repo.update_item(chat)
             text = CATEGORY_CREATED.format(new_name)
-        await self.send_message(text)
+        keyboard = self.editor.get_hide_keyboard()
+        await self.send_message(text, keyboard)
         await self.set_state(MessageHandlerEnum.DEFAULT, {})

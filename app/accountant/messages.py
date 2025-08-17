@@ -3,20 +3,19 @@ CATEGORY_LIMIT_ERROR = 'Чат уже содержит максимальное 
 CATEGORY_ENTER_NEW = '{}Введите название категории'
 CATEGORY_ENTER_NEW_PLACEHOLDER = 'название категории'
 CATEGORY_EXISTS_ERROR = 'Категория {} уже существует'
-CATEGORY_CREATED = 'Категория {} создана'
+CATEGORY_CREATED = 'Категория `{}` создана'
 
 BUDGET_ITEM_ADD_CATEGORY = 'Укажите категорию'
-BUDGET_ITEM_ADD_NAME = 'Категория {}, тип {}. {}Введите название статьи'
+BUDGET_ITEM_ADD_NAME = 'Категория `{}`\nтип `{}`\n\n{}Введите название статьи'
 BUDGET_ITEM_ADD_LIMIT_ERROR = 'Категория {} уже содержит максимальное количество статей - {}'
 BUDGET_ITEM_ADD_NAME_PLACEHOLDER = 'название статьи'
-BUDGET_ITEM_ADD_EXISTS_ERROR = ('категория {}\n'
-                                'статья {}\n'
-                                'тип {}\n'
-                                'уже существует\n'
-                                '{}выберите другое название')
+BUDGET_ITEM_ADD_EXISTS_ERROR = ('Категория `{}`\n'
+                                'статья `{}`\n'
+                                'тип `{}`\n'
+                                'Уже существует. {}Выбери другое название')
 BUDGET_ITEM_ADD_TYPE = 'Выберите тип статьи'
-BUDGET_ITEM_ADDED = ('{category} | {budget_item} | {type}\n'
-                     'добавлена')
+BUDGET_ITEM_ADDED = ('категория `{category}`\ncтатья `{budget_item}`\nтип `{type}`\n\n'
+                     'Успешно добавлена')
 
 ENTRY_ADD_CATEGORY = 'Укажите категорию'
 ENTRY_ADD_BUDGET_ITEM = 'Укажите статью'
@@ -31,7 +30,7 @@ ENTRY_ADD_FINISH = 'Ввод завершен'
 
 REPORT_SELECT_YEAR = 'ОТЧЕТ\nВыберите год'
 REPORT_SELECT_MONTH = 'ОТЧЕТ\nгод {year}\nВыберите месяц'
-REPORT_RESULT = 'ОТЧЕТ\nгод {year}\nмесяц {month}'
+REPORT_RESULT = 'ОТЧЕТ\nгод `{year}`\nмесяц `{month}`'
 REPORT_NO_ENTRIES = 'В чате еще нет ни одной записи'
 
 BALANCE_INFO = 'БАЛАНС\n`{balance_info}`'

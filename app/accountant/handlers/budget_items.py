@@ -1,5 +1,6 @@
 from app.db_service.enums import BudgetItemTypeEnum
 from app.db_service.models import BudgetItem, ChatBudgetItem
+from app.tg_service.btn_labels import BUTTON_LABELS
 from app.tg_service.schemas import ForceReplySchema
 
 from .. import constants
@@ -61,10 +62,10 @@ class BudgetItemAddTypeHandler(CallbackHandler):
         await self.delete_income_messages()
         callback = self.update
         type_ = BudgetItemTypeEnum(callback.data)
-        category = await self.get_state_category()
+        category = self.get_state_category()
         mention = self.editor.get_mention(self.user.username)
         text = BUDGET_ITEM_ADD_NAME.format(
-            category.name, type_.value, f'{mention} ' if mention else '')
+            category.name, BUTTON_LABELS[type_.value.lower()], f'{mention} ' if mention else '')
         keyboard = ForceReplySchema(input_field_placeholder=BUDGET_ITEM_ADD_NAME_PLACEHOLDER)
         task = await self.send_message(text, keyboard)
         await self.wait_task_result(task, MessageHandlerEnum.BUDGET_ITEM_ADD_NAME,
@@ -84,7 +85,7 @@ class BudgetItemAddNameHandler(MessageHandler):
         message = self.update
         chat = self.chat
         user = self.user
-        category = await self.get_state_category()
+        category = self.get_state_category()
         new_name = message.text.strip()
         repo = self.db.chat_budget_item_repo
         type_ = BudgetItemTypeEnum(state.data.budget_item_type)
@@ -114,7 +115,8 @@ class BudgetItemAddNameHandler(MessageHandler):
                                                   budget_item_id=budget_item.id)
                 await repo.create_item(chat_budget_item)
             text = BUDGET_ITEM_ADDED.format(
-                category=category.name.upper(), budget_item=new_name, type=type_.value)
+                category=category.name.upper(), budget_item=new_name,
+                type=BUTTON_LABELS[type_.value.lower()])
             keyboard = self.editor.get_hide_keyboard()
             await self.send_message(text, keyboard)
             await self.set_state(MessageHandlerEnum.DEFAULT, {})

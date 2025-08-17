@@ -150,7 +150,7 @@ class Accountant:
         """Get or create state."""
         if not (state := await self.db.state_repo.get_tg_user_state(user.id)):
             state = TGUserState(
-                tg_user_id=user.id, state=MessageHandlerEnum.DEFAULT.value, data_raw={})
+                tg_user_id=user.id, name=MessageHandlerEnum.DEFAULT.value, data_raw={})
             state = await self.db.state_repo.create_item(state)
 
         return state

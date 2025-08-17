@@ -73,15 +73,17 @@ class TGUpdateSchema(BaseModel):
 
 
 class PhotoFileSchema(BaseModel):
+    """Photo file schema."""
+
     photo: bytes
 
 
 class RequestSchema(BaseModel):
-    ...
+    """Request schema."""
 
 
 class ResponseSchema(BaseModel):
-    ...
+    """Response schema."""
 
 
 class SendMessageRequestSchema(RequestSchema):
@@ -153,13 +155,14 @@ class EditMessageReplyMarkupResponseSchema(ResponseSchema):
 
 
 class SendPhotoRequestSchema(RequestSchema):
+    """Send photo request schema."""
+
     chat_id: Union[int, str]
     files: PhotoFileSchema
     reply_markup: Optional[str] = Field(None)
     caption: Optional[str] = Field(None)
     protect_content: Optional[bool] = Field(True)
     is_form: bool = Field(True)
-    files: Optional[PhotoFileSchema] = Field(None)
 
 
 class SendPhotoResponseSchema(ResponseSchema):

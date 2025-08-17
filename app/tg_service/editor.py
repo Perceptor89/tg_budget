@@ -48,7 +48,8 @@ class TGMessageEditor:
         return self.create_inline_keyboard(buttons, KEYBOARD_ROWS_DEFAULT)
 
     def get_budget_item_type_keyboard(self) -> InlineKeyboardMarkup:
-        buttons = [(t.value, t.value) for t in BudgetItemTypeEnum]
+        """Get budget item type keyboard."""
+        buttons = [(BUTTON_LABELS[t.value.lower()], t.value) for t in BudgetItemTypeEnum]
         return self.create_inline_keyboard(buttons, KEYBOARD_ROWS_DEFAULT)
 
     def get_budget_item_keyboard(self, budget_items: list[BudgetItem]) -> InlineKeyboardMarkup:
@@ -84,6 +85,7 @@ class TGMessageEditor:
         amount: Optional[float] = None,
         valute_code: Optional[str] = None,
     ) -> str:
+        """Make entry line."""
         if not category_name:
             raise ValueError('category_name is empty')
 
@@ -98,9 +100,10 @@ class TGMessageEditor:
             line = f'{line} {amount_line}'
         if valute_code:
             line = f'{line} {valute_code}'
-        return line
+        return f'`{line}`'
 
     def make_category_list(self, categories: list[Category]) -> str:
+        """Make category list."""
         categories.sort(key=lambda c: c.name)
         lines = []
         for category in categories:
@@ -143,3 +146,14 @@ class TGMessageEditor:
         buttons = [(BUTTON_LABELS['yes'], '1'), (BUTTON_LABELS['no'], '0')]
         return self.create_inline_keyboard(
             buttons, columns_amount=2, add_hide_button=add_hide_button)
+
+    def escape(self, text: str) -> str:
+        """Escape text."""
+        return (
+            text
+            .replace('(', '\\(')
+            .replace(')', '\\)')
+            .replace('.', '\\.')
+            .replace('|', '\\|')
+            .replace('-', '\\-')
+        )

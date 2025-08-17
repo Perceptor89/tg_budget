@@ -138,7 +138,7 @@ class EntryAddBudgetItemHandler(CallbackHandler, _EntryAddMixin):
         await super().handle()
         callback = self.update
         message_id = callback.message.message_id
-        category = self.get_selected_category()
+        category = self.get_state_category()
         budget_item = self.get_selected_budget_item(callback, category)
         valutes = await self.get_chat_valutes()
         keyboard = self.editor.get_valute_keyboard(valutes)
