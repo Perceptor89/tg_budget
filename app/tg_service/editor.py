@@ -149,11 +149,6 @@ class TGMessageEditor:
 
     def escape(self, text: str) -> str:
         """Escape text."""
-        return (
-            text
-            .replace('(', '\\(')
-            .replace(')', '\\)')
-            .replace('.', '\\.')
-            .replace('|', '\\|')
-            .replace('-', '\\-')
-        )
+        for char in '()|.-_':
+            text = text.replace(char, '\\' + char)
+        return text
