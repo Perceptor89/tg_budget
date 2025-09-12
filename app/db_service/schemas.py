@@ -15,6 +15,8 @@ class StateDataSchema(BaseModel):
     main_message_id: Optional[int] = Field(None)
     year: Optional[int] = Field(None)
     balance_name: Optional[str] = Field(None)
+    fond_name: Optional[str] = Field(None)
+    debt_name: Optional[str] = Field(None)
 
 
 class EntryDataSchema(BaseModel):

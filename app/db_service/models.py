@@ -73,6 +73,8 @@ class TGChat(_BaseExtended):
         secondary='chat_valutes',
     )
     balances: Mapped[list['ChatBalance']] = relationship('ChatBalance', back_populates='chat')
+    fonds: Mapped[list['ChatFond']] = relationship('ChatFond', back_populates='chat')
+    debts: Mapped[list['ChatDebt']] = relationship('ChatDebt', back_populates='chat')
 
 
 class TGMessage(_BaseExtended):
@@ -165,6 +167,8 @@ class Valute(_BaseExtended):
         secondary='chat_valutes',
     )
     balances: Mapped[list['ChatBalance']] = relationship('ChatBalance', back_populates='valute')
+    fonds: Mapped[list['ChatFond']] = relationship('ChatFond', back_populates='valute')
+    debts: Mapped[list['ChatDebt']] = relationship('ChatDebt', back_populates='valute')
 
 
 class ChatValute(_BaseExtended):
@@ -244,10 +248,8 @@ class ValuteExchange(_BaseExtended):
     valute_to_amount = sa.Column(sa.Float, nullable=False)
 
 
-class ChatBalance(_BaseExtended):
-    """Chat balances."""
-
-    __tablename__ = 'chat_balances'
+class _BalanceItem:
+    """Base model for balance, fond and debts items."""
 
     chat_id = sa.Column(
         sa.BigInteger,
@@ -262,9 +264,6 @@ class ChatBalance(_BaseExtended):
         sa.ForeignKey('valutes.id', ondelete='CASCADE'),
         nullable=False,
     )
-
-    chat: Mapped['TGChat'] = relationship('TGChat', back_populates='balances')
-    valute: Mapped['Valute'] = relationship('Valute', back_populates='balances')
 
     @property
     def amount_str(self) -> str:
@@ -285,3 +284,30 @@ class ChatBalance(_BaseExtended):
     def info(self) -> str:
         """Get balance info."""
         return f'{self.name} | {self.amount_str} {self.valute.code} | {self.updated_at_date_str}'
+
+
+class ChatBalance(_BalanceItem, _BaseExtended):
+    """Chat balances."""
+
+    __tablename__ = 'chat_balances'
+
+    chat: Mapped['TGChat'] = relationship('TGChat', back_populates='balances')
+    valute: Mapped['Valute'] = relationship('Valute', back_populates='balances')
+
+
+class ChatFond(_BalanceItem, _BaseExtended):
+    """Chat fonds."""
+
+    __tablename__ = 'chat_fonds'
+
+    chat: Mapped['TGChat'] = relationship('TGChat', back_populates='fonds')
+    valute: Mapped['Valute'] = relationship('Valute', back_populates='fonds')
+
+
+class ChatDebt(_BalanceItem, _BaseExtended):
+    """Chat debts."""
+
+    __tablename__ = 'chat_debts'
+
+    chat: Mapped['TGChat'] = relationship('TGChat', back_populates='debts')
+    valute: Mapped['Valute'] = relationship('Valute', back_populates='debts')

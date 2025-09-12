@@ -1,9 +1,9 @@
 import datetime
 from functools import wraps
 from logging import getLogger
-from typing import List, Optional, Type, TypeVar
+from typing import AsyncIterator, List, Optional, Type, TypeVar
 
-from sqlalchemy import Date, Integer, and_, asc, cast, desc, func, true
+from sqlalchemy import Column, Date, Integer, and_, asc, cast, desc, func, true
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy.orm import Load, aliased, contains_eager, joinedload
@@ -15,6 +15,8 @@ from .models import (
     Category,
     ChatBalance,
     ChatBudgetItem,
+    ChatDebt,
+    ChatFond,
     ChatValute,
     Entry,
     TGChat,
@@ -131,7 +133,10 @@ class TGChatRepository(_BaseRepo):
                 contains_eager(TGChat.categories).contains_eager(Category.budget_items),
                 joinedload(TGChat.valutes),
                 joinedload(TGChat.balances).joinedload(ChatBalance.valute),
-            ).where(TGChat.tg_id == tg_id)
+                joinedload(TGChat.fonds).joinedload(ChatFond.valute),
+                joinedload(TGChat.debts).joinedload(ChatDebt.valute),
+            )
+            .where(TGChat.tg_id == tg_id)
         )
         result = await session.execute(query)
         return result.unique().scalar()
@@ -270,6 +275,7 @@ class ChatValuteRepository(_BaseRepo):
 
 
 class EntryRepository(_BaseRepo):
+    """Entries database interaction methods."""
 
     _model = Entry
 
@@ -311,9 +317,10 @@ class EntryRepository(_BaseRepo):
         self,
         session: AsyncSession,
         chat_id: int,
-        year: int,
-        month: int,
+        period0: datetime.date,
+        period1: datetime.date,
     ) -> list[tuple[Category, BudgetItem, Valute, float]]:
+        """Get report data."""
         query = select(
             Category, BudgetItem, Valute, func.sum(Entry.amount).label('amount'),
         ).select_from(
@@ -330,8 +337,7 @@ class EntryRepository(_BaseRepo):
             Valute, Valute.id == Entry.valute_id,
         ).where(
             ChatBudgetItem.chat_id == chat_id,
-            func.extract('year', self._model.created_at) == year,
-            func.extract('month', self._model.created_at) == month,
+            Entry.created_at.between(period0, period1),
         ).group_by(
             Category, BudgetItem, Valute,
         ).order_by(
@@ -364,19 +370,67 @@ class EntryRepository(_BaseRepo):
         result = await session.execute(query)
         return result.all()
 
+    @handle_session
+    async def get_chat_entries_period(
+        self, session: AsyncSession, chat_id: int,
+    ) -> Optional[tuple[datetime.date, datetime.date]]:
+        """Get chat entries max and min time."""
+        q = (
+            select(func.min(Entry.created_at), func.max(Entry.created_at))
+            .select_from(TGChat)
+            .outerjoin(ChatBudgetItem, ChatBudgetItem.chat_id == TGChat.id)
+            .outerjoin(Entry, Entry.chat_budget_item_id == ChatBudgetItem.id)
+            .where(TGChat.id == chat_id)
+        )
+        result = await session.execute(q)
+        return result.one_or_none()
+
+    @handle_session
+    async def get_chat_entries_valutes(self, session: AsyncSession, chat_id: int) -> list[Valute]:
+        """Get chat entries valutes."""
+        q = (
+            select(Valute)
+            .select_from(TGChat)
+            .outerjoin(ChatBudgetItem, ChatBudgetItem.chat_id == TGChat.id)
+            .outerjoin(Entry, Entry.chat_budget_item_id == ChatBudgetItem.id)
+            .outerjoin(Valute, Valute.id == Entry.valute_id)
+            .where(TGChat.id == chat_id)
+            .where(Entry.id.isnot(None))
+            .group_by(Valute.id)
+        )
+        result = await session.execute(q)
+        return result.scalars().all()
+
+    async def iterate_chat_entries(self, chat_id: int) -> AsyncIterator[Entry]:
+        """Iterate chat entries."""
+        async with session_factory() as session:
+            q = (
+                select(BudgetItem.type, Entry.amount, Valute.code)
+                .select_from(TGChat)
+                .join(ChatBudgetItem, ChatBudgetItem.chat_id == TGChat.id)
+                .join(BudgetItem, BudgetItem.id == ChatBudgetItem.budget_item_id)
+                .join(Entry, Entry.chat_budget_item_id == ChatBudgetItem.id)
+                .join(Valute, Valute.id == Entry.valute_id)
+                .where(TGChat.id == chat_id)
+            )
+            async with session.begin():
+                result = await session.stream(q)
+                async for entry in result:
+                    yield entry
+
 
 class ValuteRateRepository(_BaseRepo):
 
     _model = ValuteRate
 
     @handle_session
-    async def get_month_rates(
+    async def get_period_rates(
         self,
         session: AsyncSession,
         from_codes: list[str],
         to_codes: list[str],
-        year: int,
-        month: int,
+        period0: datetime.date,
+        period1: datetime.date,
     ) -> list[ValuteRate]:
         ValuteFrom = aliased(Valute)
         ValuteTo = aliased(Valute)
@@ -391,8 +445,7 @@ class ValuteRateRepository(_BaseRepo):
             ValuteTo, ValuteTo.id == ValuteRate.valute_to_id,
         ).where(
             and_(
-                func.extract('year', ValuteRate.date) == year,
-                func.extract('month', ValuteRate.date) == month,
+                ValuteRate.date.between(period0, period1),
                 ValuteFrom.code.in_(from_codes),
                 ValuteTo.code.in_(to_codes),
             ),
@@ -402,22 +455,23 @@ class ValuteRateRepository(_BaseRepo):
 
     @handle_session
     async def get_unrated_dates(
-        self, session: AsyncSession, exclude: list[str],
+        self, session: AsyncSession, check_column: Column, exclude: list[str] = None,
     ) -> list[tuple[Valute, datetime.date]]:
+        """Get unrated dates for provided column."""
         exclude = exclude or []
 
         subquery = select(
-            func.cast(Entry.created_at, Date).label('entry_date'),
+            func.cast(check_column, Date).label('check_date'),
         ).distinct().subquery()
 
         q = select(
-            Valute, subquery.c.entry_date,
+            Valute, subquery.c.check_date,
         ).join(
             subquery, true(),
         ).outerjoin(
             ValuteRate,
             and_(
-                ValuteRate.date == subquery.c.entry_date,
+                ValuteRate.date == subquery.c.check_date,
                 ValuteRate.valute_to_id == Valute.id,
             )
         ).where(
@@ -440,9 +494,10 @@ class ValuteExchangeRepository(_BaseRepo):
         session: AsyncSession,
         from_codes: list[str],
         to_codes: list[str],
-        year: int,
-        month: int,
+        period0: datetime.date,
+        period1: datetime.date,
     ) -> list[ValuteExchange]:
+        """Get valute exchanges."""
         ValuteFrom = aliased(Valute)
         ValuteTo = aliased(Valute)
 
@@ -456,8 +511,7 @@ class ValuteExchangeRepository(_BaseRepo):
             ValuteTo, ValuteTo.id == ValuteExchange.valute_to_id,
         ).where(
             and_(
-                func.extract('year', ValuteExchange.created_at) == year,
-                func.extract('month', ValuteExchange.created_at) == month,
+                ValuteExchange.created_at.between(period0, period1),
                 ValuteFrom.code.in_(from_codes),
                 ValuteTo.code.in_(to_codes),
             ),
@@ -472,6 +526,18 @@ class ChatBalanceRepository(_BaseRepo):
     _model = ChatBalance
 
 
+class ChatFondRepository(_BaseRepo):
+    """Telegram chat fond repository."""
+
+    _model = ChatFond
+
+
+class ChatDebtRepository(_BaseRepo):
+    """Telegram chat debt repository."""
+
+    _model = ChatDebt
+
+
 class DatabaseAccessor:
     """Database accessor."""
 
@@ -479,7 +545,7 @@ class DatabaseAccessor:
     user_repo: TGUserRepository
     state_repo: UserStateRepository
     budget_item_repo: BudgetItemRepository
-    category_repo = CategoryRepository
+    category_repo: CategoryRepository
     chat_budget_item_repo: ChatCategoryBudgetItemRepository
     valute_repo: ValuteRepository
     valute_rate_repo: ValuteRateRepository
@@ -487,6 +553,8 @@ class DatabaseAccessor:
     entry_repo: EntryRepository
     chat_valute_repo: ChatValuteRepository
     chat_balance_repo: ChatBalanceRepository
+    chat_fond_repo: ChatFondRepository
+    chat_debt_repo: ChatDebtRepository
 
     def __init__(self) -> None:
         self.chat_repo = TGChatRepository()
@@ -501,3 +569,5 @@ class DatabaseAccessor:
         self.entry_repo = EntryRepository()
         self.chat_valute_repo = ChatValuteRepository()
         self.chat_balance_repo = ChatBalanceRepository()
+        self.chat_fond_repo = ChatFondRepository()
+        self.chat_debt_repo = ChatDebtRepository()

@@ -36,6 +36,14 @@ class Accountant:
         CommandHadlerEnum.BALANCE_LIST.value: handlers.BalanceListHandler,
         CommandHadlerEnum.BALANCE_SET.value: handlers.BalanceSetHandler,
         CommandHadlerEnum.BALANCE_DELETE.value: handlers.BalanceDeleteHandler,
+        CommandHadlerEnum.FOND_CREATE.value: handlers.FondCreateHandler,
+        CommandHadlerEnum.FOND_LIST.value: handlers.FondListHandler,
+        CommandHadlerEnum.FOND_SET.value: handlers.FondSetHandler,
+        CommandHadlerEnum.FOND_DELETE.value: handlers.FondDeleteHandler,
+        CommandHadlerEnum.DEBT_CREATE.value: handlers.DebtCreateHandler,
+        CommandHadlerEnum.DEBT_LIST.value: handlers.DebtListHandler,
+        CommandHadlerEnum.DEBT_SET.value: handlers.DebtSetHandler,
+        CommandHadlerEnum.DEBT_DELETE.value: handlers.DebtDeleteHandler,
     }
     callback_handlers = {
         CallbackHandlerEnum.BUDGET_ITEM_ADD_CATEGORY.value: handlers.BudgetItemAddCategoryHandler,
@@ -50,6 +58,14 @@ class Accountant:
         CallbackHandlerEnum.BALANCE_SET_CHOOSE_ONE.value: handlers.BalanceSetChooseOneHandler,
         CallbackHandlerEnum.BALANCE_DELETE_CHOOSE_ONE.value: handlers.BalanceDeleteChooseOneHandler,
         CallbackHandlerEnum.BALANCE_DELETE_CONFIRM.value: handlers.BalanceDeleteConfirmHandler,
+        CallbackHandlerEnum.FOND_CREATE_VALUTE.value: handlers.FondCreateValuteHandler,
+        CallbackHandlerEnum.FOND_SET_CHOOSE_ONE.value: handlers.FondSetChooseOneHandler,
+        CallbackHandlerEnum.FOND_DELETE_CHOOSE_ONE.value: handlers.FondSetSaveAmountHandler,
+        CallbackHandlerEnum.FOND_DELETE_CONFIRM.value: handlers.FondDeleteConfirmHandler,
+        CallbackHandlerEnum.DEBT_CREATE_VALUTE.value: handlers.DebtCreateValuteHandler,
+        CallbackHandlerEnum.DEBT_SET_CHOOSE_ONE.value: handlers.DebtSetChooseOneHandler,
+        CallbackHandlerEnum.DEBT_DELETE_CHOOSE_ONE.value: handlers.DebtSetSaveAmountHandler,
+        CallbackHandlerEnum.DEBT_DELETE_CONFIRM.value: handlers.DebtDeleteConfirmHandler,
     }
     message_handlers = {
         MessageHandlerEnum.CATEGORY_ADD_NAME.value: handlers.CategoryAddNameHandler,
@@ -57,6 +73,10 @@ class Accountant:
         MessageHandlerEnum.ENTRY_ADD_AMOUNT.value: handlers.EntryAddAmountHandler,
         MessageHandlerEnum.BALANCE_CREATE_NAME.value: handlers.BalanceCreateNameHandler,
         MessageHandlerEnum.BALANCE_SET_SAVE_AMOUNT.value: handlers.BalanceSetSaveAmountHandler,
+        MessageHandlerEnum.FOND_CREATE_NAME.value: handlers.FondCreateNameHandler,
+        MessageHandlerEnum.FOND_SET_SAVE_AMOUNT.value: handlers.FondSetSaveAmountHandler,
+        MessageHandlerEnum.DEBT_CREATE_NAME.value: handlers.DebtCreateNameHandler,
+        MessageHandlerEnum.DEBT_SET_SAVE_AMOUNT.value: handlers.DebtSetSaveAmountHandler,
     }
     common_callback_handlers = {
         CallbackHandlerEnum.HIDE.value: HideCallbackHandler,

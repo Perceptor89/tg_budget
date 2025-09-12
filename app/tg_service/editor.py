@@ -19,6 +19,7 @@ class TGMessageEditor:
         self, buttons: list[tuple[str, str]],
         columns_amount: int = 1,
         add_hide_button: bool = False,
+        add_current_button: bool = False,
     ) -> InlineKeyboardMarkup:
         """Create inline keyboard."""
         buttons = [
@@ -30,6 +31,11 @@ class TGMessageEditor:
                 InlineKeyboardButtonSchema(
                     text=BUTTON_LABELS['hide'],
                     callback_data=json.dumps({'common_action': 'hide'})))
+        if add_current_button:
+            buttons.append(
+                InlineKeyboardButtonSchema(
+                    text=BUTTON_LABELS['current'],
+                    callback_data='current'))
         return InlineKeyboardMarkup(
             inline_keyboard=list(self.split_into_chunks(buttons, columns_amount)))
 
@@ -126,13 +132,25 @@ class TGMessageEditor:
     def get_emoji(self, name: str) -> Optional[str]:
         return EMOJIES.get(name)
 
-    def get_months_keyboard(self, months: list[int]) -> InlineKeyboardMarkup:
+    def get_months_keyboard(
+        self,
+        months: list[int],
+        add_current_btn: bool = False,
+    ) -> InlineKeyboardMarkup:
+        """Make months keyboard."""
         buttons = [(MONTHS_MAPPER.get(m), str(m)) for m in months]
-        return self.create_inline_keyboard(buttons, columns_amount=3)
+        return self.create_inline_keyboard(
+            buttons, columns_amount=3, add_current_button=add_current_btn)
 
-    def get_years_keyboard(self, years: list[int]) -> InlineKeyboardMarkup:
+    def get_years_keyboard(
+        self,
+        years: list[int],
+        add_current_btn: bool = False,
+    ) -> InlineKeyboardMarkup:
+        """Make years keyboard."""
         buttons = [(str(y), str(y)) for y in years]
-        return self.create_inline_keyboard(buttons, columns_amount=1)
+        return self.create_inline_keyboard(
+            buttons, columns_amount=1, add_current_button=add_current_btn)
 
     def get_hide_keyboard(self, delete_also: Optional[list[int]] = None) -> InlineKeyboardMarkup:
         callback = dict(common_action='hide')

@@ -190,6 +190,7 @@ class BalanceDeleteHandler(CommandHandler):
 
     async def handle(self) -> None:
         """Process balance delete command click."""
+        # TODO: check existance
         await self.delete_income_messages()
         text = messages.BALANCE_DELETE_CHOOSE_ONE
         keyboard = self.editor.create_inline_keyboard(

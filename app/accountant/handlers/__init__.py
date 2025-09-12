@@ -18,6 +18,18 @@ from .budget_items import (
     BudgetItemAddTypeHandler,
 )
 from .categories import CategoryAddHandler, CategoryAddNameHandler, CategoryListHandler
+from .debts import (
+    DebtCreateHandler,
+    DebtCreateNameHandler,
+    DebtCreateValuteHandler,
+    DebtDeleteChooseOneHandler,
+    DebtDeleteConfirmHandler,
+    DebtDeleteHandler,
+    DebtListHandler,
+    DebtSetChooseOneHandler,
+    DebtSetHandler,
+    DebtSetSaveAmountHandler,
+)
 from .entries import (
     EntryAddAmountHandler,
     EntryAddBudgetItemHandler,
@@ -25,6 +37,18 @@ from .entries import (
     EntryAddFinishHandler,
     EntryAddHandler,
     EntryAddValuteHandler,
+)
+from .fonds import (
+    FondCreateHandler,
+    FondCreateNameHandler,
+    FondCreateValuteHandler,
+    FondDeleteChooseOneHandler,
+    FondDeleteConfirmHandler,
+    FondDeleteHandler,
+    FondListHandler,
+    FondSetChooseOneHandler,
+    FondSetHandler,
+    FondSetSaveAmountHandler,
 )
 from .reports import ReportHandler, ReportSelectMonthHandler, ReportSelectYearHandler
 
@@ -57,4 +81,24 @@ __all__ = (
     'BalanceDeleteHandler',
     'BalanceDeleteChooseOneHandler',
     'BalanceDeleteConfirmHandler',
+    'DebtCreateHandler',
+    'DebtCreateNameHandler',
+    'DebtCreateValuteHandler',
+    'DebtListHandler',
+    'DebtSetChooseOneHandler',
+    'DebtSetHandler',
+    'DebtSetSaveAmountHandler',
+    'DebtDeleteHandler',
+    'DebtDeleteChooseOneHandler',
+    'DebtDeleteConfirmHandler',
+    'FondCreateHandler',
+    'FondCreateNameHandler',
+    'FondCreateValuteHandler',
+    'FondListHandler',
+    'FondSetChooseOneHandler',
+    'FondSetHandler',
+    'FondSetSaveAmountHandler',
+    'FondDeleteHandler',
+    'FondDeleteChooseOneHandler',
+    'FondDeleteConfirmHandler',
 )

@@ -1,5 +1,6 @@
 from collections import defaultdict
 from dataclasses import dataclass
+import datetime
 from functools import cached_property
 from io import BytesIO
 from statistics import geometric_mean
@@ -12,7 +13,7 @@ import seaborn as sns
 from app.constants import USD_CODE, USDT_CODE
 from app.db_service import DatabaseAccessor
 from app.db_service.enums import BudgetItemTypeEnum
-from app.db_service.models import BudgetItem, Category, Valute, ValuteExchange
+from app.db_service.models import BudgetItem, Category, ChatBalance, ChatDebt, ChatFond, Valute, ValuteExchange
 
 
 class ReportError(Exception):
@@ -73,37 +74,134 @@ class ReportCategory:
         return f'{self.expense:.2f}'
 
 
-@dataclass
-class Report:
-    """Budget Report."""
+class _ReportBase:
+    """Budget report base."""
 
-    valute_name: str
-    chat_id: int
-    year: int
-    month: int
+    valute_code: str
     db: 'DatabaseAccessor'
+    chat_id: int
 
-    rates: dict[str, float] = None
-    raw_data: list[tuple[Category, BudgetItem, Valute, int]] = None
+    period0: Optional[datetime.date] = None
+    period1: Optional[datetime.date] = None
     valute: Optional[Valute] = None
-    categories: list[ReportCategory] = None
+    rates: dict[str, float] = None
 
+    REPORT_IMAGE_WIDTH = 7
+    REPORT_TEXT_FAMILY = 'monospace'
+
+    def __init__(self, db: 'DatabaseAccessor', chat_id: int, valute_code: str) -> None:
+        """Init report base."""
+        self.db = db
+        self.chat_id = chat_id
+        self.valute_code = valute_code
+        self.rates = {}
+
+    RATE_PRECISION = 6
     VALUTE_SUBSTITUTES = {
         USD_CODE: [USDT_CODE],
         USDT_CODE: [USD_CODE],
     }
-    RATE_PRECISION = 6
+
+    async def _load_valute(self) -> None:
+        """Load valute from database."""
+        if not (valute := await self.db.valute_repo.get_by_code(self.valute_code)):
+            raise NoValuteError(f'report valute {self.valute_code} not found')
+        self.valute = valute
+
+    async def _get_valute_rates(self, rates_to_find: set[Valute]) -> dict[str, float]:
+        rates = {}
+        usd = await self.db.valute_repo.get_by_code(USD_CODE)
+
+        for valute in rates_to_find:
+            direct = await self._get_exchange_rate(valute, self.valute)
+            if direct:
+                rates[valute.code] = direct
+                continue
+            valute_to_usd = await self._get_exchange_rate(valute, usd)
+            usd_to_target = await self._get_exchange_rate(usd, valute)
+            if valute_to_usd and usd_to_target:
+                rate = round(valute_to_usd * usd_to_target, 6)
+                rates[valute.code] = rate
+                continue
+            valute_to_usd = await self._get_daily_rate(valute, usd)
+            if self.valute.code in [USD_CODE, USDT_CODE]:
+                usd_to_target = 1
+            else:
+                usd_to_target = await self._get_daily_rate(usd, valute)
+            if valute_to_usd and usd_to_target:
+                rate = round(valute_to_usd * usd_to_target, 6)
+                rates[valute.code] = rate
+        return rates
+
+    async def _get_exchange_rate(self, valute_from: Valute, valute_to: Valute) -> Optional[float]:
+        rates = []
+        from_codes = [valute_from.code] + self.VALUTE_SUBSTITUTES.get(valute_from.code, [])
+        to_codes = [valute_to.code] + self.VALUTE_SUBSTITUTES.get(valute_to.code, [])
+        exchanges: list[ValuteExchange] = await self.db.valute_exchange_repo.get_pair_exchanges(
+            from_codes, to_codes, self.period0, self.period1)
+        for exchange in exchanges:
+            rate = round(
+                exchange.valute_to_amount / exchange.valute_from_amount, self.RATE_PRECISION)
+            rates.append(rate)
+        exchanges = await self.db.valute_exchange_repo.get_pair_exchanges(
+            to_codes, from_codes, self.period0, self.period1)
+        for exchange in exchanges:
+            rate = round(
+                exchange.valute_from_amount / exchange.valute_to_amount, self.RATE_PRECISION)
+            rates.append(rate)
+        return geometric_mean(rates) if rates else None
+
+    async def _get_daily_rate(self, valute_from: Valute, valute_to: Valute) -> Optional[float]:
+        rates = []
+        from_codes = [valute_from.code] + self.VALUTE_SUBSTITUTES.get(valute_from.code, [])
+        to_codes = [valute_to.code] + self.VALUTE_SUBSTITUTES.get(valute_to.code, [])
+        daily_rates = await self.db.valute_rate_repo.get_period_rates(
+            from_codes, to_codes, self.period0, self.period1)
+        for rate in daily_rates:
+            rates.append(rate.rate)
+        daily_rates = await self.db.valute_rate_repo.get_period_rates(
+            to_codes, from_codes, self.period0, self.period1)
+        for rate in daily_rates:
+            rate = round(1 / rate.rate, self.RATE_PRECISION)
+            rates.append(rate)
+        return geometric_mean(rates) if rates else None
+
+    async def _load_rates(self, used_valutes: set[Valute]) -> None:
+        """Load rates."""
+        substitutes = self.VALUTE_SUBSTITUTES.get(self.valute.code, [])
+        rates_to_find = set(v for v
+                            in used_valutes
+                            if (v.code != self.valute.code) and v.code not in substitutes)
+
+        rates = await self._get_valute_rates(rates_to_find)
+        to_find = {v.code for v in rates_to_find}
+        found = set(rates.keys())
+        if found != to_find:
+            raise NoRatesError(f'rates not found {to_find - found}')
+        if substitutes:
+            rates.update(dict.fromkeys(substitutes, 1))
+        rates.update({self.valute.code: 1})
+        self.rates = rates
+
+
+class Report(_ReportBase):
+    """Budget Report."""
+
+    period0: datetime.date
+    period1: datetime.date
+
+    raw_data: list[tuple[Category, BudgetItem, Valute, int]] = None
+    categories: list[ReportCategory] = None
+    image: Optional[bytes] = None
+
     PIE_CHART_HEIGHT = 5
     LEGEND_ITEM_HEIGHT = 0.2
-    REPORT_IMAGE_WIDTH = 7
 
-    def __init__(self, valute_name: str, chat_id: int, year: int, month: int,
-                 db: 'DatabaseAccessor') -> None:
-        self.valute_name = valute_name
-        self.chat_id = chat_id
-        self.year = year
-        self.month = month
-        self.db = db
+    def __init__(self, valute_code: str, chat_id: int, period0: datetime.date,
+                 period1: datetime.date, db: 'DatabaseAccessor') -> None:
+        super().__init__(db=db, chat_id=chat_id, valute_code=valute_code)
+        self.period0 = period0
+        self.period1 = period1
         self.rates = {}
         self.raw_data = []
         self.categories = []
@@ -211,98 +309,15 @@ class Report:
         return max((len(item.name) for category in self.categories
                    for item in category.budget_items), default=0)
 
-    async def load_valute(self) -> None:
-        """Load valute from database."""
-        if not (valute := await self.db.valute_repo.get_by_code(self.valute_name)):
-            raise NoValuteError(f'report valute {self.valute_name} not found')
-        self.valute = valute
-
-    async def load_raw_data(self) -> None:
+    async def _load_raw_data(self) -> None:
         """Load report data."""
         raw_data = await self.db.entry_repo.get_report(
-            chat_id=self.chat_id, year=self.year, month=self.month)
+            chat_id=self.chat_id, period0=self.period0, period1=self.period1)
         if not raw_data:
             raise NoRawDataError('no raw data found')
         self.raw_data = raw_data
 
-    async def load_rates(self) -> None:
-        """Load rates."""
-        if not self.valute:
-            raise ReportError('report valute not loaded')
-        substitutes = self.VALUTE_SUBSTITUTES.get(self.valute.code, [])
-        rates_to_find = set(v for v
-                            in [v for _, _, v, _ in self.raw_data]
-                            if (v.code != self.valute.code) and v.code not in substitutes)
-
-        rates = await self._get_valute_rates(rates_to_find)
-        to_find = set(v.code for v in rates_to_find)
-        found = set(rates.keys())
-        if found != to_find:
-            raise NoRatesError(f'rates not found {to_find - found}')
-        if substitutes:
-            rates.update(dict.fromkeys(substitutes, 1))
-        rates.update({self.valute.code: 1})
-        self.rates = rates
-
-    async def _get_valute_rates(self, rates_to_find: set[Valute]) -> dict[str, float]:
-        rates = {}
-        usd = await self.db.valute_repo.get_by_code(USD_CODE)
-
-        for valute in rates_to_find:
-            direct = await self._get_exchange_rate(valute, self.valute)
-            if direct:
-                rates[valute.code] = direct
-                continue
-            valute_to_usd = await self._get_exchange_rate(valute, usd)
-            usd_to_target = await self._get_exchange_rate(usd, valute)
-            if valute_to_usd and usd_to_target:
-                rate = round(valute_to_usd * usd_to_target, 6)
-                rates[valute.code] = rate
-                continue
-            valute_to_usd = await self._get_daily_rate(valute, usd)
-            if self.valute.code in [USD_CODE, USDT_CODE]:
-                usd_to_target = 1
-            else:
-                usd_to_target = await self._get_daily_rate(usd, valute)
-            if valute_to_usd and usd_to_target:
-                rate = round(valute_to_usd * usd_to_target, 6)
-                rates[valute.code] = rate
-        return rates
-
-    async def _get_exchange_rate(self, valute_from: Valute, valute_to: Valute) -> Optional[float]:
-        rates = []
-        from_codes = [valute_from.code] + self.VALUTE_SUBSTITUTES.get(valute_from.code, [])
-        to_codes = [valute_to.code] + self.VALUTE_SUBSTITUTES.get(valute_to.code, [])
-        exchanges: list[ValuteExchange] = await self.db.valute_exchange_repo.get_pair_exchanges(
-            from_codes, to_codes, self.year, self.month)
-        for exchange in exchanges:
-            rate = round(
-                exchange.valute_to_amount / exchange.valute_from_amount, self.RATE_PRECISION)
-            rates.append(rate)
-        exchanges = await self.db.valute_exchange_repo.get_pair_exchanges(
-            to_codes, from_codes, self.year, self.month)
-        for exchange in exchanges:
-            rate = round(
-                exchange.valute_from_amount / exchange.valute_to_amount, self.RATE_PRECISION)
-            rates.append(rate)
-        return geometric_mean(rates) if rates else None
-
-    async def _get_daily_rate(self, valute_from: Valute, valute_to: Valute) -> Optional[float]:
-        rates = []
-        from_codes = [valute_from.code] + self.VALUTE_SUBSTITUTES.get(valute_from.code, [])
-        to_codes = [valute_to.code] + self.VALUTE_SUBSTITUTES.get(valute_to.code, [])
-        daily_rates = await self.db.valute_rate_repo.get_month_rates(
-            from_codes, to_codes, self.year, self.month)
-        for rate in daily_rates:
-            rates.append(rate.rate)
-        daily_rates = await self.db.valute_rate_repo.get_month_rates(
-            to_codes, from_codes, self.year, self.month)
-        for rate in daily_rates:
-            rate = round(1 / rate.rate, self.RATE_PRECISION)
-            rates.append(rate)
-        return geometric_mean(rates) if rates else None
-
-    async def convert_raw_data(self) -> None:
+    async def _convert_raw_data(self) -> None:
         """Convert raw data to report data."""
         data = defaultdict(dict)
         for category, budget_item, valute, amount in self.raw_data:
@@ -325,7 +340,7 @@ class Report:
             )
             self.categories.append(category)
 
-    def make_report_image(self) -> bytes:
+    def _make_report_image(self) -> bytes:
         """Generate report image."""
         fig = plt.figure(figsize=(self.REPORT_IMAGE_WIDTH, self.image_height))
         gs = fig.add_gridspec(
@@ -341,7 +356,7 @@ class Report:
         plt.close(fig)
         image_bytes = buf.getvalue()
         buf.close()
-        return image_bytes
+        self.image = image_bytes
 
     def _create_section_plot(
             self, fig: plt.Figure, subplot_pos: gridspec.GridSpec,
@@ -398,8 +413,222 @@ class Report:
 
     async def calculate(self) -> bytes:
         """Load, calculate data and make report image."""
-        await self.load_valute()
-        await self.load_raw_data()
-        await self.load_rates()
-        await self.convert_raw_data()
-        return self.make_report_image()
+        await self._load_valute()
+        await self._load_raw_data()
+        await self._load_rates(used_valutes=set(v for _, _, v, _ in self.raw_data))
+        await self._convert_raw_data()
+        self._make_report_image()
+
+
+class ReportTotal(_ReportBase):
+    """Report total."""
+
+    period0: Optional[datetime.date] = None
+    period1: Optional[datetime.date] = None
+    income: Optional[float] = 0
+    outcome: Optional[float] = 0
+    balances: list[ChatBalance] = None
+    fonds: list[ChatFond] = None
+    debts: list[ChatDebt] = None
+    image: Optional[bytes] = None
+
+    COLORS = {
+        'gray': (0.7, 0.7, 0.7, 1),
+        'green': (0.2, 0.8, 0.2, 1),
+        'red': (0.8, 0.2, 0.2, 1),
+        'blue': (0.2, 0.2, 0.8, 1),
+    }
+
+    IMAGE_LINE_HEIGHT = 0.15
+
+    def __init__(self, db: 'DatabaseAccessor', chat_id: int, valute_code: str,
+                 balances: list[ChatBalance], fonds: list[ChatFond],
+                 debts: list[ChatDebt]) -> None:
+        """Init Total report."""
+        super().__init__(db=db, chat_id=chat_id, valute_code=valute_code)
+        self.balances = balances
+        self.fonds = fonds
+        self.debts = debts
+
+    @property
+    def title(self) -> str:
+        """Report title."""
+        return f'ОТЧЕТ {self.period0.isoformat()} - {self.period1.isoformat()} в {self.valute.code}'
+
+    @property
+    def balance(self) -> float:
+        """Balance."""
+        total = 0
+        for balance in self.balances or []:
+            rate = self.rates.get(balance.valute.code)
+            total += balance.amount * rate
+        return total
+
+    @property
+    def fond(self) -> float:
+        """Fond."""
+        total = 0
+        for fond in self.fonds or []:
+            rate = self.rates.get(fond.valute.code)
+            total += fond.amount * rate
+        return total
+
+    @property
+    def debt(self) -> float:
+        """Debt."""
+        total = 0
+        for debt in self.debts or []:
+            rate = self.rates.get(debt.valute.code)
+            total += debt.amount * rate
+        return total
+
+    @property
+    def total_result(self) -> float:
+        """Total result."""
+        return self.income - self.outcome
+
+    @property
+    def unregistered_amount(self) -> float:
+        """Unregistered amount."""
+        return self.balance - self.total_result
+
+    @property
+    def result_lines(self) -> list[tuple[[str, float]]]:
+        """Result lines."""
+        lines = [
+            ('доходы (I)', self.income,),
+            ('расходы (O)', self.outcome,),
+            ('I - O (R)', self.total_result,),
+        ]
+        return lines
+
+    @property
+    def balance_lines(self) -> list[str]:
+        """Balance lines."""
+        lines = []
+        for balance in self.balances:
+            amount = balance.amount * self.rates[balance.valute.code]
+            lines.append((balance.name, amount))
+        return lines
+
+    @property
+    def fond_lines(self) -> list[str]:
+        """Fond lines."""
+        lines = []
+        for fond in self.fonds:
+            amount = fond.amount * self.rates[fond.valute.code]
+            lines.append((fond.name, amount))
+        return lines
+
+    @property
+    def debt_lines(self) -> list[str]:
+        """Debt lines."""
+        lines = []
+        for debt in self.debts:
+            amount = debt.amount * self.rates[debt.valute.code]
+            lines.append((debt.name, amount))
+        return lines
+
+    @property
+    def report_lines(self) -> list[tuple[[str, float]]]:
+        """Report lines."""
+        lines = [(self.title, None)]
+        lines += [('Результаты', None)]
+        lines += self.result_lines
+        lines += [('Балансы (B)', None)]
+        lines += self.balance_lines
+        lines += [('итого балансы', self.balance)]
+        key = 'доходы' if self.unregistered_amount > 0 else 'расходы'
+        lines += [(f'не учтены {key} (B - R)', self.unregistered_amount)]
+        lines += [('Фонды (F)', None)]
+        lines += self.fond_lines
+        minus_fond = self.total_result - self.fond
+        lines += [('итого фонды', self.fond)]
+        lines += [('за минусом фондов (R - F)', minus_fond)]
+        lines += [('Долги (D)', None)]
+        lines += self.debt_lines
+        lines += [('итого долги', self.debt)]
+        lines += [('за минусом долга (R - D)', self.total_result - self.debt)]
+        lines += [('за минусом фондов и долга (R - F - D)', minus_fond - self.debt)]
+        return lines
+
+    @property
+    def image_height(self) -> int:
+        """Image height."""
+        return (
+            self.IMAGE_LINE_HEIGHT
+            * (
+                len(self.report_lines)
+                + (len([i for i in self.report_lines if i[1] is None]) - 1)
+            )
+        )
+
+    async def calculate(self) -> Optional[bytes]:
+        """Calculate and make report image."""
+        await self._load_valute()
+        await self._load_period()
+        used_valutes = await self.db.entry_repo.get_chat_entries_valutes(chat_id=self.chat_id)
+        await self._load_rates(used_valutes=used_valutes)
+        await self._calculate_entries()
+        self._make_report_image()
+
+    async def _load_period(self) -> None:
+        """Find max and min entries date."""
+        period = await self.db.entry_repo.get_chat_entries_period(chat_id=self.chat_id)
+        if not period or not all(period):
+            raise NoRawDataError('no data for report')
+        self.period0 = period[0].date()
+        self.period1 = period[1].date()
+
+    async def _calculate_entries(self) -> None:
+        """Calculate income and outcome in report valute."""
+        income = 0
+        outcome = 0
+        async for row in self.db.entry_repo.iterate_chat_entries(chat_id=self.chat_id):
+            entry_type, amount, valute_code = row
+            rate = self.rates.get(valute_code)
+            if entry_type == BudgetItemTypeEnum.INCOME:
+                income += amount * rate
+            else:
+                outcome += amount * rate
+        self.income = income
+        self.outcome = outcome
+
+    def _make_report_image(self) -> bytes:
+        """Make report image."""
+        label_width = max(len(label) for label, _ in self.report_lines[1:])
+        amount_width = max(len(str(amount)) for _, amount in self.report_lines[1:] if amount)
+        title_s = self.report_lines[0][0]
+        title_size = 14
+        row_size = 12
+
+        fig, ax = plt.subplots(figsize=(self.REPORT_IMAGE_WIDTH, self.image_height))
+        ax.axis('off')
+
+        y = self.image_height - self.IMAGE_LINE_HEIGHT
+        ax.text(
+            0, y, title_s, fontsize=title_size, va='center', ha='left',
+            family=self.REPORT_TEXT_FAMILY)
+        y -= self.IMAGE_LINE_HEIGHT
+
+        for label, value in self.report_lines[1:]:
+            text = f'{label:<{label_width}}'
+            if value is None:
+                y -= self.IMAGE_LINE_HEIGHT
+                text = text.upper()
+                ax.text(
+                    0, y, text, fontsize=row_size, va='center', ha='left',
+                    family=self.REPORT_TEXT_FAMILY, color=self.COLORS['gray'])
+            else:
+                text = f'{text}: {value:>{amount_width}.2f}'
+                ax.text(
+                    0, y, text, fontsize=row_size, va='center', ha='left',
+                    family=self.REPORT_TEXT_FAMILY, color=self.COLORS['blue'])
+            y -= self.IMAGE_LINE_HEIGHT
+
+        buf = BytesIO()
+        plt.savefig(buf, format='png', bbox_inches='tight', pad_inches=0.2, dpi=100)
+        plt.close(fig)
+        image_bytes = buf.getvalue()
+        buf.close()
+        self.image = image_bytes

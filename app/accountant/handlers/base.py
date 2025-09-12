@@ -139,7 +139,7 @@ class BaseHandler:
         request = {
             'chat_id': self.chat.tg_id,
             'caption': caption,
-            'reply_markup': reply_markup,
+            'reply_markup': reply_markup.model_dump_json() if reply_markup else None,
             'files': {'photo': photo}
         }
         request = SendPhotoRequestSchema.model_validate(request)

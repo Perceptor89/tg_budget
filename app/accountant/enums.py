@@ -14,6 +14,14 @@ class CommandHadlerEnum(str, enum.Enum):
     BALANCE_LIST = '/balance_list'
     BALANCE_SET = '/balance_set'
     BALANCE_DELETE = '/balance_delete'
+    FOND_CREATE = '/fond_add'
+    FOND_LIST = '/fond_list'
+    FOND_SET = '/fond_set'
+    FOND_DELETE = '/fond_delete'
+    DEBT_CREATE = '/debt_add'
+    DEBT_LIST = '/debt_list'
+    DEBT_SET = '/debt_set'
+    DEBT_DELETE = '/debt_delete'
 
 
 class MessageHandlerEnum(str, enum.Enum):
@@ -25,6 +33,10 @@ class MessageHandlerEnum(str, enum.Enum):
     ENTRY_ADD_AMOUNT = 'entry_add_amount'
     BALANCE_CREATE_NAME = 'balance_add_name'
     BALANCE_SET_SAVE_AMOUNT = 'balance_set_save_amount'
+    FOND_CREATE_NAME = 'fond_create_name'
+    FOND_SET_SAVE_AMOUNT = 'fond_set_save_amount'
+    DEBT_CREATE_NAME = 'debt_create_name'
+    DEBT_SET_SAVE_AMOUNT = 'debt_set_save_amount'
 
 
 class CallbackHandlerEnum(str, enum.Enum):
@@ -43,6 +55,14 @@ class CallbackHandlerEnum(str, enum.Enum):
     BALANCE_SET_CHOOSE_ONE = 'balance_set_choose_one'
     BALANCE_DELETE_CHOOSE_ONE = 'balance_delete_choose_one'
     BALANCE_DELETE_CONFIRM = 'balance_delete_confirm'
+    FOND_CREATE_VALUTE = 'fond_create_valute'
+    FOND_SET_CHOOSE_ONE = 'fond_set_choose_one'
+    FOND_DELETE_CHOOSE_ONE = 'fond_delete_choose_one'
+    FOND_DELETE_CONFIRM = 'fond_delete_confirm'
+    DEBT_CREATE_VALUTE = 'debt_create_valute'
+    DEBT_SET_CHOOSE_ONE = 'debt_set_choose_one'
+    DEBT_DELETE_CHOOSE_ONE = 'debt_delete_choose_one'
+    DEBT_DELETE_CONFIRM = 'debt_delete_confirm'
 
 
 class DecisionEnum(str, enum.Enum):

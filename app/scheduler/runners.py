@@ -11,7 +11,7 @@ db = DatabaseAccessor()
 
 
 @scheduler.scheduled_job(
-    trigger=IntervalTrigger(minutes=5),
+    trigger=IntervalTrigger(minutes=3),
     id='get_reates_periodic_job',
 )
 async def get_rates_periodic_job() -> None:
