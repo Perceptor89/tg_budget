@@ -64,7 +64,7 @@ BALANCE_DELETED = SUCCESSFULLY_DELETED
 
 REPORT_ERROR = 'Не удалось сформировать отчет'
 
-FOND_INFO = 'ФОНД\n`{fond_name}`'
+FOND_INFO = 'ФОНД\n`{fond_info}`'
 FOND_CREATE_NAME = '{}Введите название фонда'
 FOND_CREATE_NAME_PLACEHOLDER = 'Наличные USD'
 FOND_CREATE_EXISTS_ERROR = 'Фонд `{}` уже существует\n\n{}Введите другое название'
@@ -82,7 +82,7 @@ FOND_DELETE_CHOOSE_ONE = 'Выбери фонд для удаления'
 FOND_DELETE_APPROVE = Q_SURE_DELETE
 FOND_DELETED = SUCCESSFULLY_DELETED
 
-DEBT_INFO = 'ДОЛГ\n`{debt_name}`'
+DEBT_INFO = 'ДОЛГ\n`{debt_info}`'
 DEBT_CREATE_NAME = '{}Введите название долга'
 DEBT_CREATE_NAME_PLACEHOLDER = 'Наличные USD'
 DEBT_CREATE_EXISTS_ERROR = 'Долг `{}` уже существует\n\n{}Введите другое название'
