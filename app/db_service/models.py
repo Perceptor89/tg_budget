@@ -251,6 +251,8 @@ class ValuteExchange(_BaseExtended):
 class _BalanceItem(_BaseExtended):
     """Base model for balance, fond and debts items."""
 
+    __abstract__ = True
+
     chat_id = sa.Column(
         sa.BigInteger,
         sa.ForeignKey('tg_chats.id', ondelete='CASCADE'),
