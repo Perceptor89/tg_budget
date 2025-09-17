@@ -535,19 +535,19 @@ class ReportTotal(_ReportBase):
         lines = [(self.title, None)]
         lines += [('Результаты', None)]
         lines += self.result_lines
-        lines += [('Балансы (B)', None)]
+        lines += [('Балансы', None)]
         lines += self.balance_lines
-        lines += [('итого балансы', self.balance)]
+        lines += [('итого балансы (B)', self.balance)]
         key = 'доходы' if self.unregistered_amount > 0 else 'расходы'
         lines += [(f'не учтены {key} (B - R)', self.unregistered_amount)]
-        lines += [('Фонды (F)', None)]
+        lines += [('Фонды', None)]
         lines += self.fond_lines
         minus_fond = self.total_result - self.fond
-        lines += [('итого фонды', self.fond)]
+        lines += [('итого фонды (F)', self.fond)]
         lines += [('за минусом фондов (R - F)', minus_fond)]
-        lines += [('Долги (D)', None)]
+        lines += [('Долги', None)]
         lines += self.debt_lines
-        lines += [('итого долги', self.debt)]
+        lines += [('итого долги (D)', self.debt)]
         lines += [('за минусом долга (R - D)', self.total_result - self.debt)]
         lines += [('за минусом фондов и долга (R - F - D)', minus_fond - self.debt)]
         return lines

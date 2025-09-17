@@ -96,7 +96,7 @@ class BalanceListHandler(CommandHandler):
         """Process balance list command click."""
         await self.delete_income_messages()
         chat = self.chat
-        balances = chat.balances
+        balances: list[ChatBalance] = chat.balances
         if not balances:
             text = messages.BALANCE_LIST_NO_BALANCES
             keyboard = self.editor.get_hide_keyboard()
@@ -104,10 +104,9 @@ class BalanceListHandler(CommandHandler):
             await self.set_state(MessageHandlerEnum.DEFAULT, {})
         else:
             max_name = max(len(b.name) for b in balances)
-            amounts = [f'{b.amount:.2f}' for b in balances]
+            amounts = [b.amount_str for b in balances]
             max_amount = max(len(a) for a in amounts)
-            lines = [f'`{b.name:<{max_name}} | {a:<{max_amount}} {b.valute.code}`'
-                     for b, a in zip(balances, amounts)]
+            lines = [b.get_info(max_name, max_amount) for b in balances]
             text = messages.BALANCE_LIST.format('\n'.join(lines))
             keyboard = self.editor.get_hide_keyboard()
             task = await self.send_message(text, keyboard)

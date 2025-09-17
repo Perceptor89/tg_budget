@@ -96,7 +96,7 @@ class DebtListHandler(CommandHandler):
         """Process debt list command click."""
         await self.delete_income_messages()
         chat = self.chat
-        debts = chat.debts
+        debts: list[ChatDebt] = chat.debts
         if not debts:
             text = messages.DEBT_LIST_NO_DEBTS
             keyboard = self.editor.get_hide_keyboard()
@@ -104,10 +104,9 @@ class DebtListHandler(CommandHandler):
             await self.set_state(MessageHandlerEnum.DEFAULT, {})
         else:
             max_name = max(len(d.name) for d in debts)
-            amounts = [f'{d.amount:.2f}' for d in debts]
+            amounts = [d.amount_str for d in debts]
             max_amount = max(len(a) for a in amounts)
-            lines = [f'`{d.name:<{max_name}} | {a:<{max_amount}} {d.valute.code}`'
-                     for d, a in zip(debts, amounts)]
+            lines = [d.get_info(max_name, max_amount) for d in debts]
             text = messages.DEBT_LIST.format('\n'.join(lines))
             keyboard = self.editor.get_hide_keyboard()
             task = await self.send_message(text, keyboard)

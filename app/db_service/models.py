@@ -248,7 +248,7 @@ class ValuteExchange(_BaseExtended):
     valute_to_amount = sa.Column(sa.Float, nullable=False)
 
 
-class _BalanceItem:
+class _BalanceItem(_BaseExtended):
     """Base model for balance, fond and debts items."""
 
     chat_id = sa.Column(
@@ -285,8 +285,15 @@ class _BalanceItem:
         """Get balance info."""
         return f'{self.name} | {self.amount_str} {self.valute.code} | {self.updated_at_date_str}'
 
+    def get_info(self, max_name: int, max_amount: int) -> str:
+        """Get balance info."""
+        return (
+            f'{self.name:<{max_name}} '
+            f'| {self.amount_str:<{max_amount}} {self.valute.code} '
+            f'| {self.updated_at_date_str}')
 
-class ChatBalance(_BalanceItem, _BaseExtended):
+
+class ChatBalance(_BalanceItem):
     """Chat balances."""
 
     __tablename__ = 'chat_balances'
@@ -295,7 +302,7 @@ class ChatBalance(_BalanceItem, _BaseExtended):
     valute: Mapped['Valute'] = relationship('Valute', back_populates='balances')
 
 
-class ChatFond(_BalanceItem, _BaseExtended):
+class ChatFond(_BalanceItem):
     """Chat fonds."""
 
     __tablename__ = 'chat_fonds'
@@ -304,7 +311,7 @@ class ChatFond(_BalanceItem, _BaseExtended):
     valute: Mapped['Valute'] = relationship('Valute', back_populates='fonds')
 
 
-class ChatDebt(_BalanceItem, _BaseExtended):
+class ChatDebt(_BalanceItem):
     """Chat debts."""
 
     __tablename__ = 'chat_debts'

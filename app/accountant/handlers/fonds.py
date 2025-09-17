@@ -96,7 +96,7 @@ class FondListHandler(CommandHandler):
         """Process fond list command click."""
         await self.delete_income_messages()
         chat = self.chat
-        fonds = chat.fonds
+        fonds: list[ChatFond] = chat.fonds
         if not fonds:
             text = messages.FOND_LIST_NO_FONDS
             keyboard = self.editor.get_hide_keyboard()
@@ -104,10 +104,9 @@ class FondListHandler(CommandHandler):
             await self.set_state(MessageHandlerEnum.DEFAULT, {})
         else:
             max_name = max(len(f.name) for f in fonds)
-            amounts = [f'{f.amount:.2f}' for f in fonds]
+            amounts = [f.amount_str for f in fonds]
             max_amount = max(len(a) for a in amounts)
-            lines = [f'`{f.name:<{max_name}} | {a:<{max_amount}} {f.valute.code}`'
-                     for f, a in zip(fonds, amounts)]
+            lines = [f.get_info(max_name, max_amount) for f in fonds]
             text = messages.FOND_LIST.format('\n'.join(lines))
             keyboard = self.editor.get_hide_keyboard()
             task = await self.send_message(text, keyboard)
