@@ -106,7 +106,7 @@ class DebtListHandler(CommandHandler):
             max_name = max(len(d.name) for d in debts)
             amounts = [d.amount_str for d in debts]
             max_amount = max(len(a) for a in amounts)
-            lines = [d.get_info(max_name, max_amount) for d in debts]
+            lines = [f'`{d.get_info(max_name, max_amount)}`' for d in debts]
             text = messages.DEBT_LIST.format('\n'.join(lines))
             keyboard = self.editor.get_hide_keyboard()
             task = await self.send_message(text, keyboard)

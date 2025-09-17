@@ -106,7 +106,7 @@ class BalanceListHandler(CommandHandler):
             max_name = max(len(b.name) for b in balances)
             amounts = [b.amount_str for b in balances]
             max_amount = max(len(a) for a in amounts)
-            lines = [b.get_info(max_name, max_amount) for b in balances]
+            lines = [f'`{b.get_info(max_name, max_amount)}`' for b in balances]
             text = messages.BALANCE_LIST.format('\n'.join(lines))
             keyboard = self.editor.get_hide_keyboard()
             task = await self.send_message(text, keyboard)

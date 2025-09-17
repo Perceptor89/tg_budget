@@ -106,7 +106,7 @@ class FondListHandler(CommandHandler):
             max_name = max(len(f.name) for f in fonds)
             amounts = [f.amount_str for f in fonds]
             max_amount = max(len(a) for a in amounts)
-            lines = [f.get_info(max_name, max_amount) for f in fonds]
+            lines = [f'`{f.get_info(max_name, max_amount)}`' for f in fonds]
             text = messages.FOND_LIST.format('\n'.join(lines))
             keyboard = self.editor.get_hide_keyboard()
             task = await self.send_message(text, keyboard)
