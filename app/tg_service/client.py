@@ -143,7 +143,7 @@ class TelegramClient:
                 logger.exception(error)
             finally:
                 self.send_queue.task_done()
-                await asyncio.sleep(1)
+                await asyncio.sleep(0.5)
 
     def _make_url(self, method: str):
         return custom_urljoin(self.base_url, method)
