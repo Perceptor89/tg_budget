@@ -26,7 +26,7 @@ class RateListHandler(CommandHandler):
         except ReportError:
             await self.send_message(text=REPORT_ERROR, reply_markup=keyboard)
             raise
-        rates = sorted(report.rates, key=lambda x: x[0])
+        rates = report.rates
         lines = [RATE_LIST]
         rate_list = []
         code_width = 0
