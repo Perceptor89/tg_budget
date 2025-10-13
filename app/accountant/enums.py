@@ -22,6 +22,7 @@ class CommandHadlerEnum(str, enum.Enum):
     DEBT_LIST = '/debt_list'
     DEBT_SET = '/debt_set'
     DEBT_DELETE = '/debt_delete'
+    RATE_LIST = '/rate_list'
 
 
 class MessageHandlerEnum(str, enum.Enum):
@@ -50,7 +51,6 @@ class CallbackHandlerEnum(str, enum.Enum):
     ENTRY_ADD_FINISH = 'entry_add_finish'
     REPORT_SELECT_YEAR = 'report_select_year'
     REPORT_SELECT_MONTH = 'report_select_month'
-    HIDE = 'hide'
     BALANCE_CREATE_VALUTE = 'balance_add_valute'
     BALANCE_SET_CHOOSE_ONE = 'balance_set_choose_one'
     BALANCE_DELETE_CHOOSE_ONE = 'balance_delete_choose_one'
@@ -63,6 +63,11 @@ class CallbackHandlerEnum(str, enum.Enum):
     DEBT_SET_CHOOSE_ONE = 'debt_set_choose_one'
     DEBT_DELETE_CHOOSE_ONE = 'debt_delete_choose_one'
     DEBT_DELETE_CONFIRM = 'debt_delete_confirm'
+
+
+class CommonCallbackHandlerEnum(str, enum.Enum):
+    """Accountant common callback names."""
+    HIDE = 'hide'
 
 
 class DecisionEnum(str, enum.Enum):

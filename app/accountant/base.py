@@ -1,21 +1,14 @@
 import json
-from typing import Optional, Union
+from typing import Optional, Type, Union
 
 from app import exceptoions
-from app.accountant.enums import CallbackHandlerEnum, CommandHadlerEnum, MessageHandlerEnum
-from app.accountant.handlers.common import HideCallbackHandler
+from app.accountant.enums import CallbackHandlerEnum, MessageHandlerEnum
 from app.db_service.models import TGChat, TGUser, TGUserState
 from app.db_service.repository import DatabaseAccessor
 from app.tg_service import TelegramClient
 from app.tg_service.editor import TGMessageEditor
-from app.tg_service.schemas import (
-    TGCallbackQuerySchema,
-    TGChatSchema,
-    TGFromSchema,
-    TGMessageSchema,
-)
+from app.tg_service.schemas import TGCallbackQuerySchema, TGChatSchema, TGFromSchema, TGMessageSchema
 
-from . import handlers
 from .handlers import BaseHandler
 
 
@@ -25,68 +18,24 @@ class Accountant:
     db: DatabaseAccessor
     tg_client: TelegramClient
     editor: TGMessageEditor
+    command_handlers: dict[str, BaseHandler]
+    callback_handlers: dict[str, BaseHandler]
+    message_handlers: dict[str, BaseHandler]
+    common_callback_handlers: dict[str, BaseHandler]
 
-    command_handlers = {
-        CommandHadlerEnum.CATEGORY_LIST.value: handlers.CategoryListHandler,
-        CommandHadlerEnum.CATEGORY_ADD.value: handlers.CategoryAddHandler,
-        CommandHadlerEnum.BUDGET_ITEM_ADD.value: handlers.BudgetItemAddHandler,
-        CommandHadlerEnum.ENTRY_ADD.value: handlers.EntryAddHandler,
-        CommandHadlerEnum.REPORT.value: handlers.ReportHandler,
-        CommandHadlerEnum.BALANCE_CREATE.value: handlers.BalanceCreateHandler,
-        CommandHadlerEnum.BALANCE_LIST.value: handlers.BalanceListHandler,
-        CommandHadlerEnum.BALANCE_SET.value: handlers.BalanceSetHandler,
-        CommandHadlerEnum.BALANCE_DELETE.value: handlers.BalanceDeleteHandler,
-        CommandHadlerEnum.FOND_CREATE.value: handlers.FondCreateHandler,
-        CommandHadlerEnum.FOND_LIST.value: handlers.FondListHandler,
-        CommandHadlerEnum.FOND_SET.value: handlers.FondSetHandler,
-        CommandHadlerEnum.FOND_DELETE.value: handlers.FondDeleteHandler,
-        CommandHadlerEnum.DEBT_CREATE.value: handlers.DebtCreateHandler,
-        CommandHadlerEnum.DEBT_LIST.value: handlers.DebtListHandler,
-        CommandHadlerEnum.DEBT_SET.value: handlers.DebtSetHandler,
-        CommandHadlerEnum.DEBT_DELETE.value: handlers.DebtDeleteHandler,
-    }
-    callback_handlers = {
-        CallbackHandlerEnum.BUDGET_ITEM_ADD_CATEGORY.value: handlers.BudgetItemAddCategoryHandler,
-        CallbackHandlerEnum.BUDGET_ITEM_ADD_TYPE.value: handlers.BudgetItemAddTypeHandler,
-        CallbackHandlerEnum.ENTRY_ADD_CATEGORY.value: handlers.EntryAddCategoryHandler,
-        CallbackHandlerEnum.ENTRY_ADD_BUDGET_ITEM.value: handlers.EntryAddBudgetItemHandler,
-        CallbackHandlerEnum.ENTRY_ADD_VALUTE.value: handlers.EntryAddValuteHandler,
-        CallbackHandlerEnum.ENTRY_ADD_FINISH.value: handlers.EntryAddFinishHandler,
-        CallbackHandlerEnum.REPORT_SELECT_YEAR.value: handlers.ReportSelectYearHandler,
-        CallbackHandlerEnum.REPORT_SELECT_MONTH.value: handlers.ReportSelectMonthHandler,
-        CallbackHandlerEnum.BALANCE_CREATE_VALUTE.value: handlers.BalanceCreateValuteHandler,
-        CallbackHandlerEnum.BALANCE_SET_CHOOSE_ONE.value: handlers.BalanceSetChooseOneHandler,
-        CallbackHandlerEnum.BALANCE_DELETE_CHOOSE_ONE.value: handlers.BalanceDeleteChooseOneHandler,
-        CallbackHandlerEnum.BALANCE_DELETE_CONFIRM.value: handlers.BalanceDeleteConfirmHandler,
-        CallbackHandlerEnum.FOND_CREATE_VALUTE.value: handlers.FondCreateValuteHandler,
-        CallbackHandlerEnum.FOND_SET_CHOOSE_ONE.value: handlers.FondSetChooseOneHandler,
-        CallbackHandlerEnum.FOND_DELETE_CHOOSE_ONE.value: handlers.FondSetSaveAmountHandler,
-        CallbackHandlerEnum.FOND_DELETE_CONFIRM.value: handlers.FondDeleteConfirmHandler,
-        CallbackHandlerEnum.DEBT_CREATE_VALUTE.value: handlers.DebtCreateValuteHandler,
-        CallbackHandlerEnum.DEBT_SET_CHOOSE_ONE.value: handlers.DebtSetChooseOneHandler,
-        CallbackHandlerEnum.DEBT_DELETE_CHOOSE_ONE.value: handlers.DebtSetSaveAmountHandler,
-        CallbackHandlerEnum.DEBT_DELETE_CONFIRM.value: handlers.DebtDeleteConfirmHandler,
-    }
-    message_handlers = {
-        MessageHandlerEnum.CATEGORY_ADD_NAME.value: handlers.CategoryAddNameHandler,
-        MessageHandlerEnum.BUDGET_ITEM_ADD_NAME.value: handlers.BudgetItemAddNameHandler,
-        MessageHandlerEnum.ENTRY_ADD_AMOUNT.value: handlers.EntryAddAmountHandler,
-        MessageHandlerEnum.BALANCE_CREATE_NAME.value: handlers.BalanceCreateNameHandler,
-        MessageHandlerEnum.BALANCE_SET_SAVE_AMOUNT.value: handlers.BalanceSetSaveAmountHandler,
-        MessageHandlerEnum.FOND_CREATE_NAME.value: handlers.FondCreateNameHandler,
-        MessageHandlerEnum.FOND_SET_SAVE_AMOUNT.value: handlers.FondSetSaveAmountHandler,
-        MessageHandlerEnum.DEBT_CREATE_NAME.value: handlers.DebtCreateNameHandler,
-        MessageHandlerEnum.DEBT_SET_SAVE_AMOUNT.value: handlers.DebtSetSaveAmountHandler,
-    }
-    common_callback_handlers = {
-        CallbackHandlerEnum.HIDE.value: HideCallbackHandler,
-    }
-
-    def __init__(self, db: DatabaseAccessor, tg_client: TelegramClient, editor: TGMessageEditor):
+    def __init__(self, db: DatabaseAccessor, tg_client: TelegramClient, editor: TGMessageEditor,
+                 command_handlers: dict[str, Type[BaseHandler]],
+                 callback_handlers: dict[str, Type[BaseHandler]],
+                 message_handlers: dict[str, Type[BaseHandler]],
+                 common_callback_handlers: dict[str, Type[BaseHandler]]):
         """Initialize accountant."""
         self.db = db
         self.tg_client = tg_client
         self.editor = editor
+        self.command_handlers = command_handlers
+        self.callback_handlers = callback_handlers
+        self.message_handlers = message_handlers
+        self.common_callback_handlers = common_callback_handlers
 
     @exceptoions.catch_exception
     async def process_message(self, update: Union[TGMessageSchema, TGCallbackQuerySchema]):

@@ -5,7 +5,8 @@ from app.db_service.models import ChatDebt, Valute
 from app.tg_service import schemas as tg_schemas
 
 from .. import messages
-from ..enums import CallbackHandlerEnum, MessageHandlerEnum
+from ..enums import CallbackHandlerEnum, CommandHadlerEnum, MessageHandlerEnum
+from ..registry import handler
 from .base import CallbackHandler, CommandHandler, MessageHandler
 
 
@@ -26,6 +27,7 @@ class DebtCreateMixin:
         return debt[0]
 
 
+@handler(CommandHadlerEnum.DEBT_CREATE)
 class DebtCreateHandler(CommandHandler):
     """Debt create handler."""
 
@@ -41,6 +43,7 @@ class DebtCreateHandler(CommandHandler):
                                     response_to_state={'message_id'})
 
 
+@handler(MessageHandlerEnum.DEBT_CREATE_NAME)
 class DebtCreateNameHandler(MessageHandler):
     """Debt create name handler."""
 
@@ -67,6 +70,7 @@ class DebtCreateNameHandler(MessageHandler):
                                         response_to_state={'message_id'})
 
 
+@handler(CallbackHandlerEnum.DEBT_CREATE_VALUTE)
 class DebtCreateValuteHandler(CallbackHandler, DebtCreateMixin):
     """Debt create valute handler."""
 
@@ -89,6 +93,7 @@ class DebtCreateValuteHandler(CallbackHandler, DebtCreateMixin):
         await self.wait_task_result(task, MessageHandlerEnum.DEFAULT)
 
 
+@handler(CommandHadlerEnum.DEBT_LIST)
 class DebtListHandler(CommandHandler):
     """Debt list handler."""
 
@@ -113,6 +118,7 @@ class DebtListHandler(CommandHandler):
             await self.wait_task_result(task, MessageHandlerEnum.DEFAULT)
 
 
+@handler(CommandHadlerEnum.DEBT_SET)
 class DebtSetHandler(CommandHandler):
     """Debt set amount handler."""
 
@@ -128,6 +134,7 @@ class DebtSetHandler(CommandHandler):
                                     response_to_state={'message_id'})
 
 
+@handler(CallbackHandlerEnum.DEBT_SET_CHOOSE_ONE)
 class DebtSetChooseOneHandler(CallbackHandler, DebtCreateMixin):
     """Debt set choose one handler."""
 
@@ -149,6 +156,7 @@ class DebtSetChooseOneHandler(CallbackHandler, DebtCreateMixin):
                                     response_to_state={'message_id'})
 
 
+@handler(MessageHandlerEnum.DEBT_SET_SAVE_AMOUNT)
 class DebtSetSaveAmountHandler(MessageHandler, DebtCreateMixin):
     """Debt set save amount handler."""
 
@@ -184,6 +192,7 @@ class DebtSetSaveAmountHandler(MessageHandler, DebtCreateMixin):
             await self.wait_task_result(task, MessageHandlerEnum.DEFAULT)
 
 
+@handler(CommandHadlerEnum.DEBT_DELETE)
 class DebtDeleteHandler(CommandHandler):
     """Debt delete handler."""
 
@@ -200,6 +209,7 @@ class DebtDeleteHandler(CommandHandler):
                                     response_to_state={'message_id'})
 
 
+@handler(CallbackHandlerEnum.DEBT_DELETE_CHOOSE_ONE)
 class DebtDeleteChooseOneHandler(CallbackHandler, DebtCreateMixin):
     """Debt delete choose one handler."""
 
@@ -220,6 +230,7 @@ class DebtDeleteChooseOneHandler(CallbackHandler, DebtCreateMixin):
                                                 'debt_name': debt.name})
 
 
+@handler(CallbackHandlerEnum.DEBT_DELETE_CONFIRM)
 class DebtDeleteConfirmHandler(CallbackHandler, DebtCreateMixin):
     """Debt delete confirm handler."""
 

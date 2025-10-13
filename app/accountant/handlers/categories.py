@@ -2,7 +2,7 @@ from app.db_service.models import Category
 from app.tg_service import schemas as tg_schemas
 
 from .. import constants
-from ..enums import MessageHandlerEnum
+from ..enums import CommandHadlerEnum, MessageHandlerEnum
 from ..messages import (
     CATEGORY_CREATED,
     CATEGORY_ENTER_NEW,
@@ -11,9 +11,11 @@ from ..messages import (
     CATEGORY_LIMIT_ERROR,
     NO_CATEGORIES,
 )
+from ..registry import handler
 from .base import CommandHandler, MessageHandler
 
 
+@handler(CommandHadlerEnum.CATEGORY_LIST)
 class CategoryListHandler(CommandHandler):
     """Process click on /category_list command."""
 
@@ -26,6 +28,7 @@ class CategoryListHandler(CommandHandler):
         await self.send_message(text, keyboard)
 
 
+@handler(CommandHadlerEnum.CATEGORY_ADD)
 class CategoryAddHandler(CommandHandler):
     """Process click on /category_add command."""
 
@@ -46,6 +49,7 @@ class CategoryAddHandler(CommandHandler):
                                     response_to_state={'message_id'})
 
 
+@handler(MessageHandlerEnum.CATEGORY_ADD_NAME)
 class CategoryAddNameHandler(MessageHandler):
     """Process category add name."""
 

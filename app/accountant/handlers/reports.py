@@ -6,8 +6,9 @@ from app.accountant.report import Report, ReportError, ReportTotal
 from app.constants import MONTHS_MAPPER, USD_CODE
 from app.tg_service.schemas import SendPhotoResponseSchema
 
-from ..enums import CallbackHandlerEnum, MessageHandlerEnum
+from ..enums import CallbackHandlerEnum, CommandHadlerEnum, MessageHandlerEnum
 from ..messages import REPORT_ERROR, REPORT_NO_ENTRIES, REPORT_RESULT, REPORT_SELECT_MONTH, REPORT_SELECT_YEAR
+from ..registry import handler
 from .base import CallbackHandler, CommandHandler
 
 
@@ -32,6 +33,7 @@ class ReportHandlerMixin:
         await self.send_photo(photo=report.image, reply_markup=keyboard)
 
 
+@handler(CommandHadlerEnum.REPORT)
 class ReportHandler(CommandHandler):
     """Process click on /report command."""
 
@@ -64,6 +66,7 @@ class ReportHandler(CommandHandler):
                 task, CallbackHandlerEnum.REPORT_SELECT_YEAR, response_to_state={'message_id'})
 
 
+@handler(CallbackHandlerEnum.REPORT_SELECT_YEAR)
 class ReportSelectYearHandler(CallbackHandler, ReportHandlerMixin):
     """Process click on year."""
 
@@ -88,6 +91,7 @@ class ReportSelectYearHandler(CallbackHandler, ReportHandlerMixin):
                 response_to_state={'message_id'})
 
 
+@handler(CallbackHandlerEnum.REPORT_SELECT_MONTH)
 class ReportSelectMonthHandler(CallbackHandler, ReportHandlerMixin):
     """Process click on month."""
 

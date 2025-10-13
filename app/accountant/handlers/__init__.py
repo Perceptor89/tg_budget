@@ -18,6 +18,7 @@ from .budget_items import (
     BudgetItemAddTypeHandler,
 )
 from .categories import CategoryAddHandler, CategoryAddNameHandler, CategoryListHandler
+from .common import HideCallbackHandler
 from .debts import (
     DebtCreateHandler,
     DebtCreateNameHandler,
@@ -51,6 +52,7 @@ from .fonds import (
     FondSetSaveAmountHandler,
 )
 from .reports import ReportHandler, ReportSelectMonthHandler, ReportSelectYearHandler
+from .valutes import RateListHandler
 
 
 __all__ = (
@@ -62,6 +64,7 @@ __all__ = (
     'CategoryAddHandler',
     'CategoryAddNameHandler',
     'CategoryListHandler',
+    'HideCallbackHandler',
     'EntryAddAmountHandler',
     'EntryAddBudgetItemHandler',
     'EntryAddCategoryHandler',
@@ -101,4 +104,5 @@ __all__ = (
     'FondDeleteHandler',
     'FondDeleteChooseOneHandler',
     'FondDeleteConfirmHandler',
+    'RateListHandler',
 )

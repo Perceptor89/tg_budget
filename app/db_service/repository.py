@@ -431,6 +431,7 @@ class ValuteRateRepository(_BaseRepo):
         to_codes: list[str],
         period0: datetime.date,
         period1: datetime.date,
+        last_one: bool = False,
     ) -> list[ValuteRate]:
         ValuteFrom = aliased(Valute)
         ValuteTo = aliased(Valute)
@@ -450,6 +451,10 @@ class ValuteRateRepository(_BaseRepo):
                 ValuteTo.code.in_(to_codes),
             ),
         )
+        if last_one:
+            q = q.order_by(
+                ValuteRate.date.desc(),
+            ).limit(1)
         result = await session.execute(q)
         return result.scalars().all()
 
@@ -496,6 +501,7 @@ class ValuteExchangeRepository(_BaseRepo):
         to_codes: list[str],
         period0: datetime.date,
         period1: datetime.date,
+        last_one: bool = False,
     ) -> list[ValuteExchange]:
         """Get valute exchanges."""
         ValuteFrom = aliased(Valute)
@@ -516,6 +522,10 @@ class ValuteExchangeRepository(_BaseRepo):
                 ValuteTo.code.in_(to_codes),
             ),
         )
+        if last_one:
+            query = query.order_by(
+                ValuteExchange.created_at.desc(),
+            ).limit(1)
         result = await session.execute(query)
         return result.scalars().all()
 

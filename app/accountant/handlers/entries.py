@@ -1,7 +1,7 @@
 from typing import Optional
 
 from app import exceptoions
-from app.accountant.enums import CallbackHandlerEnum, DecisionEnum, MessageHandlerEnum
+from app.accountant.enums import CallbackHandlerEnum, CommandHadlerEnum, DecisionEnum, MessageHandlerEnum
 from app.accountant.messages import (
     ENTRY_ADD_ADDED,
     ENTRY_ADD_AMOUNT,
@@ -18,6 +18,7 @@ from app.db_service.repository import DatabaseAccessor
 from app.tg_service.editor import TGMessageEditor
 from app.tg_service.schemas import ForceReplySchema, TGCallbackQuerySchema
 
+from ..registry import handler
 from .base import CallbackHandler, CommandHandler, MessageHandler
 
 
@@ -88,6 +89,7 @@ class _EntryAddMixin:
         return '\n'.join(lines)
 
 
+@handler(CommandHadlerEnum.ENTRY_ADD)
 class EntryAddHandler(CommandHandler):
     """Process click on /entry command."""
 
@@ -102,6 +104,7 @@ class EntryAddHandler(CommandHandler):
             task, CallbackHandlerEnum.ENTRY_ADD_CATEGORY, response_to_state={'message_id'})
 
 
+@handler(CallbackHandlerEnum.ENTRY_ADD_CATEGORY)
 class EntryAddCategoryHandler(CallbackHandler, _EntryAddMixin):
     """Process click on category."""
 
@@ -130,6 +133,7 @@ class EntryAddCategoryHandler(CallbackHandler, _EntryAddMixin):
                                         state_data={'category_id': category.id})
 
 
+@handler(CallbackHandlerEnum.ENTRY_ADD_BUDGET_ITEM)
 class EntryAddBudgetItemHandler(CallbackHandler, _EntryAddMixin):
     """Process click on budget item."""
 
@@ -153,6 +157,7 @@ class EntryAddBudgetItemHandler(CallbackHandler, _EntryAddMixin):
                                                 'budget_item_id': budget_item.id})
 
 
+@handler(CallbackHandlerEnum.ENTRY_ADD_VALUTE)
 class EntryAddValuteHandler(CallbackHandler, _EntryAddMixin):
     """Process click on valute."""
 
@@ -183,6 +188,7 @@ class EntryAddValuteHandler(CallbackHandler, _EntryAddMixin):
                                     response_to_state={'message_id'})
 
 
+@handler(MessageHandlerEnum.ENTRY_ADD_AMOUNT)
 class EntryAddAmountHandler(MessageHandler, _EntryAddMixin):
     """Process valute amount."""
 
@@ -243,6 +249,7 @@ class EntryAddAmountHandler(MessageHandler, _EntryAddMixin):
         return sum(lines)
 
 
+@handler(CallbackHandlerEnum.ENTRY_ADD_FINISH)
 class EntryAddFinishHandler(CallbackHandler, _EntryAddMixin):
     """Process click on finish."""
 

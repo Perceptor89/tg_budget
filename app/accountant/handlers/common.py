@@ -1,6 +1,10 @@
 from .base import CallbackHandler
 
+from ..enums import CommonCallbackHandlerEnum
+from ..registry import handler
 
+
+@handler(CommonCallbackHandlerEnum.HIDE)
 class HideCallbackHandler(CallbackHandler):
     """Hide callback handler."""
 

@@ -5,7 +5,8 @@ from app.db_service.models import ChatBalance, Valute
 from app.tg_service import schemas as tg_schemas
 
 from .. import messages
-from ..enums import CallbackHandlerEnum, MessageHandlerEnum
+from ..enums import CallbackHandlerEnum, CommandHadlerEnum, MessageHandlerEnum
+from ..registry import handler
 from .base import CallbackHandler, CommandHandler, MessageHandler
 
 
@@ -26,6 +27,7 @@ class BalanceCreateMixin:
         return balance[0]
 
 
+@handler(CommandHadlerEnum.BALANCE_CREATE)
 class BalanceCreateHandler(CommandHandler):
     """Balance create handler."""
 
@@ -41,6 +43,7 @@ class BalanceCreateHandler(CommandHandler):
                                     response_to_state={'message_id'})
 
 
+@handler(MessageHandlerEnum.BALANCE_CREATE_NAME)
 class BalanceCreateNameHandler(MessageHandler):
     """Balance create name handler."""
 
@@ -67,6 +70,7 @@ class BalanceCreateNameHandler(MessageHandler):
                                         response_to_state={'message_id'})
 
 
+@handler(CallbackHandlerEnum.BALANCE_CREATE_VALUTE)
 class BalanceCreateValuteHandler(CallbackHandler, BalanceCreateMixin):
     """Balance create valute handler."""
 
@@ -89,6 +93,7 @@ class BalanceCreateValuteHandler(CallbackHandler, BalanceCreateMixin):
         await self.wait_task_result(task, MessageHandlerEnum.DEFAULT, state_data={})
 
 
+@handler(CommandHadlerEnum.BALANCE_LIST)
 class BalanceListHandler(CommandHandler):
     """Balance list handler."""
 
@@ -113,6 +118,7 @@ class BalanceListHandler(CommandHandler):
             await self.wait_task_result(task, MessageHandlerEnum.DEFAULT, {})
 
 
+@handler(CommandHadlerEnum.BALANCE_SET)
 class BalanceSetHandler(CommandHandler):
     """Balance set amount handler."""
 
@@ -128,6 +134,7 @@ class BalanceSetHandler(CommandHandler):
                                     response_to_state={'message_id'})
 
 
+@handler(CallbackHandlerEnum.BALANCE_SET_CHOOSE_ONE)
 class BalanceSetChooseOneHandler(CallbackHandler, BalanceCreateMixin):
     """Balance set choose one handler."""
 
@@ -149,6 +156,7 @@ class BalanceSetChooseOneHandler(CallbackHandler, BalanceCreateMixin):
                                     response_to_state={'message_id'})
 
 
+@handler(MessageHandlerEnum.BALANCE_SET_SAVE_AMOUNT)
 class BalanceSetSaveAmountHandler(MessageHandler, BalanceCreateMixin):
     """Balance set save amount handler."""
 
@@ -184,6 +192,7 @@ class BalanceSetSaveAmountHandler(MessageHandler, BalanceCreateMixin):
             await self.wait_task_result(task, MessageHandlerEnum.DEFAULT, {})
 
 
+@handler(CommandHadlerEnum.BALANCE_DELETE)
 class BalanceDeleteHandler(CommandHandler):
     """Balance delete handler."""
 
@@ -200,6 +209,7 @@ class BalanceDeleteHandler(CommandHandler):
                                     response_to_state={'message_id'})
 
 
+@handler(CallbackHandlerEnum.BALANCE_DELETE_CHOOSE_ONE)
 class BalanceDeleteChooseOneHandler(CallbackHandler, BalanceCreateMixin):
     """Balance delete choose one handler."""
 
@@ -220,6 +230,7 @@ class BalanceDeleteChooseOneHandler(CallbackHandler, BalanceCreateMixin):
                                                 'balance_name': balance.name})
 
 
+@handler(CallbackHandlerEnum.BALANCE_DELETE_CONFIRM)
 class BalanceDeleteConfirmHandler(CallbackHandler, BalanceCreateMixin):
     """Balance delete confirm handler."""
 

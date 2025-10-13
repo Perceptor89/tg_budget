@@ -4,7 +4,7 @@ from app.tg_service.btn_labels import BUTTON_LABELS
 from app.tg_service.schemas import ForceReplySchema
 
 from .. import constants
-from ..enums import CallbackHandlerEnum, MessageHandlerEnum
+from ..enums import CallbackHandlerEnum, CommandHadlerEnum, MessageHandlerEnum
 from ..messages import (
     BUDGET_ITEM_ADD_CATEGORY,
     BUDGET_ITEM_ADD_EXISTS_ERROR,
@@ -14,9 +14,11 @@ from ..messages import (
     BUDGET_ITEM_ADD_TYPE,
     BUDGET_ITEM_ADDED,
 )
+from ..registry import handler
 from .base import CallbackHandler, CommandHandler, MessageHandler
 
 
+@handler(CommandHadlerEnum.BUDGET_ITEM_ADD)
 class BudgetItemAddHandler(CommandHandler):
     """Process click on /budget_item_add command."""
 
@@ -30,6 +32,7 @@ class BudgetItemAddHandler(CommandHandler):
                                     response_to_state={'message_id'})
 
 
+@handler(CallbackHandlerEnum.BUDGET_ITEM_ADD_CATEGORY)
 class BudgetItemAddCategoryHandler(CallbackHandler):
     """Process budget item add category."""
 
@@ -53,6 +56,7 @@ class BudgetItemAddCategoryHandler(CallbackHandler):
                                                     'category_id': category.id})
 
 
+@handler(CallbackHandlerEnum.BUDGET_ITEM_ADD_TYPE)
 class BudgetItemAddTypeHandler(CallbackHandler):
     """Process budget item add type."""
 
@@ -74,6 +78,7 @@ class BudgetItemAddTypeHandler(CallbackHandler):
                                     response_to_state={'message_id'})
 
 
+@handler(MessageHandlerEnum.BUDGET_ITEM_ADD_NAME)
 class BudgetItemAddNameHandler(MessageHandler):
     """Process budget item add name."""
 

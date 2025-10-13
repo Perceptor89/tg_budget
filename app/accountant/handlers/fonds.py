@@ -5,7 +5,8 @@ from app.db_service.models import ChatFond, Valute
 from app.tg_service import schemas as tg_schemas
 
 from .. import messages
-from ..enums import CallbackHandlerEnum, MessageHandlerEnum
+from ..enums import CallbackHandlerEnum, CommandHadlerEnum, MessageHandlerEnum
+from ..registry import handler
 from .base import CallbackHandler, CommandHandler, MessageHandler
 
 
@@ -26,6 +27,7 @@ class FondCreateMixin:
         return fond[0]
 
 
+@handler(CommandHadlerEnum.FOND_CREATE)
 class FondCreateHandler(CommandHandler):
     """Fond create handler."""
 
@@ -41,6 +43,7 @@ class FondCreateHandler(CommandHandler):
                                     response_to_state={'message_id'})
 
 
+@handler(MessageHandlerEnum.FOND_CREATE_NAME)
 class FondCreateNameHandler(MessageHandler):
     """Fond create name handler."""
 
@@ -67,6 +70,7 @@ class FondCreateNameHandler(MessageHandler):
                                         response_to_state={'message_id'})
 
 
+@handler(CallbackHandlerEnum.FOND_CREATE_VALUTE)
 class FondCreateValuteHandler(CallbackHandler, FondCreateMixin):
     """Fond create valute handler."""
 
@@ -89,6 +93,7 @@ class FondCreateValuteHandler(CallbackHandler, FondCreateMixin):
         await self.wait_task_result(task, MessageHandlerEnum.DEFAULT)
 
 
+@handler(CommandHadlerEnum.FOND_LIST)
 class FondListHandler(CommandHandler):
     """Fond list handler."""
 
@@ -113,6 +118,7 @@ class FondListHandler(CommandHandler):
             await self.wait_task_result(task, MessageHandlerEnum.DEFAULT)
 
 
+@handler(CommandHadlerEnum.FOND_SET)
 class FondSetHandler(CommandHandler):
     """Fond set amount handler."""
 
@@ -128,6 +134,7 @@ class FondSetHandler(CommandHandler):
                                     response_to_state={'message_id'})
 
 
+@handler(CallbackHandlerEnum.FOND_SET_CHOOSE_ONE)
 class FondSetChooseOneHandler(CallbackHandler, FondCreateMixin):
     """Fond set choose one handler."""
 
@@ -149,6 +156,7 @@ class FondSetChooseOneHandler(CallbackHandler, FondCreateMixin):
                                     response_to_state={'message_id'})
 
 
+@handler(MessageHandlerEnum.FOND_SET_SAVE_AMOUNT)
 class FondSetSaveAmountHandler(MessageHandler, FondCreateMixin):
     """Fond set save amount handler."""
 
@@ -184,6 +192,7 @@ class FondSetSaveAmountHandler(MessageHandler, FondCreateMixin):
             await self.wait_task_result(task, MessageHandlerEnum.DEFAULT)
 
 
+@handler(CommandHadlerEnum.FOND_DELETE)
 class FondDeleteHandler(CommandHandler):
     """Fond delete handler."""
 
@@ -199,6 +208,7 @@ class FondDeleteHandler(CommandHandler):
                                     response_to_state={'message_id'})
 
 
+@handler(CallbackHandlerEnum.FOND_DELETE_CHOOSE_ONE)
 class FondDeleteChooseOneHandler(CallbackHandler, FondCreateMixin):
     """Fond delete choose one handler."""
 
@@ -219,6 +229,7 @@ class FondDeleteChooseOneHandler(CallbackHandler, FondCreateMixin):
                                                 'fond_name': fond.name})
 
 
+@handler(CallbackHandlerEnum.FOND_DELETE_CONFIRM)
 class FondDeleteConfirmHandler(CallbackHandler, FondCreateMixin):
     """Fond delete confirm handler."""
 
