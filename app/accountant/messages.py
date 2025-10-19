@@ -100,4 +100,4 @@ DEBT_DELETE_CHOOSE_ONE = 'Выбери долг для удаления'
 DEBT_DELETE_APPROVE = Q_SURE_DELETE
 DEBT_DELETED = SUCCESSFULLY_DELETED
 
-RATE_LIST = 'КУРС ДОЛЛАРА\n| за 1 USD средний | к USD | за 1 USD текущий | к USD |\n'
+RATE_LIST_TITLE = 'КУРС ДОЛЛАРА\n'

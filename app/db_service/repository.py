@@ -401,16 +401,21 @@ class EntryRepository(_BaseRepo):
         result = await session.execute(q)
         return result.scalars().all()
 
-    async def iterate_chat_entries(self, chat_id: int) -> AsyncIterator[Entry]:
+    async def iterate_chat_entries(
+            self, chat_id: int) -> AsyncIterator[tuple[str, float, str, float]]:
         """Iterate chat entries."""
         async with session_factory() as session:
             q = (
-                select(BudgetItem.type, Entry.amount, Valute.code)
+                select(BudgetItem.type, Entry.amount, Valute.code, ValuteRate.rate)
                 .select_from(TGChat)
                 .join(ChatBudgetItem, ChatBudgetItem.chat_id == TGChat.id)
                 .join(BudgetItem, BudgetItem.id == ChatBudgetItem.budget_item_id)
                 .join(Entry, Entry.chat_budget_item_id == ChatBudgetItem.id)
                 .join(Valute, Valute.id == Entry.valute_id)
+                .outerjoin(
+                    ValuteRate,
+                    and_(ValuteRate.valute_to_id == Valute.id,
+                         ValuteRate.date == func.date(Entry.created_at)))
                 .where(TGChat.id == chat_id)
             )
             async with session.begin():

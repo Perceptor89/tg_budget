@@ -548,9 +548,9 @@ class ReportTotal(_ReportBase):
         """Result lines."""
         colors = self.COLORS
         lines = [
-            ('доходы (I)', self.income, None, None, colors['gray']),
-            ('расходы (O)', self.outcome, None, None, colors['gray']),
-            ('I - O (R)', self.total_result, None, None, colors['blue']),
+            ('доходы (I)', self.income, None, colors['gray']),
+            ('расходы (O)', self.outcome, None, colors['gray']),
+            ('I - O (R)', self.total_result, None, colors['blue']),
         ]
         return lines
 
@@ -558,7 +558,9 @@ class ReportTotal(_ReportBase):
     def headers(self) -> tuple[str]:
         """Headers."""
         return (
-            'Название', 'По среднему курсу', 'По текущему курсу', 'В валюте статьи',
+            'Название',
+            'В валюте отчета',
+            'В валюте статьи',
             self.COLORS['black'])
 
     def get_balance_fond_debt_lines(
@@ -568,11 +570,10 @@ class ReportTotal(_ReportBase):
         for item in getattr(self, items, []):
             valute_code = item.valute.code
             amount = item.amount
-            rate = self.rates[valute_code]['avg']
             rate_cur = self.rates[valute_code]['cur']
-            amount_avg, amount_cur = amount * rate, amount * rate_cur
+            amount_cur = amount * rate_cur
             line = (
-                f'{item.name} ({valute_code})', amount_avg, amount_cur, amount, self.COLORS['gray'])
+                f'{item.name} ({valute_code})', amount_cur, amount, self.COLORS['gray'])
             lines.append(line)
         return lines
 
@@ -580,36 +581,29 @@ class ReportTotal(_ReportBase):
     def report_lines(self) -> list[tuple[[str, float]]]:
         """Report lines."""
         colors = self.COLORS
-        lines = [(self.title, None, None, None, colors['black'])]
+        lines = [(self.title, None, None, colors['black'])]
         lines += [self.headers]
-        lines += [('Результаты', None, None, None, colors['gray_light'])]
+        lines += [('Результаты', None, None, colors['gray_light'])]
         lines += self.result_lines
-        lines += [('Балансы', None, None, None, colors['gray_light'])]
+        lines += [('Балансы', None, None, colors['gray_light'])]
         lines += self.get_balance_fond_debt_lines('balances')
-        lines += [('итого балансы (B)', self.balance, self.balance_cur, None, colors['blue'])]
+        lines += [('итого балансы (B)', self.balance_cur, None, colors['blue'])]
         label = 'доходы' if self.unregistered_amount > 0 else 'расходы'
         color = colors['red'] if self.unregistered_amount != 0 else colors['gray']
-        lines += [(
-            f'не учтены {label} (B - R)', self.unregistered_amount, self.unregistered_amount_cur,
-            None, color)]
-        lines += [('Фонды', None, None, None, colors['gray_light'])]
+        lines += [(f'не учтены {label} (B - R)', self.unregistered_amount_cur, None, color)]
+        lines += [('Фонды', None, None, colors['gray_light'])]
         lines += self.get_balance_fond_debt_lines('fonds')
-        minus_fond = self.total_result - self.fond
         minus_fond_cur = self.total_result - self.fond_cur
-        lines += [('итого фонды (F)', self.fond, self.fond_cur, None, colors['blue'])]
-        lines += [('за минусом фондов (R - F)', minus_fond, minus_fond_cur, None, colors['orange'])]
-        lines += [('Долги', None, None, None, colors['gray_light'])]
+        lines += [('итого фонды (F)', self.fond_cur, None, colors['blue'])]
+        lines += [('за минусом фондов (R - F)', minus_fond_cur, None, colors['orange'])]
+        lines += [('Долги', None, None, colors['gray_light'])]
         lines += self.get_balance_fond_debt_lines('debts')
-        lines += [('итого долги (D)', self.debt, self.debt_cur, None, colors['blue'])]
-        minus_debt = self.total_result - self.debt
+        lines += [('итого долги (D)', self.debt_cur, None, colors['blue'])]
         minus_debt_cur = self.total_result - self.debt_cur
-        lines += [('за минусом долга (R - D)', minus_debt, minus_debt_cur, None, colors['orange'])]
-        minus_fond_debt = minus_fond - self.debt
+        lines += [('за минусом долга (R - D)', minus_debt_cur, None, colors['orange'])]
         minus_fond_debt_cur = minus_fond_cur - self.debt_cur
-        color = colors['green'] if minus_fond_debt > 0 else colors['red']
-        lines += [(
-            'за минусом фондов и долга (R - F - D)', minus_fond_debt, minus_fond_debt_cur, None,
-            color)]
+        color = colors['green'] if minus_fond_debt_cur > 0 else colors['red']
+        lines += [('за минусом фондов и долга (R - F - D)', minus_fond_debt_cur, None, color)]
         return lines
 
     @cached_property
@@ -653,8 +647,16 @@ class ReportTotal(_ReportBase):
         income = 0
         outcome = 0
         async for row in self.db.entry_repo.iterate_chat_entries(chat_id=self.chat_id):
-            entry_type, amount, valute_code = row
-            rate = self.rates[valute_code]['avg']
+            entry_type, amount, valute_code, rate = row
+            if (
+                self.valute.code in self.VALUTE_SUBSTITUTES
+                and valute_code in self.VALUTE_SUBSTITUTES[self.valute.code]
+            ):
+                rate = 1
+            elif valute_code == self.valute.code:
+                rate = 1
+            else:
+                rate = 1 / rate
             if entry_type == BudgetItemTypeEnum.INCOME:
                 income += amount * rate
             else:
@@ -670,7 +672,6 @@ class ReportTotal(_ReportBase):
         label_width = max(len(label) for label, *_ in no_title_lines)
         column_1_width = max(len(str(amount)) for _, amount, *_ in no_title_lines if amount)
         column_2_width = max(len(str(amount)) for _, _, amount, *_ in no_title_lines if amount)
-        column_3_width = max(len(str(amount)) for _, _, _, amount, _ in no_title_lines if amount)
         title_line_str = title_line[0]
         title_color = title_line[-1]
         title_font_size = 14
@@ -685,23 +686,20 @@ class ReportTotal(_ReportBase):
             family=self.REPORT_TEXT_FAMILY, color=title_color)
         y -= self.IMAGE_LINE_HEIGHT * 2
 
-        headers_label, headers_col1, headers_col2, headers_col3, headers_color = headers_line
+        headers_label, headers_col1, headers_col2, headers_color = headers_line
         headers_text = (
             f'{headers_label:<{label_width}} | '
             f'{headers_col1:<{column_1_width}} | '
-            f'{headers_col2:<{column_2_width}} | '
-            f'{headers_col3:<{column_3_width}}'
+            f'{headers_col2:<{column_2_width}}'
         )
         ax.text(
             0, y, headers_text, fontsize=row_font_size, va='center', ha='left',
             family=self.REPORT_TEXT_FAMILY, color=headers_color, weight='bold')
         y -= self.IMAGE_LINE_HEIGHT
 
-        for i, (
-            label, avr_amount, cur_amount, valute_amount, color,
-        ) in enumerate(no_title_no_header_lines):
+        for i, (label, cur_amount, valute_amount, color) in enumerate(no_title_no_header_lines):
             text = f'{label:<{label_width}}'
-            is_subtitle = avr_amount is None and cur_amount is None and valute_amount is None
+            is_subtitle = cur_amount is None and valute_amount is None
             if is_subtitle:
                 if i > 0:
                     y -= self.IMAGE_LINE_HEIGHT
@@ -711,10 +709,8 @@ class ReportTotal(_ReportBase):
                     family=self.REPORT_TEXT_FAMILY, color=color)
             else:
                 text = [text]
-                for value, width in zip(
-                    [avr_amount, cur_amount, valute_amount],
-                    [column_1_width, column_2_width, column_3_width]
-                ):
+                for value, width in zip([cur_amount, valute_amount],
+                                        [column_1_width, column_2_width]):
                     value_s = f'{value:>{width}.2f}' if value is not None else f'{"":<{width}}'
                     text.append(value_s)
                 text = ' | '.join(text)
