@@ -2,7 +2,7 @@ PHONY: run style
 
 VENV_BIN_PATH = ./.venv/bin
 PYTHONPATH = $(shell pwd)
-SERVER_IP=45.132.107.67
+SERVER_IP=fominykh.work
 
 run:
 	$(VENV_BIN_PATH)/python3 -m Scripts.run
