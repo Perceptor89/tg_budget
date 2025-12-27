@@ -2,8 +2,8 @@ services:
   db:
     image: postgres:16.3
     container_name: budget-db
-    expose:
-      - 5432
+    ports:
+      - '127.0.0.1:5432:5432'
     restart: always
     networks:
       - budget
