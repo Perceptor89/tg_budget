@@ -659,7 +659,7 @@ class ReportTotal(_ReportBase):
             elif valute_code == self.valute.code:
                 rate = 1
             else:
-                rate = 1 / rate or last_rates.get(valute_code)
+                rate = 1 / (rate or last_rates.get(valute_code))
             if entry_type == BudgetItemTypeEnum.INCOME:
                 income += amount * rate
             else:
