@@ -646,8 +646,11 @@ class ReportTotal(_ReportBase):
         """Calculate income and outcome in report valute."""
         income = 0
         outcome = 0
+        last_rates = {}
         async for row in self.db.entry_repo.iterate_chat_entries(chat_id=self.chat_id):
             entry_type, amount, valute_code, rate = row
+            if valute_code and rate:
+                last_rates[valute_code] = rate
             if (
                 self.valute.code in self.VALUTE_SUBSTITUTES
                 and valute_code in self.VALUTE_SUBSTITUTES[self.valute.code]
@@ -656,7 +659,7 @@ class ReportTotal(_ReportBase):
             elif valute_code == self.valute.code:
                 rate = 1
             else:
-                rate = 1 / rate
+                rate = 1 / rate or last_rates.get(valute_code)
             if entry_type == BudgetItemTypeEnum.INCOME:
                 income += amount * rate
             else:
