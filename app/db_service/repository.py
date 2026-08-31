@@ -337,7 +337,7 @@ class EntryRepository(_BaseRepo):
             Valute, Valute.id == Entry.valute_id,
         ).where(
             ChatBudgetItem.chat_id == chat_id,
-            Entry.created_at.between(period0, period1),
+            cast(Entry.created_at, Date).between(period0, period1),
         ).group_by(
             Category, BudgetItem, Valute,
         ).order_by(
@@ -522,7 +522,7 @@ class ValuteExchangeRepository(_BaseRepo):
             ValuteTo, ValuteTo.id == ValuteExchange.valute_to_id,
         ).where(
             and_(
-                ValuteExchange.created_at.between(period0, period1),
+                cast(ValuteExchange.created_at, Date).between(period0, period1),
                 ValuteFrom.code.in_(from_codes),
                 ValuteTo.code.in_(to_codes),
             ),
