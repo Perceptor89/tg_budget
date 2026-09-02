@@ -588,8 +588,8 @@ class ReportTotal(_ReportBase):
         lines += [('Балансы', None, None, colors['gray_light'])]
         lines += self.get_balance_fond_debt_lines('balances')
         lines += [('итого балансы (B)', self.balance_cur, None, colors['blue'])]
-        label = 'доходы' if self.unregistered_amount > 0 else 'расходы'
-        color = colors['red'] if self.unregistered_amount != 0 else colors['gray']
+        label = 'доходы' if self.unregistered_amount_cur > 0 else 'расходы'
+        color = colors['red'] if self.unregistered_amount_cur != 0 else colors['gray']
         lines += [(f'не учтены {label} (B - R)', self.unregistered_amount_cur, None, color)]
         lines += [('Фонды', None, None, colors['gray_light'])]
         lines += self.get_balance_fond_debt_lines('fonds')
